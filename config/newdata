@@ -1,0 +1,28 @@
+{
+	'firstname': 'aa',
+	'lastname': 'aaaaa',
+	'division': 'novice',
+	'role': 'follow',
+	'bib_number': '102'
+}
+{
+	'firstname': 'bb',
+	'lastname': 'bbbbb',
+	'division': 'novice',
+	'role': 'follow',
+	'bib_number': '103'
+}
+{
+	'firstname': 'cc',
+	'lastname': 'cccc',
+	'division': 'novice',
+	'role': 'follow',
+	'bib_number': '104'
+}
+{
+	'firstname': 'dd',
+	'lastname': 'dddd',
+	'division': 'novice',
+	'role': 'follow',
+	'bib_number': '105'
+}
