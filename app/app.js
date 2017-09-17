@@ -12,7 +12,7 @@ var Dashboard = require("./components/Dashboard");
 ReactDOM.render(
  <div className="main-container">
  	<Navbar />
- 	<Register />
+ 	<Main />
  </div>,
   document.getElementById("app")
 );
