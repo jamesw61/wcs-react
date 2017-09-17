@@ -1,11 +1,13 @@
 var React = require('react');
 var Router = require('react-router')
+var axios = require("axios");
+
 
 var Register = React.createClass({
 
     getInitialState: function () {
         return {
-            lastNmae: "",
+            lastName: "",
             firstName: "",
             userName: "",
             email: "",
@@ -14,85 +16,111 @@ var Register = React.createClass({
         }
     },
 
-    // handleChange: function (event) {
+    handleChange: function (event) {
 
-    //     var newState = {};
-    //     newState[event.target.id] = event.target.value;
-    //     this.setState(newState);
-    // },
+        var newState = {};
+        newState[event.target.id] = event.target.value;
+        this.setState(newState);
+    },
 
-    // handleSubmit: function () {
+    handleSubmit: function(event) {
+        event.preventDefault(); 
+        let last_name = this.state.lastName;
+        let first_name = this.state.firstName;
+        let username = this.state.userName;
+        let email = this.state.email;
+        let password = this.state.password;
+        let password2 = this.state.confPass
 
-    //     this
-    //         .props
-    //         .updateSearch(this.state.search, this.state.start, this.state.end);
-    //     return false;
-    // },
+        console.log('username', username);
+        console.log('password', password);
+
+        axios.post("/users/register", {last_name: last_name, 
+                                   first_name: first_name,
+                                   username: username,
+                                   email: email,
+                                   password: password,
+                                   password2: password2 }).then(function(response) {
+                                                                console.log('post register'); 
+                                                            });       
+
+  },
 
     render: function () {
         const style = {
             color: '#ccc'
         };
         return (
-
-            <form method="post" action='/users/register'>
-                <div className='form-group' id='lastName' style={style}>
-                    <label>Last Name
-                    </label>
+        <div>
+            <form onSubmit={this.handleSubmit}>
+                <div className='form-group' style={style}>
+                    <label>Last Name </label>
                     <input
+                        id='lastName' 
                         type="text"
                         value={this.state.lastName}
                         className="form-control"
+                        onChange={this.handleChange}
                         placeholder="last name"
                         name='last_name'/>
                 </div>
-                <div className='form-group' id='firstName' style={style}>
+                <div className='form-group' style={style}>
                     <label>First Name
                     </label>
                     <input
                         type="text"
+                         id='firstName'
                         value={this.state.firstName}
+                        onChange={this.handleChange}
                         className="form-control"
                         placeholder="first name"
                         name='first_name'/>
                 </div>
-                <div className='form-group' id='userName' style={style}>
+                <div className='form-group' style={style}>
                     <label>Username
                     </label>
                     <input
                         type="text"
+                        id='userName' 
                         value={this.state.userName}
+                        onChange={this.handleChange}
                         className="form-control"
                         placeholder="Username"
                         name='username'/>
                 </div>
-                <div className='form-group' id='email' style={style}>
+                <div className='form-group' style={style}>
                     <label>Email
                     </label>
                     <input
                         type="email"
+                        id='email' 
                         value={this.state.email}
+                        onChange={this.handleChange}
                         className="form-control"
                         placeholder="Email"
                         name='email'/>
                 </div>
 
-                <div className='form-group' id='password' style={style}>
+                <div className='form-group' style={style}>
                     <label>Password
                     </label>
                     <input
                         type="password"
+                        id='password' 
                         value={this.state.password}
+                        onChange={this.handleChange}
                         className="form-control"
                         placeholder="Password"
                         name='password'/>
                 </div>
-                <div className='form-group' id='confPass' style={style}>
+                <div className='form-group' style={style}>
                     <label>Confirm Password
                     </label>
                     <input
                         type="password"
+                        id='confPass' 
                         value={this.state.confPass}
+                        onChange={this.handleChange}
                         className="form-control"
                         placeholder="Password"
                         name='password2'/>
@@ -102,8 +130,9 @@ var Register = React.createClass({
                     style={{backgroundColor: '#1424E4'}}
                     className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
             </form>
+        </div>
         )
     }
 });
 
-export default Register;
+module.exports = Register;
