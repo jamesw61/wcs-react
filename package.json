@@ -28,6 +28,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.3",
     "express-validator": "^3.2.1",
+    "history": "^4.7.2",
     "jquery": "^3.2.1",
     "mongodb": "^2.2.30",
     "mongoose": "^4.11.2",

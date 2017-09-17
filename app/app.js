@@ -37,4 +37,6 @@ var routes = require("./config/routes");
 const app = document.getElementById('app');
 
 // // Renders the contents according to the route page.
+
 ReactDOM.render(routes, app);
+

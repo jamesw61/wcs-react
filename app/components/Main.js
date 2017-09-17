@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var React = require("react");
 import React from 'react'
 import NavLink from './NavLink'
@@ -33,7 +34,6 @@ export default React.createClass({
     </div>
 </div>
 
-      
     )
   }
 })
