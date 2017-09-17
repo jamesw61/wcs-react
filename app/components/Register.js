@@ -1,6 +1,7 @@
 var React = require('react');
 var Router = require('react-router')
 var axios = require("axios");
+import { browserHistory } from 'react-router';
 
 
 var Register = React.createClass({
@@ -42,7 +43,10 @@ var Register = React.createClass({
                                    password: password,
                                    password2: password2 }).then(function(response) {
                                                                 console.log('post register'); 
-                                                            });       
+        browserHistory.push('/login');       
+                                                                 
+
+                                                            });
 
   },
 

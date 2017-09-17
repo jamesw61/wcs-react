@@ -30,7 +30,7 @@ var Login = React.createClass({
         axios.get("/contests/judge").then(function(response) {
        		 console.log('res', response.data[0].username);
            if(username === response.data[0].username){ 
-           browserHistory.push('/dashboard')
+           browserHistory.push('/dashboard');
             }            
   		});
  
