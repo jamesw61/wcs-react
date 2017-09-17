@@ -1,6 +1,7 @@
 var React = require('react');
-var Router = require('react-router')
+// var Router = require('react-router')
 var axios = require("axios");
+import { browserHistory } from 'react-router';
 
 var Login = React.createClass({
 	getInitialState: function() {
@@ -21,26 +22,29 @@ var Login = React.createClass({
 
     console.log('username', username);
     console.log('password', password);
+    // this.setState({ fireRedirect: true })
 
     axios.post("/users/login", {username: this.state.username, password: this.state.password}).then(function(response) {
         console.log('post login');
 
         axios.get("/contests/judge").then(function(response) {
        		 console.log('res', response.data[0].username);
-    
+           if(username === response.data[0].username){ 
+           browserHistory.push('/dashboard')
+            }            
   		});
  
   	});
     
+    
 
   },
   render: function(){
-
     return(
 
 <div>
 
-			<h2 className='page-header'>Dashboard</h2>
+			<h2 className='page-header'>Login</h2>
    			<form onSubmit={this.handleSubmit}>
 
             	<div className="alert alert-success"></div>
@@ -55,6 +59,7 @@ var Login = React.createClass({
 				</div>
     			<button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
 			</form>
+    
 </div>
     )
 }
