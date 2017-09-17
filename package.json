@@ -28,6 +28,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.3",
     "express-validator": "^3.2.1",
+    "history": "^4.7.2",
     "jquery": "^3.2.1",
     "mongodb": "^2.2.30",
     "mongoose": "^4.11.2",
@@ -35,9 +36,9 @@
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "password-generator": "^2.1.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router": "^4.2.0"
+    "react": "^15.3.0",
+    "react-dom": "^15.3.1",
+    "react-router": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",

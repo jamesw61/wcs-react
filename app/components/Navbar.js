@@ -38,6 +38,7 @@ var Navbar = React.createClass({
     }else{
       nav = (
         <div>
+
           <li role="presentation"><a href="/users/login"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li role="presentation"><a href="/users/register"><span className="glyphicon glyphicon-user"></span> Register</a></li>
         </div>
