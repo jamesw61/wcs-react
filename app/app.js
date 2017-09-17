@@ -7,11 +7,12 @@ var ReactDOM = require("react-dom");
 var Navbar = require("./components/Navbar");
 var Main = require("./components/Main");
 var Login = require("./components/Login");
+var Dashboard = require("./components/Dashboard");
 
 ReactDOM.render(
  <div className="main-container">
- 	<Main />
- 	<Login />
+ 	<Navbar />
+ 	<Dashboard/>
  </div>,
   document.getElementById("app")
 );
