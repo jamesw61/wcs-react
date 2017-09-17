@@ -1,16 +1,8 @@
-// Include the Main React Dependencies
-var React = require("react");
-var ReactDOM = require("react-dom");
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Router = require('react-router').Router;
+var Main = require("./components/Main");
+// import Routes from './config/routes';
+var Routes = require('./config/routes');
+ReactDOM.render(<Routes />, document.getElementById("app"));
 
-
-// Components
-var Navbar = require("./components/Navbar");
-var Login = require("./components/Login");
-
-ReactDOM.render(
- <div className="main-container">
- 	<Navbar />
- 	<Login />
- </div>,
-  document.getElementById("app")
-);

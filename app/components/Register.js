@@ -5,7 +5,7 @@ var Register = React.createClass({
 
     getInitialState: function () {
         return {
-            lastNmae: "",
+            lastName: "",
             firstName: "",
             userName: "",
             email: "",
@@ -14,12 +14,12 @@ var Register = React.createClass({
         }
     },
 
-    // handleChange: function (event) {
+    handleChange: function (event) {
 
-    //     var newState = {};
-    //     newState[event.target.id] = event.target.value;
-    //     this.setState(newState);
-    // },
+        var newState = {};
+        newState[event.target.id] = event.target.value;
+        this.setState(newState);
+    },
 
     // handleSubmit: function () {
 

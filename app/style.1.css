@@ -17,6 +17,9 @@ body {
     background-color: #1424E4;
 }
 
+.open>.dropdown-toggle.btn-default {
+    background-color: #de9013;
+}
 .input-text-color {
     color: #ccc;
 }
