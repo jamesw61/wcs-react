@@ -5,11 +5,12 @@ var ReactDOM = require("react-dom");
 
 // Components
 var Navbar = require("./components/Navbar");
+var Main = require("./components/Main");
 var Login = require("./components/Login");
 
 ReactDOM.render(
  <div className="main-container">
- 	<Navbar />
+ 	<Main />
  	<Login />
  </div>,
   document.getElementById("app")
