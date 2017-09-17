@@ -31,10 +31,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // // Grabs the Routes
-var routes = require("./config/routes");
+var routerRoutes = require("./config/routerRoutes");
 
 // This is where the routes will be rendered
 const app = document.getElementById('app');
 
 // // Renders the contents according to the route page.
-ReactDOM.render(routes, app);
+ReactDOM.render(routerRoutes, app);
