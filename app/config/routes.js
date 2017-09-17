@@ -9,6 +9,8 @@ import Main from "../components/Main";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Results from "../components/Results";
+import Judge from "../components/Judge";
+import Dashboard from "../components/Dashboard";
 
 
 // Export the Routes
@@ -21,6 +23,12 @@ module.exports = (
     </Route>
 
     <Route path="/login" component={Login}>
+    </Route>
+
+    <Route path="/dashboard" component={Dashboard}>
+    </Route>
+
+    <Route path="/judge" component={Judge}>
     </Route>
 
     <Route path="/register" component={Register}>

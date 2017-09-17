@@ -16,8 +16,8 @@ var Results = React.createClass({
 
       <div className="container">
         <div className="jumbotron">
-          <h1 className="text-center"> Results</h1>
-          <h2 className="text-center"> </h2>
+          <h1 className="text-center"> ROUND Results</h1>
+          <h2 className="text-center">  DIVISION ROLE</h2>
          </div>
 
         <div className="row">
