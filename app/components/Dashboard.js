@@ -1,10 +1,21 @@
 // Include React
 var React = require("react");
-
+import NavLink from './NavLink'
 // Create the Header component
 // Notice how Header uses React.createClass
 // Notice how it uses a render function which specifies what will be displayed by the component
 var Dashboard = React.createClass({
+  // contextTypes: {
+  //   router: React.PropTypes.object
+  // },
+  // handleSubmit(event) {
+  //   event.preventDefault()
+  //   const userName = event.target.elements[0].value
+  //   const repo = event.target.elements[1].value
+  //   const path = `/repos/${userName}/${repo}`
+  //   this.context.router.push(path)
+  //   console.log(path)
+  // },
 
   render: function() {
 
@@ -22,40 +33,40 @@ var Dashboard = React.createClass({
                   <tr>
                     <td>Novice</td>
                   
-                    <td><a href="/contests/judge/Preliminary/novice/follow">Judge Follows</a>
-                        <br /><a href="/contests/judge/Preliminary/novice/lead">Judge Leads</a>
+                    <td><NavLink to ="/contests/judge/Preliminary/novice/follow">Judge Follows</NavLink>
+                        <br /><NavLink to="/contests/judge/Preliminary/novice/lead">Judge Leads</NavLink>
                     </td>
      
-                    <td><a href="/contests/results/Preliminary/novice/follow"> Follows</a>
-                        <br /><a href="/contests/results/Preliminary/novice/lead"> Leads</a></td>
+                    <td><NavLink to="/contests/results/Preliminary/novice/follow"> Follows</NavLink>
+                        <br /><NavLink to="/contests/results/Preliminary/novice/lead"> Leads</NavLink></td>
                   </tr>
                   <tr>
                     <td>Intermediate</td>
-                    <td><a href="/contests/judge/Preliminary/intermediate/follow">Judge Follows</a>
-                        <br /><a href="/contests/judge/Preliminary/intermediate/lead">Judge Leads</a></td>
-                    <td><a href="/contests/results/Preliminary/intermediate/follow"> Follows</a>
-                        <br /><a href="/contests/results/Preliminary/intermediate/lead"> Leads</a></td>
+                    <td><NavLink to="/contests/judge/Preliminary/intermediate/follow">Judge Follows</NavLink>
+                        <br /><NavLink to="/contests/judge/Preliminary/intermediate/lead">Judge Leads</NavLink></td>
+                    <td><NavLink to="/contests/results/Preliminary/intermediate/follow"> Follows</NavLink>
+                        <br /><NavLink to="/contests/results/Preliminary/intermediate/lead"> Leads</NavLink></td>
                   </tr>
                   <tr>
                     <td>Advanced</td>
-                    <td><a href="/contests/judge/Preliminary/advanced/follow">Judge Follows</a>
-                        <br /><a href="/contests/judge/Preliminary/advanced/lead">Judge Leads</a></td>
-                    <td><a href="/contests/results/Preliminary/advanced/follow"> Follows</a>
-                        <br /><a href="/contests/results/Preliminary/advanced/lead"> Leads</a></td>
+                    <td><NavLink to="/contests/judge/Preliminary/advanced/follow">Judge Follows</NavLink>
+                        <br /><NavLink to="/contests/judge/Preliminary/advanced/lead">Judge Leads</NavLink></td>
+                    <td><NavLink to="/contests/results/Preliminary/advanced/follow"> Follows</NavLink>
+                        <br /><NavLink to="/contests/results/Preliminary/advanced/lead"> Leads</NavLink></td>
                   </tr>
                   <tr>
                     <td>All-Star</td>
-                    <td><a href="/contests/judge/Preliminary/allstar/follow">Judge Follows</a>
-                        <br /><a href="/contests/judge/Preliminary/allstar/lead">Judge Leads</a></td>
-                    <td><a href="/contests/results/Preliminary/allstar/follow"> Follows</a>
-                        <br /><a href="/contests/results/Preliminary/allstar/lead"> Leads</a></td>
+                    <td><NavLink to="/contests/judge/Preliminary/allstar/follow">Judge Follows</NavLink>
+                        <br /><NavLink to="/contests/judge/Preliminary/allstar/lead">Judge Leads</NavLink></td>
+                    <td><NavLink to="/contests/results/Preliminary/allstar/follow"> Follows</NavLink>
+                        <br /><NavLink to="/contests/results/Preliminary/allstar/lead"> Leads</NavLink></td>
                   </tr>
                   <tr>
                     <td>Champion</td>
-                    <td><a href="/contests/judge/Preliminary/champion/follow">Judge Follows</a>
-                        <br /><a href="/contests/judge/Preliminary/champion/lead">Judge Leads</a></td>
-                        <td><a href="/contests/results/Preliminary/champion/follow"> Follows</a>
-                        <br /><a href="/contests/results/Preliminary/champion/lead"> Leads</a></td>
+                    <td><NavLink to="/contests/judge/Preliminary/champion/follow">Judge Follows</NavLink>
+                        <br /><NavLink to="/contests/judge/Preliminary/champion/lead">Judge Leads</NavLink></td>
+                        <td><NavLink to="/contests/results/Preliminary/champion/follow"> Follows</NavLink>
+                        <br /><NavLink to="/contests/results/Preliminary/champion/lead"> Leads</NavLink></td>
 
                   </tr>
                 </tbody>
