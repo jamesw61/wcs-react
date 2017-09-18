@@ -43,7 +43,7 @@ var Register = React.createClass({
                                    password: password,
                                    password2: password2 }).then(function(response) {
                                                                 console.log('post register'); 
-        browserHistory.push('/login');       
+        browserHistory.push('/dashboard');       
                                                                  
 
                                                             });
