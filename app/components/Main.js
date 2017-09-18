@@ -12,7 +12,7 @@ export default React.createClass({
             <div className="container-fluid">
               <div className="navbar-header">
                 <a className="navbar-brand" href="#">
-                    <img alt="Brand" src="./css/JnJ3.png"  />  
+                    <img alt="Brand" src="./css/JnJ3.png" className="image-responsive logo" />  
                     </a>         
               </div>
 
