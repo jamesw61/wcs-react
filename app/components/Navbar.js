@@ -3,6 +3,7 @@ var React = require("react");
 var axios = require("axios");
 
 
+
 // Create the Header component
 // Notice how Header uses React.createClass
 // Notice how it uses a render function which specifies what will be displayed by the component
@@ -38,6 +39,7 @@ var Navbar = React.createClass({
     }else{
       nav = (
         <div>
+
           <li role="presentation"><a href="/users/login"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li role="presentation"><a href="/users/register"><span className="glyphicon glyphicon-user"></span> Register</a></li>
         </div>
@@ -48,6 +50,7 @@ var Navbar = React.createClass({
           <ul className="nav nav-pills pull-right teal" >
             {nav}
           </ul>
+
         </nav>
     );
   }
