@@ -10,6 +10,8 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import Results from "../components/Results";
 import Dashboard from "../components/Dashboard";
+import Evaluation from "../components/Evaluation";
+
 
 
 // Export the Routes
@@ -18,20 +20,26 @@ module.exports = (
   // The high level component is the Router component
 <Router history={browserHistory}>
     <div>
-    <Route path="/" component={Main}>
-        <Route path="/login" component={Login}>
-        </Route>
+            <Route path="/" component={Main}>
+                <Route path="/login" component={Login}>
+                </Route>
 
-        <Route path="/register" component={Register}>
-        </Route>
+                <Route path="/register" component={Register}>
+                </Route>
 
-        <Route path="/results" component={Results}>
-        </Route>
+                <Route path="/results" component={Results}>
+                </Route>
 
-        <Route path="/dashboard" component={Dashboard}>
-        </Route>
+                <Route path="/dashboard" component={Dashboard}>
+                </Route>
 
-    </Route>
+                <Route path="/contests/judge/:round/:division/:role" component={Evaluation}>
+                </Route>
+
+                <Route path="/contests/results/:round/:division/:role" component={Results}>
+                </Route>
+
+            </Route>
 
     
 
@@ -39,3 +47,4 @@ module.exports = (
   </Router>
 
 );
+
