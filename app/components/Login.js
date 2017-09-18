@@ -44,10 +44,9 @@ var Login = React.createClass({
 
 <div>
 
-			<h2 className='page-header'>Login</h2>
-   			<form onSubmit={this.handleSubmit}>
-
-            	<div className="alert alert-success"></div>
+			
+   			<form className='form-signin' onSubmit={this.handleSubmit}>
+          <h2 className="form-signin-heading">Please sign in</h2>
     
 	    		<div className = 'form-group'>
 					<label>Username </label>

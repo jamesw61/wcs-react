@@ -56,9 +56,9 @@ var Register = React.createClass({
         };
         return (
         <div>
-            <form onSubmit={this.handleSubmit}>
+            <form className="form-horizontal" role="form" onSubmit={this.handleSubmit}>
                 <div className='form-group' style={style}>
-                    <label>Last Name </label>
+
                     <input
                         id='lastName' 
                         type="text"
@@ -69,8 +69,6 @@ var Register = React.createClass({
                         name='last_name'/>
                 </div>
                 <div className='form-group' style={style}>
-                    <label>First Name
-                    </label>
                     <input
                         type="text"
                          id='firstName'
@@ -81,8 +79,7 @@ var Register = React.createClass({
                         name='first_name'/>
                 </div>
                 <div className='form-group' style={style}>
-                    <label>Username
-                    </label>
+
                     <input
                         type="text"
                         id='userName' 
@@ -93,8 +90,7 @@ var Register = React.createClass({
                         name='username'/>
                 </div>
                 <div className='form-group' style={style}>
-                    <label>Email
-                    </label>
+
                     <input
                         type="email"
                         id='email' 
@@ -106,8 +102,7 @@ var Register = React.createClass({
                 </div>
 
                 <div className='form-group' style={style}>
-                    <label>Password
-                    </label>
+
                     <input
                         type="password"
                         id='password' 
@@ -118,8 +113,7 @@ var Register = React.createClass({
                         name='password'/>
                 </div>
                 <div className='form-group' style={style}>
-                    <label>Confirm Password
-                    </label>
+ 
                     <input
                         type="password"
                         id='confPass' 

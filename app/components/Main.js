@@ -1,37 +1,15 @@
 
 // var React = require("react");
 import React from 'react'
-import NavLink from './NavLink'
+
+import Navbar from './Navbar'
 
 export default React.createClass({
   render() {
     return (
 <div className="main-container">
-
-        <nav className="navbar navbar-default">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <a className="navbar-brand" href="#">
-                    <img alt="Brand" src="./css/JnJ3.png" className="image-responsive logo" />  
-                    </a>         
-              </div>
-
-                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul className="nav navbar-nav navbar-right"> 
-                          <li><NavLink to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</NavLink></li>
-                          <li><a href="/users/logout"><span className="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                          <li><NavLink to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</NavLink></li>
-                          <li><NavLink to ="/register"><span className="glyphicon glyphicon-user"></span> Register</NavLink></li>
-                        </ul>
-                </div>
-            </div>    
-        </nav>
-
-
-    <div className="container">
-        <br />
+        <Navbar />
         {this.props.children}
-    </div>
 </div>
 
     )
