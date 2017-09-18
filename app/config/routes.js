@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Include the React library
 import React from "react";
 import ReactDOM from "react-dom";
@@ -41,3 +42,23 @@ module.exports = (
   </Router>
 
 );
+=======
+import React from 'react'
+import { Router, Route, hashHistory } from 'react-router'
+import Main from '../components/Main'
+import Register from '../components/Register'
+import Login from '../components/Login'
+
+const routes = (
+    <Router history={hashHistory}>
+        <Route path="/" component={Main} />
+        
+        	<Route path="Login" component={Login} />
+        	<Route path="Register" component={Register} />
+        
+
+    </Router>
+)
+
+export default routes
+>>>>>>> d21d09d49fbaf7c6acb9918c0f29143db2d12060
