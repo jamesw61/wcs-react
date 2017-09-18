@@ -10,8 +10,9 @@
 }
 
 /* Space out content a bit */
-body {
+.main {
   background: url("./wood.jpg");
+  min-height: 740px;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -22,6 +23,7 @@ body {
 
 .navbar-default {
   background-image: linear-gradient(to bottom,#1424E4 0,#222 100%);
+  
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -176,4 +178,17 @@ a {
 
 .panel-primary {
     border-color: #008080;
+}
+
+.navbar-nav {
+  display:table;
+  width:55%;
+  margin: 0;
+ 
+}
+.navbar-nav > li {
+  float:none;
+  display:table-cell;
+  text-align:right;
+  
 }
