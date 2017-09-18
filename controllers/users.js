@@ -125,14 +125,13 @@ router.post('/register', function(req, res){
 
 	var errors = req.validationErrors();
 	if(errors) {
-		res.render('register', {
-			errors: errors
-		})
+		console.log('val errors in register post', errors);
 	}
 	else {
 
 		// Add new user to the database with hashed password
 		createUser(last_name, first_name, email, username, password);
+        res.send('created user');
 
 		 // TODO:  Fix this flash message
 		req.flash('success_msg', 'You are registered and can now login');
