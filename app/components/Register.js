@@ -55,7 +55,7 @@ var Register = React.createClass({
             color: '#ccc'
         };
         return (
-        <div>
+        <div className="forms">
             <form onSubmit={this.handleSubmit}>
                 <div className='form-group' style={style}>
                     <label>Last Name </label>
