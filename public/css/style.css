@@ -192,3 +192,7 @@ a {
   text-align:right;
   
 }
+.forms {
+  max-width: 500px;
+  margin: auto;
+}
