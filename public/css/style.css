@@ -11,7 +11,7 @@
 
 /* Space out content a bit */
 body {
-  background: url("../images/wood-dance-floor-with-logo.jpg");
+  background: url("./wood.jpg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;

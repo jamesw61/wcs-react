@@ -6,12 +6,9 @@ import NavLink from './NavLink'
 export default React.createClass({
   render() {
     return (
-<div className="container-fluid">
+<div className="container-fluid" >
 
-        <nav className="navbar-toggler nav navbar-default">
-            
-        
-
+        <nav className="navbar-toggler nav navbar-default">  
                 <div className="navbar-toggler">
                         <ul className="nav navbar-nav navbar-right"> 
                           <li><NavLink to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</NavLink></li>
@@ -23,7 +20,7 @@ export default React.createClass({
         </nav>
 
 
-    <div className="container">
+    <div className="container-fluid">
         <br />
         {this.props.children}
     </div>
