@@ -1,20 +1,19 @@
+import React, {Component} from 'react'
 
-// var React = require("react");
-import React from 'react'
-import NavLink from './NavLink'
+import {Link} from 'react-router'
+class Main extends Component{
+ 
+      render() {
+        return (
+          <div className="container-fluid" >
 
-export default React.createClass({
-  render() {
-    return (
-<div className="container-fluid" >
-
-        <nav className="navbar-toggler nav navbar-default">  
+            <nav className="navbar-toggler nav navbar-default">  
                 <div className="navbar-toggler">
                         <ul className="nav navbar-nav navbar-right"> 
-                          <li><NavLink to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</NavLink></li>
-                          <li><a href="/users/logout"><span className="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                          <li><NavLink to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</NavLink></li>
-                          <li><NavLink to ="/register"><span className="glyphicon glyphicon-user"></span> Register</NavLink></li>
+                          <li><Link to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</Link></li>
+                          <li><Link to="/"><span className="glyphicon glyphicon-log-out"></span> Logout </Link></li>
+                          <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+                          <li><Link to ="/register"><span className="glyphicon glyphicon-user"></span> Register</Link></li>
                         </ul>
                 </div>        
         </nav>
@@ -28,5 +27,7 @@ export default React.createClass({
 
     )
   }
-})
+}
+
+export default Main;
 
