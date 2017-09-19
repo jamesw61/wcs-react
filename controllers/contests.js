@@ -82,45 +82,46 @@ router.post("/:round/:division/:role", function(req, res) {
 
     var judge = res.locals.user;
     // console.log("judge   " + judge.username);
-    var scores = req.body;
+    var data = req.body;
+    console.log('scores', data.scores);
     var division = req.params.division.toLowerCase();
     var round = req.params.round;
     var role = req.params.role.toLowerCase();
 
-    for (let key in req.body) {
-        let score = req.body[key];
-        let bib_number = key;
-        console.log('bib: ' + bib_number + '  score: ' + score);
-        var newScore = new Score({
-            bib_number: bib_number,
-            division: division,
-            round: round,
-            judge: judge[0]._id,
-            score: score,
-            role: role
-        });
-        newScore.save(function(error, doc) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('score saved');
-                Participant.findOneAndUpdate({ "bib_number": bib_number }, { $push: { "scores": doc._id } })
-                    .exec(function(err, doc) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            // res.json(doc);
-                            console.log('participant score updated');
-                        }
-                    });
-            }
-        });
+    // for (let key in req.body) {
+    //     let score = req.body[key];
+    //     let bib_number = key;
+    //     console.log('bib: ' + bib_number + '  score: ' + score);
+    //     var newScore = new Score({
+    //         bib_number: bib_number,
+    //         division: division,
+    //         round: round,
+    //         judge: judge[0]._id,
+    //         score: score,
+    //         role: role
+    //     });
+        // newScore.save(function(error, doc) {
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('score saved');
+        //         Participant.findOneAndUpdate({ "bib_number": bib_number }, { $push: { "scores": doc._id } })
+        //             .exec(function(err, doc) {
+        //                 if (err) {
+        //                     console.log(err);
+        //                 } else {
+        //                     // res.json(doc);
+        //                     console.log('participant score updated');
+        //                 }
+        //             });
+        //     }
+        // });
 
 
-    }
+    // }
     // insert data into database
     // Contest.addScores(scores, round, division, judgeId);
-    res.redirect("/");
+    res.send("posted");
 });
 
 router.get("/results/:round/:division/:role", function(req, res) {
