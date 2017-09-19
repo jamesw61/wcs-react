@@ -1,25 +1,29 @@
 import React, {Component} from 'react'
-
 import {Link} from 'react-router'
-class Menu extends Component{
- 
-      render() {
-        return (         
+const Menu = (props) => (
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+        {!props.loggedin && <div className="navbar-header">
+            <a className="navbar-brand" href="#">
+              <img alt="Brand" src="./css/JnJ3.png"/>
+            </a>
+          </div>}
 
-            <nav className="navbar-toggler nav navbar-default">  
-                <div className="navbar-toggler">
-                        <ul className="nav navbar-nav navbar-right"> 
-                          <li><Link to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</Link></li>
-                          <li><Link to="/home"><span className="glyphicon glyphicon-log-out"></span> Logout </Link></li>
-                          <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
-                          <li><Link to ="/register"><span className="glyphicon glyphicon-user"></span> Register</Link></li>
-                        </ul>
-                </div>        
-        </nav>
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+            {props.loggedin && <ul className="nav navbar-nav navbar-right">
+              <li><Link to="/dashboard"><span className="teal glyphicon glyphicon-globe"></span> Dashboard</Link></li>
+             
+              <li><Link to="/home"><span className="glyphicon glyphicon-log-out"></span> Logout </Link></li>
+            </ul>}
 
-    )
-  }
-}
+            {!props.loggedin && <ul className="nav navbar-nav navbar-right">
+            <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+            <li><Link to ="/register"><span className="glyphicon glyphicon-user"></span> Register</Link></li>
+            </ul>}
 
+          </div>
+        </div>
+      </nav>
+    );
 export default Menu;

@@ -4,16 +4,11 @@
   font-size: 16px;
 }
  
-.logo {
-  
-	max-height: 200px;
-}
+
 
 /* Space out content a bit */
-.main {
-  background: url("./wood.jpg");
-  min-height: 950px;
-  background-repeat: no-repeat;
+body {
+  background: url("./wood.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -23,7 +18,6 @@
 
 .navbar-default {
   background-image: linear-gradient(to bottom,#1424E4 0,#222 100%);
-  
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -180,19 +174,3 @@ a {
     border-color: #008080;
 }
 
-.navbar-nav {
-  display:table;
-  /* width: 10%; */
-  margin: 0;
- 
-}
-/* .navbar-nav > li {
-  float:none;
-  display:table-cell;
-  text-align:right;
-  
-} */
-.forms {
-  max-width: 500px;
-  margin: auto;
-}
