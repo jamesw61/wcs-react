@@ -11,6 +11,7 @@ import Register from "../components/Register";
 import Results from "../components/Results";
 import Dashboard from "../components/Dashboard";
 import Evaluation from "../components/Evaluation";
+import Home from "../components/Home";
 
 
 
@@ -37,6 +38,9 @@ module.exports = (
                 </Route>
 
                 <Route path="/contests/results/:round/:division/:role" component={Results}>
+                </Route>
+
+                <Route path="/Home" component={Home}>
                 </Route>
 
             </Route>

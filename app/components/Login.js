@@ -1,6 +1,5 @@
-var React = require('react');
-// var Router = require('react-router')
-var axios = require("axios");
+import React from 'react'
+import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 var Login = React.createClass({
@@ -43,13 +42,11 @@ var Login = React.createClass({
   render: function(){
     return(
 
-<div>
+<div className="forms">
 
 			<h2 className='page-header'>Login</h2>
    			<form onSubmit={this.handleSubmit}>
 
-            	<div className="alert alert-success"></div>
-    
 	    		<div className = 'form-group'>
 					<label>Username </label>
 					<input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" name="username" />
@@ -58,7 +55,11 @@ var Login = React.createClass({
 					<label>Password </label>
 					<input type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" name="password" />
 				</div>
-    			<button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
+				<button 
+					type="submit" className="btn btn-default"
+					style={{backgroundColor: '#1424E4'}}
+				 	onClick={this.handleSubmit}>Submit
+				 </button>
 			</form>
     
 </div>
