@@ -8,20 +8,20 @@ var Score = require("../models/Score.js");
 
 router.get("/judge", function(req,res){
     let judge = res.locals.user;
-    console.log('judge', judge);
+    // console.log('judge', judge);
     res.send(judge);
 });
 
 // This route creates prelim and semi-finals judge sheets
 
-router.get("/judge/:round/:division/:role", ensureAuthenticated, function(req, res) {
-    // router.get("/judge/:round/:division/:role", function(req, res) {
-
+// router.get("/judge/:round/:division/:role/evaluation", ensureAuthenticated, function(req, res) {
+    router.get("/judge/:round/:division/:role", function(req, res) {
+        console.log('---------------------------');
     var judge = res.locals.user;
     console.log('judge', judge);
 
     // var judge = "ff";
-    console.log('judge id', judge[0]._id);
+    // console.log('judge id', judge[0]._id);
     var division = req.params.division;
     var round = req.params.round;
     var role = req.params.role;
@@ -32,10 +32,10 @@ router.get("/judge/:round/:division/:role", ensureAuthenticated, function(req, r
 
 
     // Check route paramaters, If the route is bad, then re-direct to dashboard
-    if (badRoute(convention, round, division, role)) {
-        res.redirect('/');
-        return;
-    } else {
+    // if (badRoute(convention, round, division, role)) {
+    //     res.redirect('/');
+    //     return;
+    // } else {
 
 
         // Check to see if the judge has judged this competition
@@ -49,8 +49,8 @@ router.get("/judge/:round/:division/:role", ensureAuthenticated, function(req, r
                 console.log('score err:');
                 console.log(err);
             } else {
-                console.log('doc length:', doc.length)
-                console.log('doc[0]', doc);
+                // console.log('doc length:', doc.length)
+                // console.log('doc[0]', doc);
                 if (doc.length === 0) {
                     Participant.find({
                         role: role,
@@ -60,16 +60,20 @@ router.get("/judge/:round/:division/:role", ensureAuthenticated, function(req, r
                             console.log(partErr);
                         } else {
                             console.log('part', partDoc);
-                            res.render('prelim', { division: Division, role: Role, list: partDoc, round: round });
+                            res.send(partDoc);
+                            // res.render('prelim', { division: Division, role: Role, list: partDoc, round: round });
 
                         }
                     });
+                } else {
+                    console.log('doc length > 0');
+                    res.send('doc length > 0');
                 }
             }
         });
 
 
-    }
+    // }
 });
 
 
