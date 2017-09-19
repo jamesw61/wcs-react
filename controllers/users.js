@@ -41,7 +41,7 @@ passport.use(new LocalStrategy(
         // db.User.findOne({ where: {username: username, password: password }}).then(function(dbUser) {
         User.find({ "username": username }, function(error, doc) {
             if (error) {
-                console.log('Broken');
+                console.log(error);
             }
             else {
                 // console.log('doc pass', doc[0].password);

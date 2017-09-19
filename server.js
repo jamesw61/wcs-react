@@ -20,6 +20,11 @@ var contests = require('./controllers/contests');
 // Init App
 var app = express();
 
+// View engine
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
+// app.set('view engine', 'handlebars');
+
 // Middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -78,6 +83,9 @@ mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs
   useMongoClient: true
 });
 
+// mongoose.connect("mongodb://localhost/wcs", {
+//   useMongoClient: true
+// });
 
 var db = mongoose.connection;
 

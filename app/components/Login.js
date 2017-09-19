@@ -67,4 +67,4 @@ var Login = React.createClass({
 }
 });
 
-export default Login;
+module.exports = Login;
