@@ -117,6 +117,7 @@ router.post("/:round/:division/:role", function(req, res) {
                             console.log('participant err' + err);
                         } else {
                             // res.json(doc);
+                            res.send('hello');
                             console.log('participant score updated');
                         }
                     });
@@ -185,8 +186,9 @@ router.get("/results/:round/:division/:role", function(req, res) {
             // console.log('partDoc', partDoc[0]);
             let results = partDoc.map(ArrangeMongooseData);
             console.log('results', results);
+            res.json(results);
             
-            res.render('prelimResults', { division: Division, role: Role, scores: results, round: round });
+            // res.render('prelimResults', { division: Division, role: Role, scores: results, round: round });
         }
     });
 
