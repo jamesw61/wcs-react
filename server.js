@@ -80,9 +80,9 @@ app.use('/users', users);
 app.use('/contests', contests);
 
 // mongoose.connect("mongodb://heroku_swvg4dbq:ssihqq344kjl59bn46p5itqf0m@ds135594.mlab.com:35594/heroku_swvg4dbq");
-mongoose.connect("mongodb://localhost/wcs", {
-  useMongoClient: true
-});
+mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
+	useMongoClient: true
+  });
 
 var db = mongoose.connection;
 
