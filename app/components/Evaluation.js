@@ -12,10 +12,15 @@ export default React.createClass({
         participantData: ['4']
       };
     },
-  
+    handleChange: function(event) {
+      let newState = {};
+      newState[event.target.id] = event.target.value;
+      this.setState(newState);
+    },
     componentDidMount: function() {
 
        let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
@@ -39,7 +44,7 @@ export default React.createClass({
     
       <div className="row">
           <h1>Evaluation</h1>
-      <h2>{this.props.params.round}</h2><h2>{this.props.params.division}</h2><h2>{this.props.params.role}</h2>
+      <h2>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h2>
 
         <div className="col-lg-12">
 
@@ -60,12 +65,20 @@ export default React.createClass({
                           </thead>
               
                 <tbody>
-                      {this.state.participantData.map(function(data, i) {
+                      {this.state.participantData.map((data, i) => {
                       return (
                             <tr key={i}>
                               <td>{data.bib_number}</td>
                               <td>{data.role}</td>
                               <td>
+                              <div className="well">
+                                 <b>YES</b>
+                                  <input type="text" className="span2 dancer" value="3" name={data.bib_number} id={data.bib_number} onChange={this.handleChange} data-slider-max="3"
+                                    data-slider-min="1" />
+              
+                                  <b>NO</b>
+                            </div>
+
                                 
                                     
                               </td>
@@ -73,8 +86,6 @@ export default React.createClass({
                           );
                    })}
                
-
-
 
                 </tbody>
                 </table>
@@ -86,6 +97,7 @@ export default React.createClass({
             <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
         </form>
         </div>
+      
 
       </div>
   )

@@ -65,6 +65,9 @@ router.get("/judge", function(req,res){
 
                         }
                     });
+                } else {
+                    console.log('doc length > 0');
+                    res.send('doc length > 0');
                 }
             }
         });
