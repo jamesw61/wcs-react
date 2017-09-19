@@ -36,7 +36,7 @@ passport.use(new LocalStrategy(
 
     function(username, password, done) {
         console.log('passport username', username);
-        console.log('passport password', password);
+        // console.log('passport password', password);
     	// Search the database for the given user
         // db.User.findOne({ where: {username: username, password: password }}).then(function(dbUser) {
         User.find({ "username": username }, function(error, doc) {
@@ -44,7 +44,7 @@ passport.use(new LocalStrategy(
                 console.log('Broken');
             }
             else {
-                console.log('doc pass', doc[0].password);
+                // console.log('doc pass', doc[0].password);
                 // return res.render("index", { bacon: doc });
                 comparePassword(password, doc[0].password, function(err, isMatch) {
                 if(err) throw err;

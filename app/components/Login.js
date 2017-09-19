@@ -22,6 +22,7 @@ var Login = React.createClass({
     console.log('username', username);
     console.log('password', password);
     // this.setState({ fireRedirect: true })
+  
 
     axios.post("/users/login", {username: this.state.username, password: this.state.password}).then(function(response) {
         console.log('post login');
