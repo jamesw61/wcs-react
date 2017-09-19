@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 const Menu = (props) => (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
-        {props.loggedin && <div className="navbar-header">
+        {!props.loggedin && <div className="navbar-header">
             <a className="navbar-brand" href="#">
               <img alt="Brand" src="./css/JnJ3.png"/>
             </a>
