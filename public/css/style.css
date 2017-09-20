@@ -12,7 +12,7 @@
 /* Space out content a bit */
 .main {
   background: url("./wood.jpg");
-  min-height: 740px;
+  min-height: 950px;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -182,16 +182,16 @@ a {
 
 .navbar-nav {
   display:table;
-  width:55%;
+  /* width: 10%; */
   margin: 0;
  
 }
-.navbar-nav > li {
+/* .navbar-nav > li {
   float:none;
   display:table-cell;
   text-align:right;
   
-}
+} */
 .forms {
   max-width: 500px;
   margin: auto;
