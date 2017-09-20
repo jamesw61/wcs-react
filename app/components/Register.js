@@ -130,8 +130,7 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 <button
-                    type="submit"
-                    style={{backgroundColor: '#1424E4'}}
+                    type="submit"                    
                     className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
             </form>
         </div>
