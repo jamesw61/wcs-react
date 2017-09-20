@@ -13,6 +13,7 @@ export default React.createClass({
   componentDidMount: function() {
       let queryURL = "/contests/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
+        
         this.setState({resultsArray : response.data});       
         
           }.bind(this)).catch(err => {
@@ -21,6 +22,13 @@ export default React.createClass({
             });
   },
   render() {
+
+    let resultsRows = this.state.resultsArray.map((item, i)=>{
+           return (            
+                  <TableRow data={item} rowKey={i} key={i} />
+                  )
+    });
+
         return (
 
        <div className="container">
@@ -48,11 +56,7 @@ export default React.createClass({
                                 </thead>
 
                                 <tbody>
-                                      {this.state.resultsArray.map((item, i)=>{
-                                          return (            
-                                          <TableRow data={item} rowKey={i} key={i} />
-                                          )
-                                        })}                        
+                                      {resultsRows}                        
                                 </tbody>
 
                             </table>          

@@ -95,6 +95,26 @@ export default React.createClass({
 
   },
   render() {
+
+    let participantRows = this.state.participantData.map((data, i) => {
+          return (
+              <tr key={i}>
+                 <td>{data.bib_number}</td>
+                 <td>{data.role}</td>
+                 <td>
+                      <div className="well">
+                                 
+                        <select id={data.bib_number} onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                        </select>
+                      </div>     
+                   </td>
+                </tr>
+                    );
+                   });
+
     return (
     
       <div className="row">
@@ -119,32 +139,10 @@ export default React.createClass({
                             </tr>
                           </thead>
               
-                <tbody>
-                      {this.state.participantData.map((data, i) => {
-                      return (
-                            <tr key={i}>
-                              <td>{data.bib_number}</td>
-                              <td>{data.role}</td>
-                              <td>
-                              <div className="well">
-                                 
-                                  <select id={data.bib_number} onChange={this.handleChange} >
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                  </select>
-                            </div>
-
-                                
-                                    
-                              </td>
-                            </tr>
-                          );
-                   })}
-               
-
-                </tbody>
-                </table>
+                          <tbody>
+                                {participantRows}             
+                          </tbody>
+              </table>
             
               
             </div>

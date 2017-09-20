@@ -15,7 +15,7 @@ router.get("/judge", function(req,res){
 // This route creates prelim and semi-finals judge sheets
 
 // router.get("/judge/:round/:division/:role/evaluation", ensureAuthenticated, function(req, res) {
-    router.get("/judge/:round/:division/:role", function(req, res) {
+router.get("/judge/:round/:division/:role", function(req, res) {
         console.log('---------------------------');
     var judge = res.locals.user;
     console.log('judge', judge);
@@ -49,7 +49,7 @@ router.get("/judge", function(req,res){
                 console.log('score err:');
                 console.log(err);
             } else {
-                // console.log('doc length:', doc.length)
+                console.log('doc length:', doc.length)
                 // console.log('doc[0]', doc);
                 if (doc.length === 0) {
                     Participant.find({
