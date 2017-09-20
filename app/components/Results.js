@@ -5,12 +5,13 @@ import axios from 'axios';
 import TableRow from './TableRow';
 import Jumbo from './Jumbo';
 
-export default React.createClass({
-  getInitialState: function() {
-    return {resultsArray : []}
-    
-  },
-  componentDidMount: function() {
+export default class Results extends React.Component {
+  constructor() {
+    super();
+    this.state = {resultsArray : []};
+  }
+ 
+  componentDidMount() {
       let queryURL = "/contests/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
         
@@ -20,7 +21,8 @@ export default React.createClass({
                   console.log(err.response);
                   return err.response;
             });
-  },
+  }
+
   render() {
 
     let resultsRows = this.state.resultsArray.map((item, i)=>{
@@ -69,4 +71,4 @@ export default React.createClass({
     )
 
   }
-})
+}
