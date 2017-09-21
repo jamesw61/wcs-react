@@ -1,29 +1,65 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import axios from 'axios'
-
-
-
 
 
 export default React.createClass({
     getInitialState: function() {
       return {
-        participantData: ['4']
+        participantData: [],
+        participantScores: []
       };
     },
     handleChange: function(event) {
-      let newState = {};
-      newState[event.target.id] = event.target.value;
-      this.setState(newState);
+        // var newState = {
+        //                   "bib_number" : event.target.id,
+        //                   "score" : event.target.value
+        //                 };     
+      // let oldScores = this.state.participantScores;
+      // console.log('oldScores', oldScores);
+
+      // for(let i = 0; i < oldScores.length; i++) {
+      //   if(oldScores[i].bib_number === newState.bib_number){
+      //     oldScores[i].score = newState.score;
+      //   }
+      // }      
+      
+      let newScores = this.state.participantScores.map((data)=>{
+        if(data.bib_number === event.target.id){
+          return data.score = event.target.value;
+        }
+        return data.score
+      });
+
+      console.log('newScores', newScores);
+
+      // this.setState(prevState => ({
+      //     participantScores: neScores
+      //   }));
+
+      console.log('this.state', this.state.participantScores); 
+
     },
     componentDidMount: function() {
-
+      console.log('mount', this.state.participantScores);
        let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
+
+
+        let initialParticipantScores = this.state.participantData.map((data, i) => {
+            let newState = {
+                            "bib_number":data.bib_number,
+                            "score" : "1"
+                          };
+            return newState;
+        });
+
+        this.setState({ participantScores: initialParticipantScores });
+        console.log('mount', this.state.participantScores);
+
         // this.setState({ participantData: x });
         // this.setState({
         //   judge: response.data
@@ -38,8 +74,47 @@ export default React.createClass({
                   return err.response;
             });
   },
-   
+   handleSubmit: function(event) {
+    event.preventDefault(); 
+    console.log('state', this.state);
+       let postURL = "/contests/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+
+      axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {
+        console.log('posted');
+        browserHistory.push('/dashboard');        
+        // axios.get("/contests/judge").then(function(response) {
+        //    console.log('res', response.data[0].username);
+        //    if(username === response.data[0].username){ 
+        //    browserHistory.push('/dashboard');
+        //     }            
+      // });
+ 
+    });
+    
+    
+
+  },
   render() {
+
+    let participantRows = this.state.participantData.map((data, i) => {
+          return (
+              <tr key={i}>
+                 <td>{data.bib_number}</td>
+                 <td>{data.role}</td>
+                 <td>
+                      <div className="well">
+                                 
+                        <select id={data.bib_number} onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                        </select>
+                      </div>     
+                   </td>
+                </tr>
+                    );
+                   });
+
     return (
     
       <div className="row">
@@ -64,31 +139,10 @@ export default React.createClass({
                             </tr>
                           </thead>
               
-                <tbody>
-                      {this.state.participantData.map((data, i) => {
-                      return (
-                            <tr key={i}>
-                              <td>{data.bib_number}</td>
-                              <td>{data.role}</td>
-                              <td>
-                              <div className="well">
-                                 <b>YES</b>
-                                  <input type="text" className="span2 dancer" value="3" name={data.bib_number} id={data.bib_number} onChange={this.handleChange} data-slider-max="3"
-                                    data-slider-min="1" />
-              
-                                  <b>NO</b>
-                            </div>
-
-                                
-                                    
-                              </td>
-                            </tr>
-                          );
-                   })}
-               
-
-                </tbody>
-                </table>
+                          <tbody>
+                                {participantRows}             
+                          </tbody>
+              </table>
             
               
             </div>
