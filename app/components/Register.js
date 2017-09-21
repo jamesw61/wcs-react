@@ -35,13 +35,14 @@ var Register = React.createClass({
 
         console.log('username', username);
         console.log('password', password);
-
+        const click = this.props.onClick;
         axios.post("/users/register", {last_name: last_name, 
                                    first_name: first_name,
                                    username: username,
                                    email: email,
                                    password: password,
-                                   password2: password2 }).then(function(response) {
+                                   password2: password2 }).then((response) => {
+                                       click(true);
                                                                 console.log('post register'); 
         browserHistory.push('/dashboard');       
                                                                  
