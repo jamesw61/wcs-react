@@ -15,26 +15,39 @@ export default React.createClass({
         //                   "bib_number" : event.target.id,
         //                   "score" : event.target.value
         //                 };     
-      // let oldScores = this.state.participantScores;
       // console.log('oldScores', oldScores);
 
       // for(let i = 0; i < oldScores.length; i++) {
       //   if(oldScores[i].bib_number === newState.bib_number){
       //     oldScores[i].score = newState.score;
       //   }
-      // }      
+      // }   
       
-      let newScores = this.state.participantScores.map((data)=>{
-        if(data.bib_number === event.target.id){
-          return data.score = event.target.value;
-        }
-        return data.score
-      });
+      // let indexChanged = this.state.participantScores.indexOf(this.state.participantScores.bib_number == event.target.id);
+      let scoresArray = this.state.participantScores;
+      
+      let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
 
-      console.log('newScores', newScores);
+      scoresArray[index] = {
+                    "bib_number" : event.target.id,
+                    "score" : event.target.value
+      }
+      // oldScores[index] = newScoreObj;
+
+      this.setState({participantScores : scoresArray});
+      // console.log('indexChanged', indexChanged);
+
+      // let newScores = this.state.participantScores.map((data)=>{
+      //   if(data.bib_number === event.target.id){
+      //     return data.score = event.target.value;
+      //   }
+      //   return data.score
+      // });
+
+      // console.log('newScores', newScores);
 
       // this.setState(prevState => ({
-      //     participantScores: neScores
+      //     participantScores: newScores
       //   }));
 
       console.log('this.state', this.state.participantScores); 
