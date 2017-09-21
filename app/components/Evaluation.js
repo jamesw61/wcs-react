@@ -11,19 +11,7 @@ export default React.createClass({
       };
     },
     handleChange: function(event) {
-        // var newState = {
-        //                   "bib_number" : event.target.id,
-        //                   "score" : event.target.value
-        //                 };     
-      // console.log('oldScores', oldScores);
-
-      // for(let i = 0; i < oldScores.length; i++) {
-      //   if(oldScores[i].bib_number === newState.bib_number){
-      //     oldScores[i].score = newState.score;
-      //   }
-      // }   
-      
-      // let indexChanged = this.state.participantScores.indexOf(this.state.participantScores.bib_number == event.target.id);
+    
       let scoresArray = this.state.participantScores;
       
       let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
@@ -32,23 +20,9 @@ export default React.createClass({
                     "bib_number" : event.target.id,
                     "score" : event.target.value
       }
-      // oldScores[index] = newScoreObj;
 
       this.setState({participantScores : scoresArray});
-      // console.log('indexChanged', indexChanged);
-
-      // let newScores = this.state.participantScores.map((data)=>{
-      //   if(data.bib_number === event.target.id){
-      //     return data.score = event.target.value;
-      //   }
-      //   return data.score
-      // });
-
-      // console.log('newScores', newScores);
-
-      // this.setState(prevState => ({
-      //     participantScores: newScores
-      //   }));
+ 
 
       console.log('this.state', this.state.participantScores); 
 
@@ -83,7 +57,7 @@ export default React.createClass({
     //   console.log(res);
     // });
           }.bind(this)).catch(err => {
-                  console.log(err.response);
+                  console.log('err', err.response);
                   return err.response;
             });
   },
@@ -93,7 +67,7 @@ export default React.createClass({
        let postURL = "/contests/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
 
       axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {
-        console.log('posted');
+        console.log('posted', response);
         browserHistory.push('/dashboard');        
         // axios.get("/contests/judge").then(function(response) {
         //    console.log('res', response.data[0].username);
