@@ -12,6 +12,7 @@ import Results from "../components/Results";
 import Dashboard from "../components/Dashboard";
 import Evaluation from "../components/Evaluation";
 import Home from "../components/Home";
+import Participants from "../components/Participants"
 
 
 
@@ -43,6 +44,8 @@ module.exports = (
                 <Route path="/Home" component={Home}>
                 </Route>
 
+                <Route path="/participants" component={Participants}>
+                </Route>
             </Route>
 
     
