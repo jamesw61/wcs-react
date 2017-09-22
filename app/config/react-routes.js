@@ -3,7 +3,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 
-
 // Reference the high-level components
 import Main from "../components/Main";
 import Login from "../components/Login";
