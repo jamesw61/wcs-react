@@ -11,7 +11,7 @@ router.get("/:round/:division", function(req, res) {
                         role: req.params.role,
                         division: req.params.division,
                         role: "follow"
-                    }).sort({ total: -1 }).limit(3).exec(function(totErr, followData) {
+                    }).sort({ total: 1 }).limit(5).exec(function(totErr, followData) {
                         if (totErr) {
                             console.log(totErr);
                         } else {
@@ -21,7 +21,7 @@ router.get("/:round/:division", function(req, res) {
                                     role: req.params.role,
                                     division: req.params.division,
                                     role: "lead"
-                                }).sort({ total: -1 }).limit(3).exec(function(totErr, leadData) {
+                                }).sort({ total: 1 }).limit(5).exec(function(totErr, leadData) {
                                         if (totErr) {
                                                 console.log(totErr);
                                         } else {

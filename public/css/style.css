@@ -196,3 +196,8 @@ a {
   max-width: 500px;
   margin: auto;
 }
+
+.well {
+  border-style: solid;
+  border-color: black;
+}

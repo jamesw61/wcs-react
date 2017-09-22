@@ -9,7 +9,8 @@ import Finals from './Finals'
 export default class Results extends React.Component {
   constructor() {
     super();
-    this.state = {resultsArray : []};
+    this.state = {resultsArray : []}
+                  
   }
  
   componentDidMount() {
@@ -23,6 +24,8 @@ export default class Results extends React.Component {
                   console.log(err.response);
                   return err.response;
             });
+
+      
   }
 
   render() {
@@ -35,6 +38,7 @@ export default class Results extends React.Component {
     let round = this.props.params.round;
     let division = this.props.params.division;
     let role = this.props.params.role;
+
     let finalsURL = '/finals/' + round + '/' + division;
 
         return (

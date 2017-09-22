@@ -25,9 +25,9 @@ export default React.createClass({
 
     },
     componentDidMount: function() {
-      console.log('mount', this.state.participantScores);
-       let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
-      console.log('query', queryURL);
+      // console.log('mount', this.state.participantScores);
+      let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      // console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
