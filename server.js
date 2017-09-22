@@ -16,6 +16,7 @@ mongoose.Promise = Promise;
 var controllers = require('./controllers');
 var users = require('./controllers/users');
 var contests = require('./controllers/contests');
+var finals = require('./controllers/finals');
 
 // Init App
 var app = express();
@@ -73,6 +74,7 @@ app.use(function (req, res, next) {
 app.use('/', controllers);
 app.use('/users', users);
 app.use('/contests', contests);
+app.use('/finals', finals);
 
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
