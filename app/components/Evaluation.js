@@ -11,31 +11,18 @@ export default React.createClass({
       };
     },
     handleChange: function(event) {
-        // var newState = {
-        //                   "bib_number" : event.target.id,
-        //                   "score" : event.target.value
-        //                 };     
-      // let oldScores = this.state.participantScores;
-      // console.log('oldScores', oldScores);
-
-      // for(let i = 0; i < oldScores.length; i++) {
-      //   if(oldScores[i].bib_number === newState.bib_number){
-      //     oldScores[i].score = newState.score;
-      //   }
-      // }      
+    
+      let scoresArray = this.state.participantScores;
       
-      let newScores = this.state.participantScores.map((data)=>{
-        if(data.bib_number === event.target.id){
-          return data.score = event.target.value;
-        }
-        return data.score
-      });
+      let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
 
-      console.log('newScores', newScores);
+      scoresArray[index] = {
+                    "bib_number" : event.target.id,
+                    "score" : event.target.value
+      }
 
-      // this.setState(prevState => ({
-      //     participantScores: neScores
-      //   }));
+      this.setState({participantScores : scoresArray});
+ 
 
       console.log('this.state', this.state.participantScores); 
 
@@ -70,7 +57,7 @@ export default React.createClass({
     //   console.log(res);
     // });
           }.bind(this)).catch(err => {
-                  console.log(err.response);
+                  console.log('err', err.response);
                   return err.response;
             });
   },
@@ -80,7 +67,7 @@ export default React.createClass({
        let postURL = "/contests/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
 
       axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {
-        console.log('posted');
+        console.log('posted', response);
         browserHistory.push('/dashboard');        
         // axios.get("/contests/judge").then(function(response) {
         //    console.log('res', response.data[0].username);
@@ -95,6 +82,26 @@ export default React.createClass({
 
   },
   render() {
+
+    let participantRows = this.state.participantData.map((data, i) => {
+          return (
+              <tr key={i}>
+                 <td>{data.bib_number}</td>
+                 <td>{data.role}</td>
+                 <td>
+                      <div className="well">
+                                 
+                        <select id={data.bib_number} onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                        </select>
+                      </div>     
+                   </td>
+                </tr>
+                    );
+                   });
+
     return (
     
       <div className="row">
@@ -119,32 +126,10 @@ export default React.createClass({
                             </tr>
                           </thead>
               
-                <tbody>
-                      {this.state.participantData.map((data, i) => {
-                      return (
-                            <tr key={i}>
-                              <td>{data.bib_number}</td>
-                              <td>{data.role}</td>
-                              <td>
-                              <div className="well">
-                                 
-                                  <select id={data.bib_number} onChange={this.handleChange} >
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                  </select>
-                            </div>
-
-                                
-                                    
-                              </td>
-                            </tr>
-                          );
-                   })}
-               
-
-                </tbody>
-                </table>
+                          <tbody>
+                                {participantRows}             
+                          </tbody>
+              </table>
             
               
             </div>
