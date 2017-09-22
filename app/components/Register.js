@@ -13,7 +13,8 @@ var Register = React.createClass({
             userName: "",
             email: "",
             password: "",
-            confPass: ""
+            confPass: "",
+            errors: {}
         }
     },
 
@@ -25,6 +26,8 @@ var Register = React.createClass({
     },
 
     handleSubmit: function(event) {
+        // clear the errors in case there are any old errors
+        this.setState({ errors: {} });
         event.preventDefault(); 
         let last_name = this.state.lastName;
         let first_name = this.state.firstName;
@@ -41,10 +44,23 @@ var Register = React.createClass({
                                    username: username,
                                    email: email,
                                    password: password,
-                                   password2: password2 }).then((response) => {
-                                       click(true);
-                                                                console.log('post register'); 
-        browserHistory.push('/dashboard');       
+                                   password2: password2 }).then(response => {
+                                    
+                                    // Display error messages
+                                    if(response.data){
+                                        this.setState({errors: response.data});
+
+                                    }
+                                    else {
+                                        click(true);
+                                        console.log('post register'); 
+                                        browserHistory.push('/dashboard'); 
+                                    }
+                                    
+
+                                   
+                                    
+                                          
                                                                  
 
                                                             });
@@ -55,6 +71,7 @@ var Register = React.createClass({
         const style = {
             color: '#ccc'
         };
+        const {errors} = this.state;
         return (
         <div className="forms">
             <form onSubmit={this.handleSubmit}>
@@ -69,6 +86,7 @@ var Register = React.createClass({
                         placeholder="last name"
                         name='last_name'/>
                 </div>
+                {errors.last_name && <span className="help-block">{errors.last_name}</span>}
                 <div className='form-group' style={style}>
                     <label>First Name
                     </label>
@@ -81,6 +99,7 @@ var Register = React.createClass({
                         placeholder="first name"
                         name='first_name'/>
                 </div>
+                {errors.first_name && <span className="help-block">{errors.first_name}</span>}
                 <div className='form-group' style={style}>
                     <label>Username
                     </label>
@@ -93,6 +112,7 @@ var Register = React.createClass({
                         placeholder="Username"
                         name='username'/>
                 </div>
+                {errors.username && <span className="help-block">{errors.username}</span>}
                 <div className='form-group' style={style}>
                     <label>Email
                     </label>
@@ -105,7 +125,7 @@ var Register = React.createClass({
                         placeholder="Email"
                         name='email'/>
                 </div>
-
+                {errors.email && <span className="help-block">{errors.email}</span>}
                 <div className='form-group' style={style}>
                     <label>Password
                     </label>
@@ -118,6 +138,7 @@ var Register = React.createClass({
                         placeholder="Password"
                         name='password'/>
                 </div>
+                {errors.password && <span className="help-block">{errors.password}</span>}
                 <div className='form-group' style={style}>
                     <label>Confirm Password
                     </label>
@@ -130,8 +151,10 @@ var Register = React.createClass({
                         placeholder="Password"
                         name='password2'/>
                 </div>
+                {errors.password2 && <span className="help-block">{errors.password2}</span>}
                 <button
-                    type="submit"                    
+                    type="submit"
+                    style={{backgroundColor: '#1424E4'}}
                     className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
             </form>
         </div>
