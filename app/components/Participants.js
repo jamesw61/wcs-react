@@ -16,8 +16,6 @@ class Participants extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-   
-
     handleChange (event) {
 
         var newState = {};
@@ -28,14 +26,17 @@ class Participants extends Component {
 
     handleSubmit (event) {
         event.preventDefault();
-        console.log('in here');
+        console.log('The Button Has been pushed');
         const click = this.props.onClick;
-        console.log(this.state);
-        axios.post("/dancers/participants", this.state)
+        console.log("This is what is in " + this.state);
+        axios.post("/rich", this.state)
             .then((response) => {
                 click(true);
                 browserHistory.push('/dashboard');       
-            });
+            })
+            .catch(function (error) {
+                console.log(error);
+              });
         }
 
     render () {

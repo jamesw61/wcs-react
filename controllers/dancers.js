@@ -9,11 +9,12 @@ router.get('/participants', function(req, res) {
 });
 
 router.post('/particpants', function(req, res){
-    // Participant.save(req.body, (err, result) => {
-        // if (err) return console.log(err)   
-    console.log(req.body);
-    console.log('here again');
-    // })
+    Participant.save(req.body, (err, result) => {
+        if (err) return console.log(err)   
+    console.log("error " + req.body);
+   
+    })
+    console.log('Did it Work? ' + req.body);
 });
         
        

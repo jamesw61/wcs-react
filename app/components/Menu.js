@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
+
 const Menu = (props) => (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -20,7 +21,6 @@ const Menu = (props) => (
             {!props.loggedin && <ul className="nav navbar-nav navbar-right">
             <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
             <li><Link to ="/register"><span className="glyphicon glyphicon-user"></span> Register</Link></li>
-            <li><Link to="/Participants"><span className="glyphicon glyphicon-cog"></span> Admin </Link> </li>
             </ul>}
 
           </div>

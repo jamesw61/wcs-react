@@ -70,12 +70,16 @@ app.use(function (req, res, next) {
 	res.locals.user = req.user || null;
 	next();
 })
+var router = express.Router();
+var Participant = require("./models/participant");
 
 app.use('/', controllers);
 app.use('/users', users);
 app.use('/contests', contests);
-app.use('/dancers', dancers);
-
+app.use('/dancers/participants', dancers);
+app.post('/rich', (req,res) => {
+	console.log('Mesage in the bottle')
+} );
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
 });
