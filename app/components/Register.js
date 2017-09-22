@@ -2,6 +2,7 @@ var React = require('react');
 var Router = require('react-router')
 var axios = require("axios");
 import { browserHistory } from 'react-router';
+var isEmpty = require('lodash.isEmpty');
 
 
 var Register = React.createClass({
@@ -46,8 +47,9 @@ var Register = React.createClass({
                                    password: password,
                                    password2: password2 }).then(response => {
                                     
+                                 
                                     // Display error messages
-                                    if(response.data){
+                                    if(!isEmpty(response.data)){
                                         this.setState({errors: response.data});
 
                                     }
