@@ -122,31 +122,14 @@ router.post('/register', function(req, res){
     const { errors, isValid } = validateInput(req.body);
 
     if (!isValid) {
-        res.status(400).json(errors);
+        // res.status(400).json(errors);
+        res.send(errors);
     }
-	// Validation
-	// TODO:  Do not allow a username to be used more than once
-	// req.checkBody('last_name', 'Last Name is required').notEmpty();
-	// req.checkBody('first_name', 'First Name is required').notEmpty();
-	// req.checkBody('email', 'Email is required').isEmail();
-	// req.checkBody('username', 'Username is required').notEmpty();
-	// req.checkBody('password', 'Password is required').notEmpty();
-	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
-	// var errors = req.validationErrors();
-	// if(errors) {
-	// 	console.log('val errors in register post', errors);
-	// }
 	else {
 
 		// Add new user to the database with hashed password
 		createUser(last_name, first_name, email, username, password);
-        res.send('created user');
-
-		 // TODO:  Fix this flash message
-		req.flash('success_msg', 'You are registered and can now login');
-
-		// res.redirect('/users/login');
+        res.send(errors);
 	}
 
 });
@@ -158,7 +141,7 @@ module.exports = router;
 validateInput = function (data) {
 
     let errors = {};
-    console.log("here");
+
         
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
@@ -178,11 +161,10 @@ validateInput = function (data) {
         if (Validator.isEmpty(data.password)) {
             errors.password = "Password is required"
         }
-        if (Validator.equals(data.password2, data.password)) {
+        if (!Validator.equals(data.password2, data.password)) {
             errors.password2 = "Passwords must match"
         }
 
-        console.log(errors);
         return {
             errors,
             isValid: isEmpty(errors)
