@@ -43,6 +43,9 @@ var Register = React.createClass({
                                    password: password,
                                    password2: password2 }).then((response) => {
                                     click(true);
+                                    console.log(errors);
+                                    // ()=> {},
+                                    // ({ data }) => this.setState({errors: datt})
                                     console.log('post register'); 
                                     browserHistory.push('/dashboard');       
                                                                  
@@ -131,7 +134,8 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 <button
-                    type="submit"                    
+                    type="submit"
+                    style={{backgroundColor: '#1424E4'}}
                     className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
             </form>
         </div>

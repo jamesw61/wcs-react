@@ -6,7 +6,10 @@ var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/User.js");
-var Validator = require("validator");
+var isEmpty = require('lodash.isempty');
+var Validator = require('validator');
+
+
 // Register
 router.get('/register', function(req, res) {
     // res.render('register');
@@ -30,7 +33,7 @@ router.post('/login',
 router.get('/logout', function(req, res) {
     req.logout();
     req.flash('success_msg', 'You are logged out');
-     res.redirect('/');
+    // res.redirect('login');
 });
 
 passport.use(new LocalStrategy(
@@ -118,9 +121,9 @@ router.post('/register', function(req, res){
 
     const { errors, isValid } = validateInput(req.body);
 
-    // if (!isValid) {
-    //     res.status(400).json(errors);
-    // }
+    if (!isValid) {
+        res.status(400).json(errors);
+    }
 	// Validation
 	// TODO:  Do not allow a username to be used more than once
 	// req.checkBody('last_name', 'Last Name is required').notEmpty();
@@ -130,10 +133,10 @@ router.post('/register', function(req, res){
 	// req.checkBody('password', 'Password is required').notEmpty();
 	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-	var errors = req.validationErrors();
-	if(errors) {
-		console.log('val errors in register post', errors);
-	}
+	// var errors = req.validationErrors();
+	// if(errors) {
+	// 	console.log('val errors in register post', errors);
+	// }
 	else {
 
 		// Add new user to the database with hashed password
@@ -151,7 +154,42 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-// This function
+// This function will validate the data
+validateInput = function (data) {
+
+    let errors = {};
+    console.log("here");
+        
+        if (Validator.isEmpty(data.last_name)) {
+            errors.last_name = "Last Name is required"
+        }
+        if (Validator.isEmpty(data.first_name)) {
+            errors.first_name = "First Name is required"
+        }
+        if (Validator.isEmpty(data.email)) {
+            errors.email = "Email is required"
+        }
+        if (!Validator.isEmail(data.email)) {
+            errors.email = "Email is invalid"
+        }
+        if (Validator.isEmpty(data.username)) {
+            errors.username = "Username is required"
+        }
+        if (Validator.isEmpty(data.password)) {
+            errors.password = "Password is required"
+        }
+        if (Validator.equals(data.password2, data.password)) {
+            errors.password2 = "Passwords must match"
+        }
+
+        console.log(errors);
+        return {
+            errors,
+            isValid: isEmpty(errors)
+        }
+
+}
+
 // This function takes in user information and adds the user to the database
 // with a hash for the password
 createUser = function (last, first, email, username, password) {
@@ -193,6 +231,7 @@ createUser = function (last, first, email, username, password) {
 
 // This function compares the user's entered password with the hashed password
 // in the database  
+
 // The callback function returns a true or false statement if the the passwords
 // match
 comparePassword = function(candidatePassword, hash, callback) {
