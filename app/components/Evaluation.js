@@ -10,8 +10,7 @@ export default React.createClass({
         participantScores: []
       };
     },
-    handleChange: function(event) {
-    
+    handleChange: function(event) {    
       let scoresArray = this.state.participantScores;
       
       let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
@@ -21,10 +20,8 @@ export default React.createClass({
                     "score" : event.target.value
       }
 
-      this.setState({participantScores : scoresArray});
- 
+      this.setState({participantScores : scoresArray}); 
 
-      console.log('this.state', this.state.participantScores); 
 
     },
     componentDidMount: function() {
@@ -57,7 +54,7 @@ export default React.createClass({
     //   console.log(res);
     // });
           }.bind(this)).catch(err => {
-                  console.log('err', err.response);
+                  console.log('err', err);
                   return err.response;
             });
   },

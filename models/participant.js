@@ -22,6 +22,9 @@ var ParticipantSchema = new Schema({
   bib_number: {
     type: String
   },
+  total: {
+    type: Number
+  },
   scores: [{
     type: Schema.Types.ObjectId,
     ref: "Score"

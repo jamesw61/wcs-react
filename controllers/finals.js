@@ -5,20 +5,20 @@ var User = require("../models/User.js");
 var Participant = require("../models/Participant.js");
 var Score = require("../models/Score.js");
 
-router.get("/", function(req, res) {
+router.get("/:round/:division/:role", function(req, res) {
 	Participant.find({
-                        role: role,
-                        division: division
-                    }).populate("scores").exec(function(partErr, partDoc) {
-                        if (partErr) {
-                            console.log(partErr);
+                        role: req.params.role,
+                        division: req.params.division,
+                        role: req.params.role
+                    }).sort({ total: -1 }).limit(3).exec(function(totErr, totDoc) {
+                        if (totErr) {
+                            console.log(totErr);
                         } else {
-                            console.log('part', partDoc);
-                            // res.send(partDoc);
+                            console.log('part', totDoc);
+                            res.json(totDoc);
 
                         }
                     });
-
 
 });
 

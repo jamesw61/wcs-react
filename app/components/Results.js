@@ -13,7 +13,7 @@ export default class Results extends React.Component {
   }
  
   componentDidMount() {
-      let queryURL = "/contests/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      let queryURL = "/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
         console.log(response.data);
         
@@ -32,6 +32,10 @@ export default class Results extends React.Component {
                   <TableRow data={item} rowKey={i} key={i} />
                   )
     });
+    let round = this.props.params.round;
+    let division = this.props.params.division;
+    let role = this.props.params.role;
+    let finalsURL = '/finals/' + round + '/' + division + '/' + role;
 
         return (
 
@@ -65,7 +69,7 @@ export default class Results extends React.Component {
 
                             </table> 
 
-                            <Link to ="/finals"> Finals</Link>       
+                            <Link to ={finalsURL}> Finals</Link>       
                       </div>
                 </div>
             </div>
