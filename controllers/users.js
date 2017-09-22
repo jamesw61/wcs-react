@@ -6,6 +6,7 @@ var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/User.js");
+var Validator = require("validator");
 // Register
 router.get('/register', function(req, res) {
     // res.render('register');
@@ -106,6 +107,7 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/register', function(req, res){
 
+
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -114,14 +116,19 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
+    const { errors, isValid } = validateInput(req.body);
+
+    // if (!isValid) {
+    //     res.status(400).json(errors);
+    // }
 	// Validation
 	// TODO:  Do not allow a username to be used more than once
-	req.checkBody('last_name', 'Last Name is required').notEmpty();
-	req.checkBody('first_name', 'First Name is required').notEmpty();
-	req.checkBody('email', 'Email is required').isEmail();
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	// req.checkBody('last_name', 'Last Name is required').notEmpty();
+	// req.checkBody('first_name', 'First Name is required').notEmpty();
+	// req.checkBody('email', 'Email is required').isEmail();
+	// req.checkBody('username', 'Username is required').notEmpty();
+	// req.checkBody('password', 'Password is required').notEmpty();
+	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
 	var errors = req.validationErrors();
 	if(errors) {
@@ -144,7 +151,7 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-
+// This function
 // This function takes in user information and adds the user to the database
 // with a hash for the password
 createUser = function (last, first, email, username, password) {

@@ -42,9 +42,9 @@ var Register = React.createClass({
                                    email: email,
                                    password: password,
                                    password2: password2 }).then((response) => {
-                                       click(true);
-                                                                console.log('post register'); 
-        browserHistory.push('/dashboard');       
+                                    click(true);
+                                    console.log('post register'); 
+                                    browserHistory.push('/dashboard');       
                                                                  
 
                                                             });
