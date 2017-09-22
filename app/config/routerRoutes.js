@@ -46,7 +46,7 @@ module.exports = (
                 <Route path="/Home" component={Home}>
                 </Route>
 
-                <Route path="/finals/:round/:division/:role" component={Finals}>
+                <Route path="/finals/:round/:division" component={Finals}>
                 </Route>
 
             </Route>

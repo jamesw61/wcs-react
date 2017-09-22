@@ -35,7 +35,7 @@ export default class Results extends React.Component {
     let round = this.props.params.round;
     let division = this.props.params.division;
     let role = this.props.params.role;
-    let finalsURL = '/finals/' + round + '/' + division + '/' + role;
+    let finalsURL = '/finals/' + round + '/' + division;
 
         return (
 
