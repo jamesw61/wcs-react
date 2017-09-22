@@ -45,9 +45,9 @@ var Register = React.createClass({
                                    email: email,
                                    password: password,
                                    password2: password2 }).then(response => {
-                                            console.log(response);
+                                    
                                     // Display error messages
-                                    if(response.data.length > 0){
+                                    if(response.data){
                                         this.setState({errors: response.data});
 
                                     }
