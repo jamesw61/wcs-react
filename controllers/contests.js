@@ -15,7 +15,7 @@ router.get("/judge", function(req,res){
 // This route creates prelim and semi-finals judge sheets
 
 // router.get("/judge/:round/:division/:role/evaluation", ensureAuthenticated, function(req, res) {
-    router.get("/judge/:round/:division/:role", function(req, res) {
+router.get("/judge/:round/:division/:role", function(req, res) {
         console.log('---------------------------');
     var judge = res.locals.user;
     console.log('judge', judge);
@@ -49,7 +49,7 @@ router.get("/judge", function(req,res){
                 console.log('score err:');
                 console.log(err);
             } else {
-                // console.log('doc length:', doc.length)
+                console.log('doc length:', doc.length)
                 // console.log('doc[0]', doc);
                 if (doc.length === 0) {
                     Participant.find({
@@ -81,16 +81,12 @@ router.get("/judge", function(req,res){
 router.post("/:round/:division/:role", function(req, res) {
 
     var judge = res.locals.user;
-    // console.log("judge   " + judge.username);
     var data = req.body.scores;
-    // console.log('req.body', req.body);
-    // console.log('scores', data.scores);
     var division = req.params.division.toLowerCase();
     var round = req.params.round;
     var role = req.params.role.toLowerCase();
 
     let newScoresArray = data.map((item)=>{
-
         let scoreObj = {
             bib_number : item.bib_number,
             division: division,
@@ -102,22 +98,20 @@ router.post("/:round/:division/:role", function(req, res) {
         return scoreObj
     });
 
-    console.log('nsa', newScoresArray[0]);
+    // console.log('nsa', newScoresArray[0]);
 
     for (let i = 0; i < newScoresArray.length; i++){
         var newScore = new Score(newScoresArray[i]);
         newScore.save(function(error, doc) {
             if (error) {
-                console.log('score save', error);
             } else {
-                console.log('score saved');
                 Participant.findOneAndUpdate({ "bib_number": newScoresArray[i].bib_number }, { $push: { "scores": doc._id } })
                     .exec(function(err, doc) {
                         if (err) {
                             console.log('participant err' + err);
                         } else {
-                            // res.json(doc);
-                            res.send('hello');
+                            // res.send("posted");
+
                             console.log('participant score updated');
                         }
                     });
@@ -185,7 +179,6 @@ router.get("/results/:round/:division/:role", function(req, res) {
             // console.log('score', partDoc[0].scores[0].score);
             // console.log('partDoc', partDoc[0]);
             let results = partDoc.map(ArrangeMongooseData);
-            console.log('results', results);
             res.json(results);
             
             // res.render('prelimResults', { division: Division, role: Role, scores: results, round: round });
