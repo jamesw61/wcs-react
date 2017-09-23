@@ -21,6 +21,10 @@ var DancerSchema = new Schema({
   bib_number: {
     type: String
   },
+  scores: [{
+    type: Schema.Types.ObjectId,
+    ref: "Score"
+  }]
 });
 
 

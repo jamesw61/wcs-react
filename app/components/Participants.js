@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Router, { browserHistory } from'react-router';
 import axios from "axios";
+var isEmpty = require('lodash.isEmpty');
 
 class Participants extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class Participants extends Component {
             firstName: "",
             division: "",
             role: "",
-            bib_number: ""   
+            bib_number: "",
+            errors: {}   
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,21 +27,44 @@ class Participants extends Component {
     }
 
     handleSubmit (event) {
+        // clear the errors in case there are any old errors
+        this.setState({ errors: {} });
         event.preventDefault();
-        console.log('The Button Has been pushed');
         const click = this.props.onClick;
-        console.log("This is what is in lastName" + this.state.lastName);
+
+        // Post the information to the server-side
         axios.post("/dancers/participant", this.state)
-            .then((response) => {
-                click(true);
-                browserHistory.push('/dashboard');       
-            })
-            .catch(function (error) {
-                console.log(error);
-              });
-        }
+            .then(response => {
+                
+
+
+                console.log("This is the response data");
+                console.log(response.data);
+
+                console.log(!isEmpty(response.data));
+            //     // Display error messages
+                if(!isEmpty(response.data)){
+                    
+                    console.log(response.data);
+                    this.setState({errors: response.data});
+                    console.log(this.state.errors);
+                }
+            //      else {
+            //         click(true);
+            //         console.log('posted new dancer'); 
+            //         browserHistory.push('/dashboard'); 
+            //     }     
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            //   });
+        });
+    }
 
     render () {
+
+        // Set the variable for the errors
+        const {errors} = this.state;
        
         return (
         <div className="forms">
@@ -55,6 +80,7 @@ class Participants extends Component {
                         placeholder="last name"
                         name='last_name'/>
                 </div>
+                {errors.lastName && <span className="help-block">{errors.lastName}</span>}
                 <div className='form-group' >
                     <label>First Name</label>                
                     <input
@@ -66,6 +92,8 @@ class Participants extends Component {
                         placeholder="first name"
                         name='first_name'/>
                 </div>
+                 {errors.firstName && <span className="help-block">{errors.firstName}</span>}
+               
                 <div className='form-group' >
                     <label>Division</label>
                     <input
@@ -100,7 +128,7 @@ class Participants extends Component {
                         placeholder="Bib Number"
                         name='bib_number'/>
                 </div>
-                
+                 {errors.bib_number && <span className="help-block">{errors.bib_number}</span>}
                 <button
                     type="submit"
                     style={{backgroundColor: '#1424E4'}}
@@ -112,3 +140,4 @@ class Participants extends Component {
 };
 
 module.exports = Participants;
+

@@ -67,28 +67,7 @@ passport.use(new LocalStrategy(
             }
         });
 
-        // db.User.findOne({ where: {username: username}}).then(function(dbUser) {
-        	
-        // 	// If the user is not in the database, send a message to let the user know
-        // 	if(!dbUser) {
-        // 		return done(null, false, {message: 'Unknown User'});
-        // 	}
 
-        // 	// Check the password against the hashed password in the database
-        // 	// This function is located at the bottom of this file
-        // 	comparePassword(password, dbUser.password, function(err, isMatch) {
-        // 		if(err) throw err;
-
-        // 		// if the hash matches the password, return the user
-        // 		// Otherwise, return the message: "Invalid Password"
-        // 		if(isMatch) {
-        // 			return done(null, dbUser);
-        // 		}
-        // 		else {
-        // 			return done(null, false, {message: 'Invalid Password'});
-        // 		}
-        // 	});
-        // });
     }));
 
 
@@ -101,10 +80,6 @@ passport.deserializeUser(function(id, done) {
     User.find({ "_id": id }, function(error, doc) {
         done(null, doc);
     });
-    // db.User.findOne({ where: {id: id }}).then(function(dbUser) {
-        // done(null, dbUser.dataValues);
-
-    // });
 
 });
 
