@@ -10,8 +10,7 @@ export default React.createClass({
         participantScores: []
       };
     },
-    handleChange: function(event) {
-    
+    handleChange: function(event) {    
       let scoresArray = this.state.participantScores;
       
       let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
@@ -21,16 +20,14 @@ export default React.createClass({
                     "score" : event.target.value
       }
 
-      this.setState({participantScores : scoresArray});
- 
+      this.setState({participantScores : scoresArray}); 
 
-      console.log('this.state', this.state.participantScores); 
 
     },
     componentDidMount: function() {
-      console.log('mount', this.state.participantScores);
-       let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
-      console.log('query', queryURL);
+      // console.log('mount', this.state.participantScores);
+      let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      // console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
@@ -57,7 +54,7 @@ export default React.createClass({
     //   console.log(res);
     // });
           }.bind(this)).catch(err => {
-                  console.log('err', err.response);
+                  console.log('err', err);
                   return err.response;
             });
   },
@@ -103,44 +100,44 @@ export default React.createClass({
                    });
 
     return (
-    
-      <div className="row">
+    <div className='container-fluid'>
+      <div className="row" id="evaluation">
           <h1>Evaluation</h1>
-      <h2>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h2>
+      <h3>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h3>
+        
+      <div className="col-md-2"></div>
+        <div className="col-md-8">
 
-        <div className="col-lg-12">
-
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <div className="panel panel-primary">
-              <div className="panel-heading">
-                <h3 className="panel-title"><strong>heat</strong></h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <div className="panel panel-primary">
+                <div className="panel-heading">
+                  <h3 className="panel-title"><strong>Heat</strong></h3>
+                </div>
+              <div className="panel-body">
+                <table className="table table-hover table-body" id='prelim-heatOne'>
+                            <thead>
+                              <tr>
+                                <th>Bib Number</th>
+                                <th>Role</th>
+                                <th>Score</th>
+                              </tr>
+                            </thead>
+                
+                            <tbody>
+                                  {participantRows}             
+                            </tbody>
+                </table>              
               </div>
-            <div className="panel-body">
-              <table className="table table-hover" id='prelim-heatOne'>
-                          <thead>
-                            <tr>
-                              <th>Bib Number</th>
-                              <th>Role</th>
-                              <th>Score</th>
-                            </tr>
-                          </thead>
-              
-                          <tbody>
-                                {participantRows}             
-                          </tbody>
-              </table>
-            
-              
-            </div>
-            </div>
-            </div>
-            <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
-        </form>
+              </div>
+              </div>
+              <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
+          </form>
         </div>
-      
+        <div className="col-md-2"></div>
 
       </div>
+    </div>
   )
   }
 })
