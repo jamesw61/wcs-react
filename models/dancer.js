@@ -3,32 +3,27 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  firstname: {
+
+
+var DancerSchema = new Schema({
+  lastName: {
     type: String
   },
-  lastname: {
+  firstName: {
     type: String
   },
-  username: {
+  division: {
     type: String
   },
-  email: {
+  role: {
     type: String
   },
-  password: {
+  bib_number: {
     type: String
   },
 });
 
-var User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+var Dancer = mongoose.model("Dancer", DancerSchema);
 
-
-
-
-
-
-
-
+module.exports = Dancer;
