@@ -32,7 +32,7 @@ export default class Finals extends React.Component {
      
   }
 
-  handleSubmit(event) {
+  handleSubmit (event) {
     event.preventDefault(); 
     let childNodeObj = document.getElementById("list").childNodes;
     childNodeObj = [].slice.call(childNodeObj);
