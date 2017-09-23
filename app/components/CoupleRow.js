@@ -3,7 +3,7 @@ import React from "react";
 export const CoupleRow = (props) => { 
 
  	return ( 
- 			<div key={props.rowKey} className='well'>Lead : {props.data.lead}   /  Follow: {props.data.follow} </div>           
+ 			<div key={props.rowKey} id={props.data.lead} className='well'>Lead : {props.data.lead}   /  Follow: {props.data.follow} </div>           
         ) 
 };
 
