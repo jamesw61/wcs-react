@@ -1,5 +1,5 @@
 // Include React
-var React = require("react");
+import React from 'react'
 
 // Create the Header component
 // Notice how Header uses React.createClass
@@ -8,12 +8,12 @@ var React = require("react");
 // TODO:  header 1 needs to contains Round, header 2 contains division (novice, ) and role (lead/follow)
 //  Complete the table body
 
-var Judge = React.createClass({
+export default React.createClass({
 
   render: function() {
 
     return (
-      <div className="container">
+      <div className="container-fluid">
 
         <div className="jumbotron">
           <h1 className="text-center">ROUND Competition</h1>
@@ -60,4 +60,3 @@ var Judge = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = Judge;
