@@ -16,9 +16,10 @@ export default class Results extends React.Component {
   componentDidMount() {
       let queryURL = "/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
-        console.log(response.data);
+        // console.log("results response", response.data);
         
-        this.setState({resultsArray : response.data});       
+        this.setState({resultsArray : response.data});   
+        console.log("this.state", this.state.resultsArray);    
         
           }.bind(this)).catch(err => {
                   console.log(err.response);

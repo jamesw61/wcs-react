@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require("../models/User.js");
-var Participant = require("../models/participant.js");
+var Participant = require("../models/Participant.js");
 var Score = require("../models/Score.js");
 
 
