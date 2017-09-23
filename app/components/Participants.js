@@ -3,6 +3,8 @@ import Router, { browserHistory } from'react-router';
 import axios from "axios";
 var isEmpty = require('lodash.isEmpty');
 
+
+
 class Participants extends Component {
     constructor(props) {
         super(props)
@@ -31,8 +33,10 @@ class Participants extends Component {
         event.preventDefault();
         const click = this.props.onClick;
 
+        console.log("Has been submitted.");
+        console.log(this.state);
         // Post the information to the server-side
-        axios.post("/dancers/participant", this.state)
+        axios.post("/participants/new", this.state)
             .then(response => {
                 
 
@@ -44,7 +48,7 @@ class Participants extends Component {
             //     // Display error messages
                 if(!isEmpty(response.data)){
                     
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.setState({errors: response.data});
                     console.log(this.state.errors);
                 }

@@ -3,20 +3,15 @@ var router = express.Router();
 var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
 var passport = require('passport');
+var Participant = require("../models/Participant.js");
 
 
+// router.get('/new', function(req, res) {
+//     console.log(req.body);
+// });
 
 
-var Dancer = require("../models/Dancer.js");
-
-
-
-router.get('/participants', function(req, res) {
-    console.log(req.body);
-});
-
-
-router.post('/participant', function(req, res){
+router.post('/new', function(req, res){
 
 	var lastName = req.body.lastName;
 	var firstName = req.body.firstName;
@@ -24,6 +19,8 @@ router.post('/participant', function(req, res){
 	var role = req.body.role;
 	var bib_number = req.body.bib_number;
 
+
+	console.log("inside route");
 
 	// TODO:  Validate input
 	const { errors, isValid } = validateInput(req.body);
@@ -37,7 +34,7 @@ router.post('/participant', function(req, res){
     }
 	else {
 
-		var newDancer = new Dancer({
+		var newParticipant= new Participant({
                           lastName: lastName,
                           firstName: firstName,
                           division: division,
@@ -45,7 +42,7 @@ router.post('/participant', function(req, res){
                           bib_number: bib_number
                         });
                         // Using the save method in mongoose, we create our example library in the db
-                        newDancer.save(function(error, doc) {
+                        newParticipant.save(function(error, doc) {
                           // Log any errors
                           console.log("inside newDancer");
                           if (error) {
@@ -76,10 +73,13 @@ validateInput = function (data) {
 
     let errors = {};
 
+    	console.log("made it here.");
     	console.log(data);
         if (Validator.isEmpty(data.lastName)) {
             errors.lastName = "Last Name is required"
         }
+
+        console.log("Validated the first.");
         if (Validator.isEmpty(data.firstName)) {
             errors.firstName = "First Name is required"
         }
