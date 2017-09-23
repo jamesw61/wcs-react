@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import Menu from './Menu'
 import {Link} from 'react-router'
+
 class Main extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            loggedin: false
-        }
+        this.state = {loggedin: false}
         this.data = 'some data'
         // this is needed to bind 'this' to each function to use 'this'
         this.onClick = this.onClick.bind(this);
@@ -25,7 +24,7 @@ class Main extends Component {
             <div className="container-fluid main">
                 <Menu loggedin={this.state.loggedin} />
 
-                <div className="container-fluid">
+                <div className="container-fluid main">
                     <br/> {content}
                 </div>
             </div>

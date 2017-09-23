@@ -39,7 +39,7 @@ router.post('/participant', function(req, res){
 
 		var newDancer = new Dancer({
                           lastName: lastName,
-                          firstname: firstName,
+                          firstName: firstName,
                           division: division,
                           role: role,
                           bib_number: bib_number

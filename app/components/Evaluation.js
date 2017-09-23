@@ -103,44 +103,44 @@ export default React.createClass({
                    });
 
     return (
-    
-      <div className="row">
+    <div className='container-fluid'>
+      <div className="row" id="evaluation">
           <h1>Evaluation</h1>
-      <h2>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h2>
+      <h3>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h3>
+        
+      <div className="col-md-2"></div>
+        <div className="col-md-8">
 
-        <div className="col-lg-12">
-
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <div className="panel panel-primary">
-              <div className="panel-heading">
-                <h3 className="panel-title"><strong>heat</strong></h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <div className="panel panel-primary">
+                <div className="panel-heading">
+                  <h3 className="panel-title"><strong>Heat</strong></h3>
+                </div>
+              <div className="panel-body">
+                <table className="table table-hover table-body" id='prelim-heatOne'>
+                            <thead>
+                              <tr>
+                                <th>Bib Number</th>
+                                <th>Role</th>
+                                <th>Score</th>
+                              </tr>
+                            </thead>
+                
+                            <tbody>
+                                  {participantRows}             
+                            </tbody>
+                </table>              
               </div>
-            <div className="panel-body">
-              <table className="table table-hover" id='prelim-heatOne'>
-                          <thead>
-                            <tr>
-                              <th>Bib Number</th>
-                              <th>Role</th>
-                              <th>Score</th>
-                            </tr>
-                          </thead>
-              
-                          <tbody>
-                                {participantRows}             
-                          </tbody>
-              </table>
-            
-              
-            </div>
-            </div>
-            </div>
-            <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
-        </form>
+              </div>
+              </div>
+              <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
+          </form>
         </div>
-      
+        <div className="col-md-2"></div>
 
       </div>
+    </div>
   )
   }
 })
