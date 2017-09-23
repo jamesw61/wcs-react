@@ -76,10 +76,8 @@ var Participant = require("./models/participant");
 app.use('/', controllers);
 app.use('/users', users);
 app.use('/contests', contests);
-app.use('/dancers/participants', dancers);
-app.post('/rich', (req,res) => {
-	console.log('Mesage in the bottle')
-} );
+app.use('/dancers', dancers);
+
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
 });
