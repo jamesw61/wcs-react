@@ -166,8 +166,8 @@ a {
 }
 
 .btn-primary {
-    border-color: #008080;
-    background-color: #008080;
+    border-color: #1424E4;
+    background-color: #1424E4;
     
 }
 
@@ -185,6 +185,7 @@ a {
 
 .table-body {
   color: #e4d414;
+
  
   padding: 0px;
 }
@@ -205,3 +206,8 @@ a {
   max-width: 500px;
   margin: auto;
 }
+
+#evaluation {
+  text-align: center;
+}
+
