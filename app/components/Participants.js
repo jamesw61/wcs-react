@@ -20,8 +20,7 @@ class Participants extends Component {
 
         var newState = {};
         newState[event.target.id] = event.target.value;
-        this.setState(newState);
-        
+        this.setState(newState);        
     }
 
     handleSubmit (event) {
@@ -31,12 +30,16 @@ class Participants extends Component {
         console.log("This is what is in lastName" + this.state.lastName);
         axios.post("/dancers/participant", this.state)
             .then((response) => {
-                click(true);
-                browserHistory.push('/dashboard');       
-            })
-            .catch(function (error) {
-                console.log(error);
-              });
+                if(!isEmpty(response.data)){
+                    this.setState({errors: response.data});
+
+                }
+                else {
+                    click(true);
+                    console.log('post register'); 
+                    browserHistory.push('/dashboard'); 
+                }
+            });
         }
 
     render () {
