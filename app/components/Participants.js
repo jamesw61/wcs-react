@@ -28,8 +28,8 @@ class Participants extends Component {
         event.preventDefault();
         console.log('The Button Has been pushed');
         const click = this.props.onClick;
-        console.log("This is what is in " + this.state);
-        axios.post("/rich", this.state)
+        console.log("This is what is in lastName" + this.state.lastName);
+        axios.post("/dancers/participant", this.state)
             .then((response) => {
                 click(true);
                 browserHistory.push('/dashboard');       
