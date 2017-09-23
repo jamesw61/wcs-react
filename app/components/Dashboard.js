@@ -1,9 +1,7 @@
 // Include React
 var React = require("react");
 import {Link} from 'react-router';
-// Create the Header component
-// Notice how Header uses React.createClass
-// Notice how it uses a render function which specifies what will be displayed by the component
+
 var Dashboard = React.createClass({
   // contextTypes: {
   //   router: React.PropTypes.object
@@ -21,7 +19,7 @@ var Dashboard = React.createClass({
 
   let table;
   table = (
-    <table className="table table-hover" id='employee-table'>
+    <table className="table table-hover">
                 <thead>
                   <tr>
                     <th>Contest Name</th>
@@ -85,7 +83,7 @@ var Dashboard = React.createClass({
             <div className="panel-heading">
               <h3 className="panel-title"><strong>Contests</strong></h3>
             </div>
-          <div className="panel-body">
+          <div className="panel-body table-body">
             {table}
           </div>
           </div>

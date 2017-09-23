@@ -78,10 +78,19 @@ app.use('/users', users);
 app.use('/contests', contests);
 app.use('/dancers', dancers);
 
+<<<<<<< HEAD
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
 });
 
+=======
+// mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
+//   useMongoClient: true
+// });
+mongoose.connect("mongodb://localhost/wcs", {
+	useMongoClient: true
+  });
+>>>>>>> development
 
 var db = mongoose.connection;
 

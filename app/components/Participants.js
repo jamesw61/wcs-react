@@ -22,8 +22,7 @@ class Participants extends Component {
 
         var newState = {};
         newState[event.target.id] = event.target.value;
-        this.setState(newState);
-        
+        this.setState(newState);        
     }
 
     handleSubmit (event) {
