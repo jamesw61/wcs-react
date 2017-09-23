@@ -4,24 +4,29 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import TableRow from './TableRow';
 import Jumbo from './Jumbo';
+import Finals from './Finals'
 
 export default class Results extends React.Component {
   constructor() {
     super();
-    this.state = {resultsArray : []};
+    this.state = {resultsArray : []}
+                  
   }
  
   componentDidMount() {
-      let queryURL = "/contests/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      let queryURL = "/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
-        console.log(response.data);
+        // console.log("results response", response.data);
         
-        this.setState({resultsArray : response.data});       
+        this.setState({resultsArray : response.data});   
+        console.log("this.state", this.state.resultsArray);    
         
           }.bind(this)).catch(err => {
                   console.log(err.response);
                   return err.response;
             });
+
+      
   }
 
   render() {
@@ -31,6 +36,11 @@ export default class Results extends React.Component {
                   <TableRow data={item} rowKey={i} key={i} />
                   )
     });
+    let round = this.props.params.round;
+    let division = this.props.params.division;
+    let role = this.props.params.role;
+
+    let finalsURL = '/finals/' + round + '/' + division;
 
         return (
 
@@ -62,7 +72,9 @@ export default class Results extends React.Component {
                                       {resultsRows}                        
                                 </tbody>
 
-                            </table>          
+                            </table> 
+
+                            <Link to ={finalsURL}> Finals</Link>       
                       </div>
                 </div>
             </div>
