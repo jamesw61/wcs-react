@@ -76,17 +76,12 @@ validateInput = function (data) {
 
     let errors = {};
 
+    	console.log(data);
         if (Validator.isEmpty(data.lastName)) {
             errors.lastName = "Last Name is required"
         }
         if (Validator.isEmpty(data.firstName)) {
             errors.firstName = "First Name is required"
-        }
-        if (Validator.isEmpty(data.division)) {
-            errors.division = "Division is required"
-        }
-        if (!Validator.isEmpty(data.role)) {
-            errors.role = "Email is invalid"
         }
         if (Validator.isEmpty(data.bib_number)) {
             errors.bib_number = "Bib Number is required"

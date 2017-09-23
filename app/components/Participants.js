@@ -49,16 +49,16 @@ class Participants extends Component {
                     this.setState({errors: response.data});
                     console.log(this.state.errors);
                 }
-            //      else {
-            //         click(true);
-            //         console.log('posted new dancer'); 
-            //         browserHistory.push('/dashboard'); 
-            //     }     
+                 else {
+                    click(true);
+                    console.log('posted new dancer'); 
+                    browserHistory.push('/dashboard'); 
+                }     
             // })
             // .catch(function (error) {
             //     console.log(error);
-            //   });
-        });
+              });
+        
     }
 
     render () {
