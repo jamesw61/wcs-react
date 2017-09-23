@@ -10,6 +10,7 @@ export default class Finals extends React.Component {
   constructor() {
     super();
     this.state = {couplesObj : undefined}
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -47,8 +48,8 @@ export default class Finals extends React.Component {
     console.log('finalscores', finalScores);
 
 
-    let division = "novice";
-    // let division = this.props.params.division;
+    // let division = "novice";
+    let division = this.props.params.division;
 
      axios.post("/finals", {finalScores: finalScores, division: division}).then(function(response) {
         console.log('posted', response);
