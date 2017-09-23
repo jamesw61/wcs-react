@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "prestart": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "start-dev": "webpack-dev-server --host 0.0.0.0 --port 8000"
@@ -31,6 +32,8 @@
     "express-validator": "^3.2.1",
     "history": "^4.7.2",
     "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "lodash.isempty": "^4.4.0",
     "mongodb": "^2.2.30",
     "mongoose": "^4.11.2",
     "passport": "^0.3.2",
@@ -39,7 +42,8 @@
     "password-generator": "^2.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router": "^3.0.5"
+    "react-router": "^3.0.5",
+    "validator": "^8.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",

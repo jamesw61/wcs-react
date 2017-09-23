@@ -8,6 +8,7 @@ var axios = require("axios");
 // Notice how Header uses React.createClass
 // Notice how it uses a render function which specifies what will be displayed by the component
 var Navbar = React.createClass({
+  
   getInitialState: function() {
     return {judge: false}
     
