@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
 import Dragula from 'react-dragula';
 import axios from 'axios';
 import CoupleRow from './CoupleRow';
@@ -14,20 +15,59 @@ export default class Finals extends React.Component {
   componentDidMount() {
       let queryURL2 = "/finals/" + this.props.params.round + "/" + this.props.params.division;
       axios.get(queryURL2).then(function(couplesData) {
-        console.log('couplesData', couplesData);
+        // console.log('couplesData', couplesData);
 
-        console.log('.data', couplesData.data);
+        // console.log('.data', couplesData.data);
 
         
         this.setState({couplesObj : couplesData.data});   
 
-        console.log('this.state', this.state.couplesObj);    
+        // console.log('this.state', this.state.couplesObj);    
         
           }.bind(this)).catch(err => {
                   console.log('catch err', err.response);
                   return err.response;
             });
      
+  }
+
+  handleSubmit(event) {
+    event.preventDefault(); 
+    let childNodeObj = document.getElementById("list").childNodes;
+    childNodeObj = [].slice.call(childNodeObj);
+    // console.log('childN', childNodeObj);
+    let finalScores = childNodeObj.map(function(item){
+      let scoreObj = {
+          "lead" : item.dataset.leadid,
+          "follow" : item.dataset.followid
+      }
+      return scoreObj
+    });
+
+    console.log('finalscores', finalScores);
+
+
+    let division = "novice";
+    // let division = this.props.params.division;
+
+     axios.post("/finals", {finalScores: finalScores, division: division}).then(function(response) {
+        console.log('posted', response);
+        browserHistory.push('/dashboard');        
+        // axios.get("/contests/judge").then(function(response) {
+        //    console.log('res', response.data[0].username);
+        //    if(username === response.data[0].username){ 
+        //    browserHistory.push('/dashboard');
+        //     }            
+      // });
+ 
+    });
+    // console.log('c', c);
+    // console.log('attr', c[0].attributes);
+    // console.log('dataset', c[0].dataset);
+    // console.log('lead', c[0].dataset.leadid);
+    // console.log('follow', c[0].dataset.followid);
+
+                  
   }
 
   dragulaDecorator (componentBackingInstance) {
@@ -62,10 +102,13 @@ export default class Finals extends React.Component {
                         <h3 className="panel-title"><strong>Finals</strong></h3>
                       </div>
                       <div className="panel-body">
-                        <div className='container' ref={this.dragulaDecorator}>
+                      <form onSubmit={this.handleSubmit}>
+                        <div className='container' id="list" ref={this.dragulaDecorator}>
                         {coupleRows}
 
                       </div>
+                      <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Final Order</button>
+                      </form>
                         
                     </div>
                  </div>

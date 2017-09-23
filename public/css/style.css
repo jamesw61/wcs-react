@@ -200,4 +200,5 @@ a {
 .well {
   border-style: solid;
   border-color: black;
+  width: 90%;
 }
