@@ -3,11 +3,11 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ParticipantSchema = new Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: true
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true
   },
@@ -31,7 +31,7 @@ var ParticipantSchema = new Schema({
   }]
 });
 
-var Participant = mongoose.model("Participant", ParticipantSchema);
+var Participant = mongoose.model('Participant', ParticipantSchema);
 
 module.exports = Participant;
 
