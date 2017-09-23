@@ -66,6 +66,7 @@ export default class Finals extends React.Component {
                         {coupleRows}
 
                       </div>
+                        
                     </div>
                  </div>
               </div>
