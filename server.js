@@ -72,10 +72,8 @@ app.use(function (req, res, next) {
 	res.locals.user = req.user || null;
 	next();
 })
-var router = express.Router();
-// var Participant = require("./models/participant");
 
-// app.use('/', controllers);
+
 app.use('/users', users);
 app.use('/contests', contests);
 app.use('/results', results);
@@ -87,9 +85,9 @@ mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs
   useMongoClient: true
 });
 
-mongoose.connect("mongodb://localhost/wcs", {
-	useMongoClient: true
-  });
+// mongoose.connect("mongodb://localhost/wcs", {
+// 	useMongoClient: true
+//   });
 
 var db = mongoose.connection;
 
