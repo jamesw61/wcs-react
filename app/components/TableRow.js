@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TableRow = (props) => { 
+const TableRow = (props) => { 
 
  	return ( 
  	<tr key={props.rowKey}>
