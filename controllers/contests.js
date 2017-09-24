@@ -98,7 +98,9 @@ router.post("/:round/:division/:role", function(req, res) {
         return scoreObj
     });
 
-    // console.log('nsa', newScoresArray[0]);
+
+
+    console.log('nsa[0]:', newScoresArray[0]);
 
     for (let i = 0; i < newScoresArray.length; i++){
         var newScore = new Score(newScoresArray[i]);

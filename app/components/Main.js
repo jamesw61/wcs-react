@@ -11,12 +11,12 @@ class Main extends Component {
         this.onClick = this.onClick.bind(this);
     }
     onClick(bool){
-        console.log(bool);
+        // console.log(bool);
         this.setState({ loggedin: bool })
         browserHistory.push('/')
     }
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         // condition to add props based on what component is coming in 
         const props = {
             onClick: this.onClick

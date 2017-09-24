@@ -1,61 +1,61 @@
 [{
   "firstname": "Ruperto",
   "lastname": "Treffry",
-  "division": "novice",
+  "division": "advanced",
   "role": "lead",
   "bib_number": "101"
 }, {
   "firstname": "Jillayne",
   "lastname": "Souness",
-  "division": "novice",
+  "division": "advanced",
   "role": "lead",
   "bib_number": "102"
 }, {
   "firstname": "Addi",
   "lastname": "Salman",
-  "division": "novice",
+  "division": "advanced",
   "role": "lead",
   "bib_number": "103"
 }, {
   "firstname": "Cornelia",
   "lastname": "Corke",
-  "division": "novice",
+  "division": "advanced",
   "role": "follow",
   "bib_number": "505"
 }, {
   "firstname": "Quintus",
   "lastname": "Oldford",
-  "division": "novice",
+  "division": "advanced",
   "role": "follow",
   "bib_number": "504"
 }, {
   "firstname": "Dare",
   "lastname": "Palethorpe",
-  "division": "novice",
+  "division": "advanced",
   "role": "follow",
   "bib_number": "503"
 }, {
   "firstname": "Kissie",
   "lastname": "Antonin",
-  "division": "novice",
+  "division": "advanced",
   "role": "follow",
   "bib_number": "502"
 }, {
   "firstname": "Jesse",
   "lastname": "Udall",
-  "division": "novice",
+  "division": "advanced",
   "role": "lead",
   "bib_number": "104"
 }, {
   "firstname": "Killie",
   "lastname": "Dulany",
-  "division": "novice",
+  "division": "advanced",
   "role": "follow",
   "bib_number": "501"
 }, {
   "firstname": "Sarita",
   "lastname": "Lapworth",
-  "division": "novice",
+  "division": "advanced",
   "role": "lead",
   "bib_number": "105"
 }]

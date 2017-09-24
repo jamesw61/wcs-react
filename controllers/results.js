@@ -24,11 +24,11 @@ router.get("/:round/:division/:role", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log('bib_number', partDoc[0].firstname, partDoc[0].scores[0].bib_number)
+            // console.log('bib_number', partDoc[0].firstname, partDoc[0].scores[0].bib_number)
             // console.log('score', partDoc[0].scores[0].score);
-            // console.log('partDoc', partDoc[0]);
-            console.log('before function',partDoc[0])
-            console.log("Firstname:",partDoc[0].division)
+            console.log('partDoc', partDoc[0]);
+            // console.log('before function',partDoc[0])
+            // console.log("Firstname:",partDoc[0].division)
             let results = partDoc.map(ArrangeMongooseData);
             // console.log('partDoc', partDoc);
             res.json(results);
@@ -45,7 +45,8 @@ function ArrangeMongooseData(partDoc, index) {
     let scoresArray = partDoc.scores.map(function(array){
         return array.score
     });
-    console.log('partDoc', partDoc);
+    console.log('length',scoresArray.length);
+    // console.log('partDoc', partDoc);
     // var name = partDoc.firstname
     // console.log(name);
     let dancer = {
@@ -59,7 +60,7 @@ function ArrangeMongooseData(partDoc, index) {
     // console.log('dancer', dancer);
 
     //This should be in the post but it updates the total score to a participant
-    if (scoresArray.length = 3) {
+    if (scoresArray.length <= 3) {
     	Participant.findOneAndUpdate({ "bib_number": partDoc.bib_number }, { "total": dancer.total })
                     .exec(function(BaconErr, BaconDoc) {
                         if (BaconErr) {
