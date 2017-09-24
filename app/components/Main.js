@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './Menu'
-import {Link,browserHistory} from 'react-router'
+import {Link, browserHistory} from 'react-router'
 
 class Main extends Component {
     constructor(props){
