@@ -156,8 +156,8 @@ var Register = React.createClass({
                 {errors.password2 && <span className="help-block">{errors.password2}</span>}
                 <button
                     type="submit"
-                    style={{backgroundColor: '#1424E4'}}
-                    className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
+                    className="btn btn-default" onClick={this.handleSubmit}>Submit
+                </button>
             </form>
         </div>
         )

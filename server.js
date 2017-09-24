@@ -82,26 +82,14 @@ app.use('/results', results);
 app.use('/finals', finals);
 app.use('/dancers', dancers);
 
-<<<<<<< HEAD
+
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
 });
 
-<<<<<<< HEAD
-=======
-// mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
-//   useMongoClient: true
-// });
 mongoose.connect("mongodb://localhost/wcs", {
 	useMongoClient: true
   });
->>>>>>> development
-=======
-// mongoose.connect("mongodb://localhost/wcs", {
-//   useMongoClient: true
-// });
-
->>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
 
 var db = mongoose.connection;
 

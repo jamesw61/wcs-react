@@ -7,7 +7,7 @@ var passport = require('passport');
 
 
 
-var Dancer = require("../models/Dancer.js");
+var Dancer = require("../models/participant.js");
 
 
 
