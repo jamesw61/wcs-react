@@ -6,10 +6,10 @@ var Schema = mongoose.Schema;
 
 
 var DancerSchema = new Schema({
-  lastName: {
+  lastname: {
     type: String
   },
-  firstName: {
+  firstname: {
     type: String
   },
   division: {
