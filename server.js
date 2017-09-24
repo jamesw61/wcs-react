@@ -13,9 +13,11 @@ var port = process.env.PORT || 3000;
 
 mongoose.Promise = Promise;
 
-var controllers = require('./controllers');
+// var controllers = require('./controllers');
 var users = require('./controllers/users');
 var contests = require('./controllers/contests');
+var finals = require('./controllers/finals');
+var results = require('./controllers/results');
 var dancers = require('./controllers/dancers');
 
 // Init App
@@ -71,11 +73,13 @@ app.use(function (req, res, next) {
 	next();
 })
 var router = express.Router();
-var Participant = require("./models/participant");
+// var Participant = require("./models/participant");
 
-app.use('/', controllers);
+// app.use('/', controllers);
 app.use('/users', users);
 app.use('/contests', contests);
+app.use('/results', results);
+app.use('/finals', finals);
 app.use('/dancers', dancers);
 
 <<<<<<< HEAD
@@ -83,6 +87,7 @@ mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs
   useMongoClient: true
 });
 
+<<<<<<< HEAD
 =======
 // mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
 //   useMongoClient: true
@@ -91,6 +96,12 @@ mongoose.connect("mongodb://localhost/wcs", {
 	useMongoClient: true
   });
 >>>>>>> development
+=======
+// mongoose.connect("mongodb://localhost/wcs", {
+//   useMongoClient: true
+// });
+
+>>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
 
 var db = mongoose.connection;
 

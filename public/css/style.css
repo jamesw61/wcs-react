@@ -207,6 +207,11 @@ a {
   margin: auto;
 }
 
+.well {
+  border-style: solid;
+  border-color: black;
+  width: 90%;
+}
 #evaluation {
   text-align: center;
 }

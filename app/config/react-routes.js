@@ -11,6 +11,9 @@ import Results from "../components/Results";
 import Dashboard from "../components/Dashboard";
 import Evaluation from "../components/Evaluation";
 import Home from "../components/Home";
+import Finals from "../components/Finals";
+
+
 import Participants from "../components/Participants"
 
 
@@ -22,6 +25,8 @@ module.exports = (
 <Router history={browserHistory}>
     <div>
             <Route path="/" component={Main}>
+               
+
             <IndexRoute component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
@@ -29,7 +34,8 @@ module.exports = (
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/contests/judge/:round/:division/:role" component={Evaluation} />
                 <Route path="/contests/results/:round/:division/:role" component={Results} />
-                <Route path="/participants" component={Participants} />               
+                <Route path="/participants" component={Participants} /> 
+                 <Route path="/finals/:round/:division" component={Finals} />          
             </Route>
     </div>
   </Router>
