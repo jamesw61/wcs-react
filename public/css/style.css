@@ -11,8 +11,8 @@ html, body {
 /* Space out content a bit */
 .main {
   background: url("./wood.jpg");
-  min-height: 100%;
-  height:100vh; 
+  min-height: 960px;
+  
   width:auto;
   overflow-y: hidden; 
   vertical-align: top;
@@ -160,19 +160,10 @@ a {
     color:  darkgray;
 }
 
-.panel-primary .btn-primary{
-    border-color: #008080;
-    
-}
-
-.btn-primary {
-    border-color: #1424E4;
-    background-color: #1424E4;
-    
-}
 
 .panel-primary > .panel-heading  {
-  background-color:  #e4d414;
+  background: url("../images/woodGrain.jpg") no-repeat;
+  
 }
 
 .slider-handle {
@@ -184,26 +175,18 @@ a {
 }
 
 .table-body {
-  color: #e4d414;
-
- 
   padding: 0px;
+  
 }
 
 .navbar-nav {
   display:table;
-  /* width: 10%; */
   margin: 0;
  
 }
-/* .navbar-nav > li {
-  float:none;
-  display:table-cell;
-  text-align:right;
-  
-} */
+
 .forms {
-  max-width: 500px;
+  width: 50%;
   margin: auto;
 }
 
@@ -214,5 +197,19 @@ a {
 }
 #evaluation {
   text-align: center;
+  
 }
 
+.well {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+td {
+  text-align: left;
+  color: grey
+}
+
+thead {
+  color: black;
+}

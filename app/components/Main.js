@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './Menu'
-import {Link} from 'react-router'
+import {Link, browserHistory} from 'react-router'
 
 class Main extends Component {
     constructor(props){
@@ -10,9 +10,11 @@ class Main extends Component {
         // this is needed to bind 'this' to each function to use 'this'
         this.onClick = this.onClick.bind(this);
     }
-      onClick(bool){
-          this.setState({ loggedin: bool })
-      }
+    onClick(bool){
+        console.log(bool);
+        this.setState({ loggedin: bool })
+        browserHistory.push('/')
+    }
     render() {
         console.log(this.props)
         // condition to add props based on what component is coming in 
@@ -22,7 +24,7 @@ class Main extends Component {
         const content = (this.props.children) ? React.cloneElement(this.props.children, props) : null;
         return (
             <div className="container-fluid main">
-                <Menu loggedin={this.state.loggedin} />
+                <Menu loggedin={this.state.loggedin} loggedout={this.onClick} />
 
                 <div className="container-fluid main">
                     <br/> {content}

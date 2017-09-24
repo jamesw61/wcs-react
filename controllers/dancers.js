@@ -7,11 +7,11 @@ var passport = require('passport');
 
 
 
-var Dancer = require("../models/Dancer.js");
+var Participant = require("../models/participant.js");
 
 
 
-router.get('/participants', function(req, res) {
+router.get('/participant', function(req, res) {
     console.log(req.body);
 });
 
@@ -37,7 +37,7 @@ router.post('/participant', function(req, res){
     }
 	else {
 
-		var newDancer = new Dancer({
+		var newParticipant = new Participant({
                           lastName: lastName,
                           firstName: firstName,
                           division: division,
@@ -45,7 +45,7 @@ router.post('/participant', function(req, res){
                           bib_number: bib_number
                         });
                         // Using the save method in mongoose, we create our example library in the db
-                        newDancer.save(function(error, doc) {
+                        newParticipant.save(function(error, doc) {
                           // Log any errors
                           console.log("inside newDancer");
                           if (error) {
