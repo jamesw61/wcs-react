@@ -8,32 +8,11 @@ import Finals from './Finals'
 export default class Results extends React.Component {
   constructor() {
     super();
-<<<<<<< HEAD
-    this.state = {
-      resultsArray: []
-    };
-=======
     this.state = {resultsArray : []}
                   
->>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    let queryURL = "/contests/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
-    axios
-      .get(queryURL)
-      .then(function (response) {
-        console.log(response.data);
-
-        this.setState({resultsArray: response.data});
-
-      }.bind(this))
-      .catch(err => {
-        console.log(err.response);
-        return err.response;
-      });
-=======
       let queryURL = "/results/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       axios.get(queryURL).then(function(response) {
         // console.log("results response", response.data);
@@ -47,19 +26,10 @@ export default class Results extends React.Component {
             });
 
       
->>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
   }
 
   render() {
 
-<<<<<<< HEAD
-    let resultsRows = this
-      .state
-      .resultsArray
-      .map((item, i) => {
-        return (<TableRow data={item} rowKey={i} key={i}/>)
-      });
-=======
     let resultsRows = this.state.resultsArray.map((item, i)=>{
            return (            
                   <TableRow data={item} rowKey={i} key={i} />
@@ -70,7 +40,6 @@ export default class Results extends React.Component {
     let role = this.props.params.role;
 
     let finalsURL = '/finals/' + round + '/' + division;
->>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
 
     return (
 
@@ -107,20 +76,15 @@ export default class Results extends React.Component {
                   {resultsRows}
                 </tbody>
 
-<<<<<<< HEAD
-              </table>
-=======
                             </table> 
 
                             <Link to ={finalsURL}> Finals</Link>       
                       </div>
                 </div>
->>>>>>> 443cc16ff8afcee0ba057d784ed99d241f5d6a79
             </div>
           </div>
         </div>
-      </div>
-    </div> 
+    
     )
 
   }
