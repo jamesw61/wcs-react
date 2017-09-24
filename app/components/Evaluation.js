@@ -134,7 +134,9 @@ export default React.createClass({
               </div>
               </div>
               </div>
-              <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
+              <button className="btn btn-default" type="submit">
+                Submit Scores
+              </button>
           </form>
         </div>
         <div className="col-md-2"></div>
