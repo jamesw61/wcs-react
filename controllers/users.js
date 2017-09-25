@@ -11,9 +11,9 @@ var Validator = require('validator');
 
 
 // Register
-router.get('/register', function(req, res) {
-    // res.render('register');
-});
+// router.get('/register', function(req, res) {
+//     // res.render('register');
+// });
 
 // Login
 router.get('/login', function(req, res) {
@@ -85,7 +85,8 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/register', function(req, res){
 
-
+    console.log("made it here.");
+        console.log(req.body);
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -117,7 +118,8 @@ module.exports = router;
 validateInput = function (data) {
 
     let errors = {};
-
+        console.log("made it here.");
+        console.log(data);
         
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"

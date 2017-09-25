@@ -73,8 +73,7 @@ validateInput = function (data) {
 
     let errors = {};
 
-    	console.log("made it here.");
-    	console.log(data);
+    	
         if (Validator.isEmpty(data.lastName)) {
             errors.lastName = "Last Name is required"
         }
