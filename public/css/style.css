@@ -128,8 +128,6 @@ html, body {
   }
 }
 
-
-
 .page-header {
   margin-top:0;
 }
@@ -196,15 +194,13 @@ a {
   width: 75%;
   margin-left: 8%;
   color: white;
-}
-#evaluation {
-  text-align: center;
-  
-}
-
-.well {
   margin-bottom: 10px;
   padding: 5px;
+}
+
+
+.login {
+ max-width: 40%;
 }
 
 td {
@@ -216,6 +212,21 @@ thead {
   color: black;
 }
 
-.coupleRow {
-  background-color: green;
+
+.home {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+
+
+.swing {
+  margin-left: 50%;
+  margin-top: 25%;
+}
+
+.silhouette {
+  height: 240px;
 }
