@@ -70,73 +70,84 @@ class Participants extends Component {
         const {errors} = this.state;
        
         return (
-        <div className="forms">
-            <form onSubmit={this.handleSubmit}>
-                <div className='form-group' >
-                    <label>Last Name </label>
-                    <input
-                        id='lastName' 
-                        type="text"
-                        value={this.state.lastName}
-                        className="form-control"
-                        onChange={this.handleChange}
-                        placeholder="last name"
-                        name='last_name'/>
-                </div>
-                {errors.lastName && <span className="help-block">{errors.lastName}</span>}
-                <div className='form-group' >
-                    <label>First Name</label>                
-                    <input
-                        type="text"
-                        id='firstName'
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                        className="form-control"
-                        placeholder="first name"
-                        name='first_name'/>
-                </div>
-                 {errors.firstName && <span className="help-block">{errors.firstName}</span>}
-               
-                <div className='form-group' >
-                    <label>Division</label>
-                    <input
-                        type="text"
-                        id='division' 
-                        value={this.state.division}
-                        onChange={this.handleChange}
-                        className="form-control"
-                        placeholder="Division"
-                        name='division'/>
-                </div>
-                <div className='form-group'>
-                    <label>Role</label>
-                    <input
-                        type="text"
-                        id='role' 
-                        value={this.state.role}
-                        onChange={this.handleChange}
-                        className="form-control"
-                        placeholder="Role"
-                        name='role'/>
-                </div>
+                <div className="forms">
+                    <form onSubmit={this.handleSubmit}>
+                        
+                        <h2 className='page-header'>Dancers</h2>
+                        <div className="panel panel-primary">
+                        <div className="panel-heading">
+                          <h3 className="panel-title"><strong>Add New Participant</strong></h3>
+                        </div>
+                      <div className="panel-body">
+                      <div className='form-group' >
+                            <label>Last Name </label>
+                            <input
+                                id='lastName' 
+                                type="text"
+                                value={this.state.lastName}
+                                className="form-control"
+                                onChange={this.handleChange}
+                                placeholder="last name"
+                                name='last_name'/>
+                        </div>
+                        {errors.lastName && <span className="help-block">{errors.lastName}</span>}
+                        <div className='form-group' >
+                            <label>First Name</label>                
+                            <input
+                                type="text"
+                                id='firstName'
+                                value={this.state.firstName}
+                                onChange={this.handleChange}
+                                className="form-control"
+                                placeholder="first name"
+                                name='first_name'/>
+                        </div>
+                        {errors.firstName && <span className="help-block">{errors.firstName}</span>}
+                    
+                        <div className='form-group' >
+                            <label>Division</label>
+                            <input
+                                type="text"
+                                id='division' 
+                                value={this.state.division}
+                                onChange={this.handleChange}
+                                className="form-control"
+                                placeholder="Division"
+                                name='division'/>
+                        </div>
+                        <div className='form-group'>
+                            <label>Role</label>
+                            <input
+                                type="text"
+                                id='role' 
+                                value={this.state.role}
+                                onChange={this.handleChange}
+                                className="form-control"
+                                placeholder="Role"
+                                name='role'/>
+                        </div>
 
-                <div className='form-group'>
-                    <label>Bib Number</label>
-                    <input
-                        type="text"
-                        id='bib_number' 
-                        value={this.state.bib_number}
-                        onChange={this.handleChange}
-                        className="form-control"
-                        placeholder="Bib Number"
-                        name='bib_number'/>
-                </div>
-                 {errors.bib_number && <span className="help-block">{errors.bib_number}</span>}
-                <button
+                        <div className='form-group'>
+                            <label>Bib Number</label>
+                            <input
+                                type="text"
+                                id='bib_number' 
+                                value={this.state.bib_number}
+                                onChange={this.handleChange}
+                                className="form-control"
+                                placeholder="Bib Number"
+                                name='bib_number'/>
+                        </div>
+                        {errors.bib_number && <span className="help-block">{errors.bib_number}</span>}
+                       
+                        </div>
+                       
+                    </div>
+                    <button
                     type="submit"
-                    style={{backgroundColor: '#1424E4'}}
-                    className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
-            </form>
+                    className="btn btn-default" onClick={this.handleSubmit}>Submit
+                    </button>
+                    </form>
         </div>
         )
     }

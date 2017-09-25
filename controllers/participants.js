@@ -11,7 +11,20 @@ var Participant = require("../models/Participant.js");
 // });
 
 
+<<<<<<< HEAD:controllers/participants.js
 router.post('/new', function(req, res){
+=======
+var Participant = require("../models/participant.js");
+
+
+
+router.get('/participant', function(req, res) {
+    console.log(req.body);
+});
+
+
+router.post('/participant', function(req, res){
+>>>>>>> 525449075ea63cb970920e20bde180e9d2271d90:controllers/dancers.js
 
 	var lastName = req.body.lastName;
 	var firstName = req.body.firstName;
@@ -34,7 +47,11 @@ router.post('/new', function(req, res){
     }
 	else {
 
+<<<<<<< HEAD:controllers/participants.js
 		var newParticipant= new Participant({
+=======
+		var newParticipant = new Participant({
+>>>>>>> 525449075ea63cb970920e20bde180e9d2271d90:controllers/dancers.js
                           lastName: lastName,
                           firstName: firstName,
                           division: division,

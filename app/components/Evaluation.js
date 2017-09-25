@@ -10,8 +10,7 @@ export default React.createClass({
         participantScores: []
       };
     },
-    handleChange: function(event) {
-    
+    handleChange: function(event) {    
       let scoresArray = this.state.participantScores;
       
       let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
@@ -21,16 +20,14 @@ export default React.createClass({
                     "score" : event.target.value
       }
 
-      this.setState({participantScores : scoresArray});
- 
+      this.setState({participantScores : scoresArray}); 
 
-      console.log('this.state', this.state.participantScores); 
 
     },
     componentDidMount: function() {
-      console.log('mount', this.state.participantScores);
-       let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
-      console.log('query', queryURL);
+      // console.log('mount', this.state.participantScores);
+      let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      // console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
@@ -57,7 +54,7 @@ export default React.createClass({
     //   console.log(res);
     // });
           }.bind(this)).catch(err => {
-                  console.log('err', err.response);
+                  console.log('err', err);
                   return err.response;
             });
   },
@@ -134,7 +131,9 @@ export default React.createClass({
               </div>
               </div>
               </div>
-              <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Scores</button>
+              <button className="btn btn-default" type="submit">
+                Submit Scores
+              </button>
           </form>
         </div>
         <div className="col-md-2"></div>

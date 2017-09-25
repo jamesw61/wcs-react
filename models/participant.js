@@ -3,11 +3,11 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ParticipantSchema = new Schema({
-  firstName: {
+  firstname: {
     type: String,
     required: true
   },
-  lastName: {
+  lastname: {
     type: String,
     required: true
   },
@@ -21,6 +21,9 @@ var ParticipantSchema = new Schema({
   },
   bib_number: {
     type: String
+  },
+  total: {
+    type: Number
   },
   scores: [{
     type: Schema.Types.ObjectId,

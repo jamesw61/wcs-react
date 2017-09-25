@@ -3058,8 +3058,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  background: url("../images/woodGrain.jpg") no-repeat;
+  border-color: #e4d414;
 }
 .btn-default:focus,
 .btn-default.focus {
