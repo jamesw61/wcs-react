@@ -16,9 +16,9 @@ var Validator = require('validator');
 // });
 
 // Login
-router.get('/login', function(req, res) {
-    // res.render('login');
-});
+// router.get('/login', function(req, res) {
+//     // res.render('login');
+// });
 
 // If the user enters the correct password, they will be directed to the dashboard
 // Otherwise, a message will flash saying that the password is incorrect
@@ -85,8 +85,8 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/register', function(req, res){
 
-    console.log("made it here.");
-        console.log(req.body    );
+    
+        // console.log(req.body    );
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -95,7 +95,10 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
-    const { errors, isValid } = validateInput(req.body);
+    console.log(req.body);
+    
+  
+    const { errors, isValid } = validate(req.body);
 
    
     if (!isValid) {
@@ -114,13 +117,51 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-// This function will validate the data
-validateInput = function (data) {
+// lastName: "",
+//             firstName: "",
+//             userName: "",
+//             email: "",
+//             password: "",
+//             confPass: "",
+//             errors: {}
 
-    let errors = {};
-        console.log("made it here.");
-        console.log(data);
+// validate = function (data) {
+//     console.log("Made it here.");  
+//     console.log(data); 
+//     let errors = {};
+
         
+//         // if (Validator.isEmpty(data.last_name)) {
+//         //     errors.lastName = "Last Name is required"
+//         // }
+
+//         // console.log("Validated the first.");
+//         // if (Validator.isEmpty(data.first_name)) {
+//         //     errors.firstName = "First Name is required"
+//         // }
+//         // // if (Validator.isEmpty(data.bib_number)) {
+//         // //     errors.bib_number = "Bib Number is required"
+//         // // }
+
+//         // return {
+//         //     errors,
+//         //     isValid: isEmpty(errors)
+//         // }
+
+// }
+// // This function will validate the data
+validate= function (data) {
+
+    console.log(data);
+    console.log("Made it here.");
+    let errors = {};
+       
+        console.log("validating data");
+        console.log(data);
+
+
+
+        console.log(isEmpty(data.last_name));
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }

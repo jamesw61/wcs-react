@@ -19,6 +19,7 @@ router.post('/new', function(req, res){
 	var division = req.body.division;
 	var role = req.body.role;
 	var bib_number = req.body.bib_number;
+  console.log(req.body);
 
 	// Validate input
 	const { errors, isValid } = validateInput(req.body);
