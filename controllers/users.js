@@ -86,7 +86,7 @@ passport.deserializeUser(function(id, done) {
 router.post('/register', function(req, res){
 
     console.log("made it here.");
-        console.log(req.body);
+        console.log(req.body    );
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
