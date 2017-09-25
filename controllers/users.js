@@ -95,9 +95,7 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
-    console.log(req.body);
-    
-  
+    // Create validation errors for each input from the form
     const { errors, isValid } = validate(req.body);
 
    
@@ -117,51 +115,13 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-// lastName: "",
-//             firstName: "",
-//             userName: "",
-//             email: "",
-//             password: "",
-//             confPass: "",
-//             errors: {}
 
-// validate = function (data) {
-//     console.log("Made it here.");  
-//     console.log(data); 
-//     let errors = {};
 
-        
-//         // if (Validator.isEmpty(data.last_name)) {
-//         //     errors.lastName = "Last Name is required"
-//         // }
+// This function will validate the data and provide error messages for each input
+validate = function (data) {
 
-//         // console.log("Validated the first.");
-//         // if (Validator.isEmpty(data.first_name)) {
-//         //     errors.firstName = "First Name is required"
-//         // }
-//         // // if (Validator.isEmpty(data.bib_number)) {
-//         // //     errors.bib_number = "Bib Number is required"
-//         // // }
-
-//         // return {
-//         //     errors,
-//         //     isValid: isEmpty(errors)
-//         // }
-
-// }
-// // This function will validate the data
-validate= function (data) {
-
-    console.log(data);
-    console.log("Made it here.");
     let errors = {};
-       
-        console.log("validating data");
-        console.log(data);
-
-
-
-        console.log(isEmpty(data.last_name));
+ 
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }
