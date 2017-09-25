@@ -24,7 +24,7 @@ router.get("/:round/:division/:role", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log('bib_number', partDoc[0].firstname, partDoc[0].scores[0].bib_number)
+            // console.log('bib_number', partDoc[0].firstname, partDoc[0].scores[0].bib_number)
             // console.log('score', partDoc[0].scores[0].score);
             // console.log('partDoc', partDoc[0]);
             console.log('before function',partDoc[0])

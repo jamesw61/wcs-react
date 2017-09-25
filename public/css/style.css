@@ -193,7 +193,9 @@ a {
 .well {
   border-style: solid;
   border-color: black;
-  width: 90%;
+  width: 75%;
+  margin-left: 8%;
+  color: white;
 }
 #evaluation {
   text-align: center;
@@ -212,4 +214,8 @@ td {
 
 thead {
   color: black;
+}
+
+.coupleRow {
+  background-color: green;
 }
