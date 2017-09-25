@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import Dragula from 'react-dragula';
 import axios from 'axios';
 import CoupleRow from './CoupleRow';
@@ -109,6 +109,7 @@ export default class Finals extends React.Component {
 
                       </div>
                       <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Final Order</button>
+                      <Link to ="finals/results"> Final Results</Link>  
                       </form>
                         
                     </div>

@@ -19,6 +19,7 @@ var contests = require('./controllers/contests');
 var finals = require('./controllers/finals');
 var results = require('./controllers/results');
 var dancers = require('./controllers/dancers');
+var finalResults = require('./controllers/final-results');
 
 // Init App
 var app = express();
@@ -79,6 +80,7 @@ app.use('/contests', contests);
 app.use('/results', results);
 app.use('/finals', finals);
 app.use('/dancers', dancers);
+app.use('/finalresults', finalResults);
 
 
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
