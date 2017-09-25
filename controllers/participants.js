@@ -5,46 +5,42 @@ var Validator = require('validator');
 var passport = require('passport');
 var Participant = require("../models/participant.js");
 
-
-
-router.get('/participant', function(req, res) {
-    console.log(req.body);
-});
-
-
-router.post('/participant', function(req, res){
+router.post('/new', function(req, res){
 
 	var lastName = req.body.lastName;
 	var firstName = req.body.firstName;
 	var division = req.body.division;
 	var role = req.body.role;
 	var bib_number = req.body.bib_number;
+  console.log(req.body);
 
-
-	// TODO:  Validate input
+	// Validate input
 	const { errors, isValid } = validateInput(req.body);
 
 	
 
 	if (!isValid) {
-        // res.status(400).json(errors);
-        console.log(errors);
+  
+        // Send the errors to the Participant.js react component
         res.send(errors);
     }
 	else {
 
+    // Instantiate a new instance of participant
 		var newParticipant = new Participant({
-                          lastName: lastName,
-                          firstName: firstName,
+
+                          lastname: lastName,
+                          firstname: firstName,
                           division: division,
                           role: role,
                           bib_number: bib_number
                         });
                         // Using the save method in mongoose, we create our example library in the db
                         newParticipant.save(function(error, doc) {
+                          
                           // Log any errors
-                          console.log("inside newDancer");
                           if (error) {
+                            console.log("inside errors");
                             console.log(error);
                           }
                           // Or log the doc
@@ -72,10 +68,12 @@ validateInput = function (data) {
 
     let errors = {};
 
-    	console.log(data);
+    	
         if (Validator.isEmpty(data.lastName)) {
             errors.lastName = "Last Name is required"
         }
+
+        console.log("Validated the first.");
         if (Validator.isEmpty(data.firstName)) {
             errors.firstName = "First Name is required"
         }

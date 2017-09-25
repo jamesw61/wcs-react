@@ -13,12 +13,13 @@ var port = process.env.PORT || 3000;
 
 mongoose.Promise = Promise;
 
-// var controllers = require('./controllers');
+var controllers = require('./controllers');
 var users = require('./controllers/users');
 var contests = require('./controllers/contests');
+var participants = require('./controllers/participants');
 var finals = require('./controllers/finals');
 var results = require('./controllers/results');
-var dancers = require('./controllers/dancers');
+
 
 // Init App
 var app = express();
@@ -74,11 +75,16 @@ app.use(function (req, res, next) {
 })
 
 
+
+
+app.use('/', controllers)
 app.use('/users', users);
 app.use('/contests', contests);
+app.use('/participants', participants);
 app.use('/results', results);
 app.use('/finals', finals);
-app.use('/dancers', dancers);
+// app.use('/dancers', dancers);
+
 
 
 mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {

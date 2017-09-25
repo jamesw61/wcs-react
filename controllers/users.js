@@ -11,14 +11,14 @@ var Validator = require('validator');
 
 
 // Register
-router.get('/register', function(req, res) {
-    // res.render('register');
-});
+// router.get('/register', function(req, res) {
+//     // res.render('register');
+// });
 
 // Login
-router.get('/login', function(req, res) {
-    // res.render('login');
-});
+// router.get('/login', function(req, res) {
+//     // res.render('login');
+// });
 
 // If the user enters the correct password, they will be directed to the dashboard
 // Otherwise, a message will flash saying that the password is incorrect
@@ -85,7 +85,8 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/register', function(req, res){
 
-
+    
+        // console.log(req.body    );
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -94,7 +95,8 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
-    const { errors, isValid } = validateInput(req.body);
+    // Create validation errors for each input from the form
+    const { errors, isValid } = validate(req.body);
 
    
     if (!isValid) {
@@ -113,12 +115,13 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-// This function will validate the data
-validateInput = function (data) {
+
+
+// This function will validate the data and provide error messages for each input
+validate = function (data) {
 
     let errors = {};
-
-        
+ 
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }

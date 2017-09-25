@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Router, { browserHistory } from'react-router';
 import axios from "axios";
 var isEmpty = require('lodash.isEmpty');
+import classnames from "classnames";
+
+
 
 class Participants extends Component {
     constructor(props) {
@@ -31,8 +34,10 @@ class Participants extends Component {
         event.preventDefault();
         const click = this.props.onClick;
 
+        console.log("Has been submitted.");
+        console.log(this.state);
         // Post the information to the server-side
-        axios.post("/dancers/participant", this.state)
+        axios.post("/participants/new", this.state)
             .then(response => {
                 
 
@@ -44,7 +49,7 @@ class Participants extends Component {
             //     // Display error messages
                 if(!isEmpty(response.data)){
                     
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.setState({errors: response.data});
                     console.log(this.state.errors);
                 }
@@ -75,7 +80,7 @@ class Participants extends Component {
                           <h3 className="panel-title"><strong>Add New Participant</strong></h3>
                         </div>
                       <div className="panel-body">
-                      <div className='form-group' >
+                      <div className= {classnames('form-group',{'has-error': errors.lastName} )} >
                             <label>Last Name </label>
                             <input
                                 id='lastName' 
@@ -87,7 +92,7 @@ class Participants extends Component {
                                 name='last_name'/>
                         </div>
                         {errors.lastName && <span className="help-block">{errors.lastName}</span>}
-                        <div className='form-group' >
+                        <div className={classnames('form-group',{'has-error': errors.lastName} )} >
                             <label>First Name</label>                
                             <input
                                 type="text"
@@ -123,7 +128,7 @@ class Participants extends Component {
                                 name='role'/>
                         </div>
 
-                        <div className='form-group'>
+                        <div className={classnames('form-group',{'has-error': errors.bib_number} )}>
                             <label>Bib Number</label>
                             <input
                                 type="text"
