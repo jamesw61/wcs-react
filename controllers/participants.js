@@ -3,7 +3,7 @@ var router = express.Router();
 var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
 var passport = require('passport');
-var Participant = require("../models/participant.js");
+var Participant = require("../models/Participant.js");
 
 router.post('/new', function(req, res){
 

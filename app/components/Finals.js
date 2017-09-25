@@ -96,26 +96,26 @@ export default class Finals extends React.Component {
     
     return (
       <div className="container">
-        <div className="row">
-        <div className="col-lg-12">
-              <div className="panel panel-primary">
-                      <div className="panel-heading">
-                        <h3 className="panel-title"><strong>Finals</strong></h3>
-                      </div>
-                      <div className="panel-body">
+        
+              
                       <form onSubmit={this.handleSubmit}>
-                        <div className='container' id="list" ref={this.dragulaDecorator}>
-                        {coupleRows}
-
-                      </div>
+                        <h2 className='page-header'>Finals</h2>
+                        <div className="panel panel-primary">
+                          <div className="panel-heading">
+                             <h3 className="panel-title"><strong>Rankings</strong></h3>
+                         </div>
+                         <div className="panel-body">
+                            <div className='container' id="list" ref={this.dragulaDecorator}>
+                              {coupleRows}
+                            </div>
+                          </div>
+                        </div>
                       <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Final Order</button>
                       </form>
                         
-                    </div>
-                 </div>
+                   
               </div>
-          </div>
-    </div>
+         
     )
   }
   
