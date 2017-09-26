@@ -32,6 +32,7 @@ router.get("/:round/:division", function(req, res) {
                             console.log(err);
 
                         } else {
+                            console.log('finalResults.length', finalResults.length);
                             if (finalResults.length === 0) {
                                 leadData.sort(function(a, b) { return 0.5 - Math.random() });
 
@@ -48,7 +49,6 @@ router.get("/:round/:division", function(req, res) {
                                 addCouples(couplesArray).then(() => {
                                     res.send('couples checked');
                                 });
-
 
                             } else {
                                 res.send('results > 0');
@@ -106,12 +106,11 @@ router.post("/:judge", function(req, res) {
 
 });
 
-
-
-async function addCouples(couplesArray) {
-    function go(i) {
+function addCouples(couplesArray) {
+    return new Promise( (resolve, reject)=> {
+        function go(i) {
         if (i >= couplesArray.length) {
-            return;
+            resolve();
         } else {
             let newCouple = new Couple(couplesArray[i]);
             newCouple.save(function(error, doc) {
@@ -120,15 +119,37 @@ async function addCouples(couplesArray) {
                 } else {
                     console.log('newCouple saved');
                     console.log('doc', doc);
-
+                    return go(i + 1);
                 }
             });
-            return go(i + 1);
-
+            
         }
     }
     go(0);
+    });
+
 }
+
+// async function addCouples(couplesArray) {
+//     function go(i) {
+//         if (i >= couplesArray.length) {
+//             return;
+//         } else {
+//             let newCouple = new Couple(couplesArray[i]);
+//             newCouple.save(function(error, doc) {
+//                 if (error) {
+//                     console.log('new couple err', error)
+//                 } else {
+//                     console.log('newCouple saved');
+//                     console.log('doc', doc);
+
+//                 }
+//             });
+//             return go(i + 1);
+//         }
+//     }
+//     go(0);
+// }
 
 
 module.exports = router;
