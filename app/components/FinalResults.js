@@ -13,9 +13,10 @@ export default class Results extends React.Component {
   }
 
   componentDidMount() {
-      let queryURL = "/finalresults/";
+      console.log('tppd', this.props.params.division);
+      let queryURL = "/finalresults/" + this.props.params.division;
       axios.get(queryURL).then(function(response) {
-        // console.log("results response", response.data);
+        console.log("results response", response.data[0]);
         
         
           }.bind(this)).catch(err => {

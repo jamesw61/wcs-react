@@ -7,7 +7,7 @@ var Score = require("../models/Score.js");
 var Final = require("../models/Final.js");
 
 router.get("/:round/:division", function(req, res) {
-    console.log('inside');
+    // console.log('inside');
 	Participant.find({
                         role: req.params.role,
                         division: req.params.division,

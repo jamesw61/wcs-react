@@ -26,7 +26,7 @@ router.get("/:round/:division/:role", function(req, res) {
         } else {
             // console.log('bib_number', partDoc[0].firstname, partDoc[0].scores[0].bib_number)
             // console.log('score', partDoc[0].scores[0].score);
-            console.log('partDoc', partDoc[0]);
+            // console.log('partDoc', partDoc[0]);
             // console.log('before function',partDoc[0])
             // console.log("Firstname:",partDoc[0].division)
             let results = partDoc.map(ArrangeMongooseData);
@@ -45,7 +45,7 @@ function ArrangeMongooseData(partDoc, index) {
     let scoresArray = partDoc.scores.map(function(array){
         return array.score
     });
-    console.log('length',scoresArray.length);
+    // console.log('length',scoresArray.length);
     // console.log('partDoc', partDoc);
     // var name = partDoc.firstname
     // console.log(name);
@@ -68,7 +68,7 @@ function ArrangeMongooseData(partDoc, index) {
                         } else {
                             // res.send("posted");
 
-                            console.log('Total updated');
+                            // console.log('Total updated');
                         }
                     });
 

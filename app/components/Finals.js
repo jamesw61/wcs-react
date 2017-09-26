@@ -80,6 +80,8 @@ export default class Finals extends React.Component {
 
   render () {
     let coupleRows;
+    let linkURL = "/finalresults/" + this.props.params.division;
+    console.log(linkURL);
     let couples = this.state.couplesObj;
           if(couples){ 
             console.log('couples', couples);
@@ -111,7 +113,7 @@ export default class Finals extends React.Component {
                           </div>
                         </div>
                       <button className="btn btn-primary" id="score-prelims-btn" type="submit">Submit Final Order</button>
-                      <Link to ="finals/results"> Final Results</Link>  
+                      <Link to ="finalresults/advanced"> Final Results</Link>  
                       </form>
                         
                    
