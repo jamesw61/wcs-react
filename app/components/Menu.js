@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+
 const Menu = (props) => (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -23,4 +24,8 @@ const Menu = (props) => (
         </div>
       </nav>
     );
+
+
+
+
 export default Menu;

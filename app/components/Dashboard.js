@@ -23,7 +23,7 @@ var Dashboard = React.createClass({
                 <thead>
                   <tr>
                     <th>Contest Name</th>
-                    <th>Preliminary Round</th>
+                    <th>Judge Preliminary Round</th>
                     <th>Results</th>
                   </tr>
                 </thead>

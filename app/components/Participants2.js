@@ -12,8 +12,19 @@ class Participants extends Component {
         this.state = {
             lastName: "",
             firstName: "",
-            division: "",
-            role: "",
+            divisionTypes: [
+                'novice',
+                'intermediate',
+                'advanced',
+                'all-star',
+                'championship'
+            ],
+              division: '',
+            roleType: [
+                'leads',
+                'follows'
+            ],   
+            role:  "",
             bib_number: "",
             errors: {}   
         }
@@ -69,7 +80,37 @@ class Participants extends Component {
 
         // Set the variable for the errors
         const {errors} = this.state;
-        
+        const division = this.state.division
+        const options = this.state.divisionTypes.map((loan, key) => {
+          const isCurrent = this.state.division === loan
+          return (
+            
+            <div 
+              key={key} 
+              className="radioPad"
+            >
+              <div>
+                <label 
+                  className={
+                    isCurrent ? 
+                      'radioPad__wrapper radioPad__wrapper--selected' :
+                      'radioPad__wrapper'
+                    }
+                >
+                  <input
+                    className="radioPad__radio"
+                    type="radio" 
+                    name="divisionTypes" 
+                    id={loan} 
+                    value={loan}
+                    onChange={this.handleRadio.bind(this)}
+                  />
+                  {loan}
+                </label>
+              </div>
+            </div>
+          )
+        })
        
         return (
                 <div className="forms">
@@ -106,18 +147,16 @@ class Participants extends Component {
                         </div>
                         {errors.firstName && <span className="help-block">{errors.firstName}</span>}
                     
-                        <div className='form-group' >
-                        <label>Division</label>
-                        <input
-                            type="text"
-                            id='division' 
-                            value={this.state.division}
-                            onChange={this.handleChange}
-                            className="form-control"
-                            placeholder="Division"
-                            name='division'/>
-                        </div>
-
+                        <div className="row">
+                        <p className="lead">
+                          <strong>{}</strong>
+                          {division ? 
+                            ', nice pick!' : 'Tap away, friend.'
+                          }
+                        </p>
+                        <hr />
+                        {options}
+                      </div>
                         <div className='form-group'>
                             <label>Role</label>
                             <input

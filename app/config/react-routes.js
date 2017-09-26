@@ -5,7 +5,8 @@ import { Router, Route, IndexRoute, browserHistory } from "react-router";
 
 // Reference the high-level components
 import Main from "../components/Main";
-import Login from "../components/Login";
+// import Login from "../components/Login";
+import Login from "../components/Login2";
 import Register from "../components/Register";
 import Results from "../components/Results";
 import Dashboard from "../components/Dashboard";

@@ -12,6 +12,13 @@ router.get("/judge", function(req,res){
     res.send(judge);
 });
 
+router.post("/api/auth", function(req,res){
+    
+    const {username, password } = req.body;
+    console.log("this is the user");
+    console.log(res.locals.user);
+});
+
 // This route creates prelim and semi-finals judge sheets
 
 // router.get("/judge/:round/:division/:role/evaluation", ensureAuthenticated, function(req, res) {
