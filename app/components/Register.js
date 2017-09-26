@@ -28,8 +28,10 @@ var Register = React.createClass({
     },
 
     handleSubmit: function(event) {
+
         // clear the errors in case there are any old errors
-        this.setState({ errors: {} });
+        this.setState({ errors: {}});
+
         event.preventDefault(); 
         let last_name = this.state.lastName;
         let first_name = this.state.firstName;
@@ -155,7 +157,7 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 {errors.password2 && <span className="help-block">{errors.password2}</span>}
-                <button
+                <button 
                     type="submit"
                     className="btn btn-default" onClick={this.handleSubmit}>Submit
                 </button>

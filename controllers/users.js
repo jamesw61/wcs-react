@@ -8,24 +8,59 @@ var bcrypt = require('bcryptjs');
 var User = require("../models/User.js");
 var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
+var jwt = require('jsonwebtoken');
+var config = require('../config.js');
 
 
-// Register
-// router.get('/register', function(req, res) {
-//     // res.render('register');
-// });
+router.post("/api/auth", function(req,res){
+    
+    const {username, password } = req.body;
 
-// Login
-// router.get('/login', function(req, res) {
-//     // res.render('login');
-// });
+
+    User.find({ "username": username }, function(error, doc) {
+
+            console.log(doc);
+
+            if (doc.length == 0) {
+                res.sendStatus(401);                
+            }
+            else {
+                // console.log('doc pass', doc[0].password);
+                // return res.render("index", { bacon: doc });
+                comparePassword(password, doc[0].password, function(err, isMatch) {
+                if(err) throw err;
+
+                // if the hash matches the password, return the user
+                // Otherwise, return the message: "Invalid Password"
+                    if(isMatch) {
+                        res.json({
+                            jwt: jwt.sign({
+                                id: doc[0]._id,
+                                username: doc[0].username,
+                            }, config.JWT_SECRET, { expiresIn: 60*60 })
+                        });
+                        }
+                    else {
+                        res.sendStatus(401);
+                        }
+                });
+            }
+        });  // End of getting the user from the database
+});
+
+// THIS IS THE ROUTE FOR THE OLD LOGIN PAGE
 
 // If the user enters the correct password, they will be directed to the dashboard
 // Otherwise, a message will flash saying that the password is incorrect
 router.post('/login',
+
     passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+    
+
     function(req, res) {
+
         console.log('req.body', req.body);
+        console.log("Just printed the body of the request");
         res.send('post successful');
     }
 );
