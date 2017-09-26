@@ -24,7 +24,6 @@ class Main extends Component {
     }
     render() {
 
-
         const {isAuthenticated} = this.props.auth;
 
         

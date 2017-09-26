@@ -230,3 +230,29 @@ thead {
 .silhouette {
   height: 240px;
 }
+
+
+.radioPad {
+display: inline-block;
+width: 100%;
+vertical-align: middle;
+}
+
+.wrapper {
+display: block;
+cursor: pointer;
+
+color: white;
+text-transform: uppercase;
+font-size: 1.5rem;
+margin: .5rem;
+padding: 3rem;
+text-align: center;
+}
+ 
+.radio {
+visibility: hidden;
+height: 0px ;
+width: 0;
+opacity: 0;
+}

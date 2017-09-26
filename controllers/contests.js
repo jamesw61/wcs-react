@@ -26,6 +26,7 @@ router.get("/:judge/:round/:division/:role", function(req, res) {
     var judge = req.params.judge;
     console.log('judge', judge);
 
+
     // var judge = "ff";
     // console.log('judge id', judge[0]._id);
     var division = req.params.division;
@@ -55,7 +56,7 @@ router.get("/:judge/:round/:division/:role", function(req, res) {
                 console.log('score err:');
                 console.log(err);
             } else {
-                console.log('doc length:', doc.length)
+                // console.log('doc length:', doc.length)
                 // console.log('doc[0]', doc);
                 if (doc.length === 0) {
                     Participant.find({
@@ -65,7 +66,7 @@ router.get("/:judge/:round/:division/:role", function(req, res) {
                         if (partErr) {
                             console.log(partErr);
                         } else {
-                            console.log('part', partDoc);
+                            // console.log('part', partDoc);
                             res.send(partDoc);
                             // res.render('prelim', { division: Division, role: Role, list: partDoc, round: round });
 

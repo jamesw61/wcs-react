@@ -8,6 +8,7 @@ var Final = require("../models/Final.js");
 var Couple = require("../models/Couple.js");
 
 router.get("/:round/:division", function(req, res) {
+
     console.log('inside finals/round/division');
     Participant.find({
         role: req.params.role,
@@ -29,6 +30,7 @@ router.get("/:round/:division", function(req, res) {
                     Final.find({ division: req.params.division }).exec(function(err, finalResults) {
                         if (err) {
                             console.log(err);
+
                         } else {
                             if (finalResults.length === 0) {
                                 leadData.sort(function(a, b) { return 0.5 - Math.random() });
