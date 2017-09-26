@@ -9,19 +9,28 @@ import Jumbo from './Jumbo';
 export default class Finals extends React.Component {
   constructor() {
     super();
-    this.state = {couplesObj : undefined}
+    this.state = {couplesObj : []}
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
       let queryURL2 = "/finals/" + this.props.params.round + "/" + this.props.params.division;
-      axios.get(queryURL2).then(function(couplesData) {
-        // console.log('couplesData', couplesData);
+      axios.get(queryURL2).then(function(data) {
+        console.log('data', data);
 
-        // console.log('.data', couplesData.data);
+        let queryURL3 = "/finals/couples/" + this.props.params.round + "/" + this.props.params.division;
+        axios.get(queryURL3).then(function(couplesData){
+            console.log("cd", couplesData.data);
+            this.setState({couplesObj : couplesData.data}); 
+            console.log('couple array', this.state.couplesObj);
+
+        }.bind(this)).catch(err => {
+                  console.log('catch err', err.response);
+                  return err.response;
+            });
 
         
-        this.setState({couplesObj : couplesData.data});   
+        
 
         // console.log('this.state', this.state.couplesObj);    
         
@@ -45,13 +54,14 @@ export default class Finals extends React.Component {
       return scoreObj
     });
 
-    console.log('finalscores', finalScores);
+    // console.log('finalscores', finalScores);
 
 
     // let division = "novice";
     let division = this.props.params.division;
+      let judge = localStorage.getItem("username");
 
-     axios.post("/finals", {finalScores: finalScores, division: division}).then(function(response) {
+     axios.post("/finals/" + judge, {finalScores: finalScores, division: division}).then(function(response) {
         console.log('posted', response);
         browserHistory.push('/dashboard');        
         // axios.get("/contests/judge").then(function(response) {
@@ -86,9 +96,9 @@ export default class Finals extends React.Component {
           if(couples){ 
             console.log('couples', couples);
             
-            coupleRows = couples.leadArray.map((item, i)=>{
-                    let coupleBibs = { "lead": item.bib_number,
-                                      "follow" : couples.followArray[i].bib_number
+            coupleRows = couples.map((item, i)=>{
+                    let coupleBibs = { "lead": item.lead,
+                                      "follow" : item.follow
                                       };
                       return (            
                         <CoupleRow data={coupleBibs} rowKey={i} key={i} />
@@ -112,6 +122,7 @@ export default class Finals extends React.Component {
                             </div>
                           </div>
                         </div>
+
                       <button className="btn btn-default" id="score-prelims-btn" type="submit">Submit Final Order</button>
                       <Link to ="finalresults/advanced"> Final Results</Link>  
                       </form>

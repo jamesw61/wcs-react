@@ -19,19 +19,19 @@ var Login = React.createClass({
     	let username = this.state.username;
     	let password = this.state.password;
 
-    	console.log('username/password:', username, password);
+    	// console.log('username/password:', username, password);
     	// console.log('password', password);
     	// this.setState({ fireRedirect: true })
   
 	const click = this.props.onClick;
     axios.post("/users/login", {username: this.state.username, password: this.state.password}).then((response) => {
 		click(true);
-		console.log('post login');
+		// console.log('post login');
 		
 		// click(true);
         axios.get("/contests/judge").then(function(response) {
 			// click(true);
-       		 console.log('judge username:', response.data[0].username);
+       		 // console.log('judge username:', response.data[0].username);
            if(username === response.data[0].username){ 
 			
            browserHistory.push('/dashboard');

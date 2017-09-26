@@ -5,85 +5,130 @@ var User = require("../models/User.js");
 var Participant = require("../models/Participant.js");
 var Score = require("../models/Score.js");
 var Final = require("../models/Final.js");
+var Couple = require("../models/Couple.js");
 
 router.get("/:round/:division", function(req, res) {
-    // console.log('inside');
-	Participant.find({
-                        role: req.params.role,
-                        division: req.params.division,
-                        role: "follow"
-                    }).sort({ total: 1 }).limit(5).exec(function(totErr, followData) {
-                        if (totErr) {
-                            console.log(totErr);
+
+    console.log('inside finals/round/division');
+    Participant.find({
+        role: req.params.role,
+        division: req.params.division,
+        role: "follow"
+    }).sort({ total: 1 }).limit(5).exec(function(follErr, followData) {
+        if (follErr) {
+            console.log(follErr);
+        } else {
+            Participant.find({
+                role: req.params.role,
+                division: req.params.division,
+                role: "lead"
+            }).sort({ total: 1 }).limit(5).exec(function(leadErr, leadData) {
+                if (leadErr) {
+                    console.log(leadErr);
+                } else {
+
+                    Final.find({ division: req.params.division }).exec(function(err, finalResults) {
+                        if (err) {
+                            console.log(err);
+
                         } else {
-                            // console.log('followData', followData);
+                            if (finalResults.length === 0) {
+                                leadData.sort(function(a, b) { return 0.5 - Math.random() });
 
-                                Participant.find({
-                                    role: req.params.role,
-                                    division: req.params.division,
-                                    role: "lead"
-                                }).sort({ total: 1 }).limit(5).exec(function(totErr, leadData) {
-                                        if (totErr) {
-                                                console.log(totErr);
-                                        } else {
-                                                    // console.log('leadData', leadData);
-                                                    leadData.sort(function(a, b){return 0.5 - Math.random()});
-                                                    // console.log('random', leadData);
-                                                    let couples = {
-                                                        "leadArray" : leadData,
-                                                        "followArray" : followData
-                                                    }
+                                let couplesArray = leadData.map((item, i) => {
+                                    let coupleObj = {
+                                        lead: item.bib_number,
+                                        follow: followData[i].bib_number,
+                                        division: req.params.division
+                                    }
+                                    return coupleObj
+                                });
+                                // console.log('couplesArray', couplesArray);
 
-                                                    res.json(couples);
-                                                    
-
-                                            }
-                                        });
+                                addCouples(couplesArray).then(() => {
+                                    res.send('couples checked');
+                                });
 
 
+                            } else {
+                                res.send('results > 0');
+                            }
                         }
                     });
+                }
+            });
+        }
+    });
 });
 
-router.post("/", function(req, res) {
+router.get("/couples/:round/:division", function(req, res) {
+    Couple.find({ division: req.params.division }).exec(function(err, coupleResults) {
+        // console.log('CR', coupleResults);
+        res.json(coupleResults);
 
-    var judge = res.locals.user;
+    });
+});
+
+router.post("/:judge", function(req, res) {
+
+    var judge = req.params.judge;
     var data = req.body.finalScores;
     var division = req.body.division;
     console.log('finals judge', judge);
     console.log('finalScores', data);
     console.log('division', division);
 
-    let finalScoresArray = data.map((item, i)=>{
+    let finalScoresArray = data.map((item, i) => {
         let scoreObj = {
-            place : i + 1,
+            place: i + 1,
             division: division,
-            judge : judge[0]._id,
-            lead : item.lead,
-            follow : item.follow
+            judge: judge,
+            lead: item.lead,
+            follow: item.follow
         }
         return scoreObj
     });
 
     console.log('fsa', finalScoresArray[0]);
 
-    for (let i = 0; i < finalScoresArray.length; i++){
+    for (let i = 0; i < finalScoresArray.length; i++) {
         var newScore = new Final(finalScoresArray[i]);
         newScore.save(function(error, doc) {
             if (error) {
                 console.log('mongo final save err', error)
             } else {
-                    
-                
+
+
             }
         });
     }
- res.send("posted");
+    res.send("posted");
 
 });
 
 
 
+async function addCouples(couplesArray) {
+    function go(i) {
+        if (i >= couplesArray.length) {
+            return;
+        } else {
+            let newCouple = new Couple(couplesArray[i]);
+            newCouple.save(function(error, doc) {
+                if (error) {
+                    console.log('new couple err', error)
+                } else {
+                    console.log('newCouple saved');
+                    console.log('doc', doc);
+
+                }
+            });
+            return go(i + 1);
+
+        }
+    }
+    go(0);
+}
 
 
 module.exports = router;

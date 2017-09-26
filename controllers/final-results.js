@@ -25,6 +25,4 @@ router.get("/:division", function(req, res) {
                     });
 });
 
-
-
 module.exports = router;
