@@ -100,15 +100,14 @@ export default React.createClass({
                    });
 
     return (
-    <div className='container-fluid'>
-      <div className="row" id="evaluation">
-          <h1>Evaluation</h1>
-      <h3>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h3>
+    <div className='container'>
+     
+          
         
-      <div className="col-md-2"></div>
-        <div className="col-md-8">
-
+     
           <form onSubmit={this.handleSubmit}>
+          <h2 className="page-header"> Evaluation</h2>
+          <h3>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h3>
             <div className="form-group">
               <div className="panel panel-primary">
                 <div className="panel-heading">
@@ -136,10 +135,9 @@ export default React.createClass({
               </button>
           </form>
         </div>
-        <div className="col-md-2"></div>
+       
 
-      </div>
-    </div>
+     
   )
   }
 })

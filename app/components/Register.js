@@ -3,6 +3,7 @@ var Router = require('react-router')
 var axios = require("axios");
 import { browserHistory } from 'react-router';
 var isEmpty = require('lodash.isEmpty');
+import classnames from "classnames";
 
 
 var Register = React.createClass({
@@ -27,8 +28,10 @@ var Register = React.createClass({
     },
 
     handleSubmit: function(event) {
+
         // clear the errors in case there are any old errors
-        this.setState({ errors: {} });
+        this.setState({ errors: {}});
+
         event.preventDefault(); 
         let last_name = this.state.lastName;
         let first_name = this.state.firstName;
@@ -77,7 +80,7 @@ var Register = React.createClass({
         return (
         <div className="forms">
             <form onSubmit={this.handleSubmit}>
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.last_name} )} style={style}>
                     <label>Last Name </label>
                     <input
                         id='lastName' 
@@ -89,7 +92,7 @@ var Register = React.createClass({
                         name='last_name'/>
                 </div>
                 {errors.last_name && <span className="help-block">{errors.last_name}</span>}
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.first} )} style={style}>
                     <label>First Name
                     </label>
                     <input
@@ -102,7 +105,7 @@ var Register = React.createClass({
                         name='first_name'/>
                 </div>
                 {errors.first_name && <span className="help-block">{errors.first_name}</span>}
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.username} )} style={style}>
                     <label>Username
                     </label>
                     <input
@@ -115,7 +118,7 @@ var Register = React.createClass({
                         name='username'/>
                 </div>
                 {errors.username && <span className="help-block">{errors.username}</span>}
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.email} )} style={style}>
                     <label>Email
                     </label>
                     <input
@@ -128,7 +131,7 @@ var Register = React.createClass({
                         name='email'/>
                 </div>
                 {errors.email && <span className="help-block">{errors.email}</span>}
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.password} )} style={style}>
                     <label>Password
                     </label>
                     <input
@@ -141,7 +144,7 @@ var Register = React.createClass({
                         name='password'/>
                 </div>
                 {errors.password && <span className="help-block">{errors.password}</span>}
-                <div className='form-group' style={style}>
+                <div className={classnames('form-group',{'has-error': errors.password2} )} style={style}>
                     <label>Confirm Password
                     </label>
                     <input
@@ -154,7 +157,7 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 {errors.password2 && <span className="help-block">{errors.password2}</span>}
-                <button
+                <button 
                     type="submit"
                     className="btn btn-default" onClick={this.handleSubmit}>Submit
                 </button>

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require("../models/User.js");
-var Participant = require("../models/participant.js");
+var Participant = require("../models/Participant.js");
 var Score = require("../models/Score.js");
 
 
@@ -10,6 +10,13 @@ router.get("/judge", function(req,res){
     let judge = res.locals.user;
     // console.log('judge', judge);
     res.send(judge);
+});
+
+router.post("/api/auth", function(req,res){
+    
+    const {username, password } = req.body;
+    console.log("this is the user");
+    console.log(res.locals.user);
 });
 
 // This route creates prelim and semi-finals judge sheets

@@ -8,24 +8,59 @@ var bcrypt = require('bcryptjs');
 var User = require("../models/User.js");
 var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
+var jwt = require('jsonwebtoken');
+var config = require('../config.js');
 
 
-// Register
-router.get('/register', function(req, res) {
-    // res.render('register');
+router.post("/api/auth", function(req,res){
+    
+    const {username, password } = req.body;
+
+
+    User.find({ "username": username }, function(error, doc) {
+
+            console.log(doc);
+
+            if (doc.length == 0) {
+                res.sendStatus(401);                
+            }
+            else {
+                // console.log('doc pass', doc[0].password);
+                // return res.render("index", { bacon: doc });
+                comparePassword(password, doc[0].password, function(err, isMatch) {
+                if(err) throw err;
+
+                // if the hash matches the password, return the user
+                // Otherwise, return the message: "Invalid Password"
+                    if(isMatch) {
+                        res.json({
+                            jwt: jwt.sign({
+                                id: doc[0]._id,
+                                username: doc[0].username,
+                            }, config.JWT_SECRET, { expiresIn: 60*60 })
+                        });
+                        }
+                    else {
+                        res.sendStatus(401);
+                        }
+                });
+            }
+        });  // End of getting the user from the database
 });
 
-// Login
-router.get('/login', function(req, res) {
-    // res.render('login');
-});
+// THIS IS THE ROUTE FOR THE OLD LOGIN PAGE
 
 // If the user enters the correct password, they will be directed to the dashboard
 // Otherwise, a message will flash saying that the password is incorrect
 router.post('/login',
+
     passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+    
+
     function(req, res) {
+
         console.log('req.body', req.body);
+        console.log("Just printed the body of the request");
         res.send('post successful');
     }
 );
@@ -85,7 +120,8 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/register', function(req, res){
 
-
+    
+        // console.log(req.body    );
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -94,7 +130,8 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
-    const { errors, isValid } = validateInput(req.body);
+    // Create validation errors for each input from the form
+    const { errors, isValid } = validate(req.body);
 
    
     if (!isValid) {
@@ -113,12 +150,13 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
-// This function will validate the data
-validateInput = function (data) {
+
+
+// This function will validate the data and provide error messages for each input
+validate = function (data) {
 
     let errors = {};
-
-        
+ 
         if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }
