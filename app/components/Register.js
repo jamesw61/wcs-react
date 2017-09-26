@@ -78,8 +78,14 @@ var Register = React.createClass({
         };
         const {errors} = this.state;
         return (
-        <div className="forms">
+        <div className="forms">         
             <form onSubmit={this.handleSubmit}>
+                <h2 className='page-header'>Judge Registration</h2>
+                <div className="panel panel-primary">
+                <div className="panel-heading">
+                  <h3 className="panel-title"><strong>Add New Judge</strong></h3>
+                </div>
+              <div className="panel-body">
                 <div className={classnames('form-group',{'has-error': errors.last_name} )} style={style}>
                     <label>Last Name </label>
                     <input
@@ -157,6 +163,8 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 {errors.password2 && <span className="help-block">{errors.password2}</span>}
+                </div>
+                </div>
                 <button 
                     type="submit"
                     className="btn btn-default" onClick={this.handleSubmit}>Submit

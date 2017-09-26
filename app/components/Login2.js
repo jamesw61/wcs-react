@@ -88,7 +88,11 @@ class Login2 extends React.Component {
 
 			{ errors.form &&  <div className="alert alert-danger">{errors.form}</div>}
    			<form onSubmit={this.handleSubmit}>
-
+			   <div className="panel panel-primary">
+			   <div className="panel-heading">
+			   <h3 className="panel-title"><strong>Judge Login</strong></h3>
+			   </div>
+			   <div className="panel-body">
 	    		<div className = 'form-group'>
 					<label>Username </label>
 					<input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" name="username" />
@@ -102,6 +106,8 @@ class Login2 extends React.Component {
 				<button
 				type="submit"
 				className="btn btn-default" disabled={isLoading} onClick={this.handleSubmit}>Submit</button>
+				</div>
+				</div>
 			</form>
     
 			</div>
