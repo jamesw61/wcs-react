@@ -45,10 +45,11 @@ export default class Results extends React.Component {
 
       <div className="container">
 
-      <Jumbo
-        round={this.props.params.round}
-        division={this.props.params.division}
-        role={this.props.params.role}/>
+      <h2>
+        Round: {this.props.params.round} /
+        Division: {this.props.params.division} /
+        Role: {this.props.params.role}
+      </h2>
 
       <div className="row">
         <div className="col-lg-12">

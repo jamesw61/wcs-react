@@ -5,13 +5,6 @@ var Validator = require('validator');
 var passport = require('passport');
 var Participant = require("../models/Participant.js");
 
-
-// router.get('/new', function(req, res) {
-//     console.log(req.body);
-// });
-
-
-
 router.post('/new', function(req, res){
 
 	var lastName = req.body.lastName;

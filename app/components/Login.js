@@ -47,11 +47,19 @@ var Login = React.createClass({
 	console.log(this.props);
     return(
 
-<div className="forms">
+<div className="container login">
+
+
 
 			<h2 className='page-header'>Login</h2>
-   			<form onSubmit={this.handleSubmit}>
-
+			
+			
+			   <form onSubmit={this.handleSubmit}>
+			   <div className="panel panel-primary">
+			   <div className="panel-heading">
+			   <h3 className="panel-title"><strong>Judge Login</strong></h3>
+			   </div>
+			   <div className="panel-body">
 	    		<div className = 'form-group'>
 					<label>Username </label>
 					<input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" name="username" />
@@ -60,13 +68,18 @@ var Login = React.createClass({
 					<label>Password </label>
 					<input type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" name="password" />
 				</div>
+				</div>
+				</div>
 				<button
 				type="submit"
 				className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
+				
 			</form>
-    
-</div>
-    )
+    </div>
+
+
+	)
+	
 }
 });
 
