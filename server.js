@@ -19,12 +19,8 @@ var contests = require('./controllers/contests');
 var participants = require('./controllers/participants');
 var finals = require('./controllers/finals');
 var results = require('./controllers/results');
-<<<<<<< HEAD
-var dancers = require('./controllers/dancers');
 var finalResults = require('./controllers/final-results');
-=======
 
->>>>>>> development
 
 // Init App
 var app = express();

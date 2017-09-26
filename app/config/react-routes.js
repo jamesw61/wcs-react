@@ -39,7 +39,7 @@ module.exports = (
                 <Route path="/contests/results/:round/:division/:role" component={Results} />
                 <Route path="/participants" component={Participants} /> 
                  <Route path="/finals/:round/:division" component={Finals} />
-                 <Route path="/finals/results" component={FinalResults} />          
+                 <Route path="/finals/results/:division" component={FinalResults} />          
             </Route>
     </div>
   </Router>

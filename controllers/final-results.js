@@ -4,9 +4,9 @@ var passport = require('passport');
 var Final = require("../models/Final.js");
 
 
-router.get("/", function(req, res) {
+router.get("/:division", function(req, res) {
     console.log('inside');
-	Final.find({}).exec(function(err, finalResults) {
+	Final.find({division : req.params.division}).exec(function(err, finalResults) {
                         if (err) {
                             console.log(err);
                         } else {
