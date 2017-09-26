@@ -22,9 +22,10 @@ export function login(data) {
 
 	return dispatch => {
 		return axios.post('/users/api/auth', data).then(function(res, err){
-			
+				console.log('data', data);
 				const token = res.data.jwt;
 				localStorage.setItem('jwtToken', token);
+				localStorage.setItem('username', data.username);
 
 
 				// setAuthorizationToken(token);
