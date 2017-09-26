@@ -29,7 +29,7 @@ export default React.createClass({
       let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       // console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
-        console.log('evaluation data', response.data[0].bib_number);
+        // console.log('evaluation data', response.data[0].bib_number);
         this.setState({ participantData: response.data });
 
 
@@ -42,7 +42,7 @@ export default React.createClass({
         });
 
         this.setState({ participantScores: initialParticipantScores });
-        console.log('mount', this.state.participantScores);
+        // console.log('mount', this.state.participantScores);
 
         // this.setState({ participantData: x });
         // this.setState({
@@ -60,7 +60,7 @@ export default React.createClass({
   },
    handleSubmit: function(event) {
     event.preventDefault(); 
-    console.log('state', this.state);
+    // console.log('state', this.state);
        let postURL = "/contests/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
 
       axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {

@@ -19,8 +19,8 @@ var Login = React.createClass({
     	let username = this.state.username;
     	let password = this.state.password;
 
-    	console.log('username', username);
-    	console.log('password', password);
+    	console.log('username/password:', username, password);
+    	// console.log('password', password);
     	// this.setState({ fireRedirect: true })
   
 	const click = this.props.onClick;
@@ -31,7 +31,7 @@ var Login = React.createClass({
 		// click(true);
         axios.get("/contests/judge").then(function(response) {
 			// click(true);
-       		 console.log('res', response.data[0].username);
+       		 console.log('judge username:', response.data[0].username);
            if(username === response.data[0].username){ 
 			
            browserHistory.push('/dashboard');
@@ -44,7 +44,7 @@ var Login = React.createClass({
 
   },
   render: function(){
-	console.log(this.props);
+	// console.log(this.props);
     return(
 
 <div className="container login">
