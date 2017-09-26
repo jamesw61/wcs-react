@@ -12,8 +12,21 @@ class Participants extends Component {
         this.state = {
             lastName: "",
             firstName: "",
-            division: "",
-            role: "",
+            divisionTypes: [
+                'Novice',
+                'Intermediate',
+                'Advanced',
+                'All-Star',
+                'Championship'
+            ],
+              division: 'Novice',
+
+            roleType: [
+                'follows',
+                'leads'
+            ],   
+            role:  "follows",
+
             bib_number: "",
             errors: {}   
         }
@@ -26,6 +39,13 @@ class Participants extends Component {
         var newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);        
+    }
+    handleRadio(event) {
+        this.setState({ division: event.target.value })
+    }
+
+    handleRole (event) {
+        this.setState({ role: event.target.value })
     }
 
     handleSubmit (event) {
@@ -41,7 +61,7 @@ class Participants extends Component {
             .then(response => {
                 
 
-
+               
                 console.log("This is the response data");
                 console.log(response.data);
 
@@ -55,6 +75,7 @@ class Participants extends Component {
                 }
                  else {
                     click(true);
+                    console.log(loan);
                     console.log('posted new dancer'); 
                     browserHistory.push('/dashboard'); 
                 }     
@@ -69,7 +90,40 @@ class Participants extends Component {
 
         // Set the variable for the errors
         const {errors} = this.state;
-        
+        const division = this.state.division
+        const role = this.state.role
+
+        const options = this.state.divisionTypes.map((loan, key) => {
+        const isCurrent = this.state.division === loan
+          return (
+            
+            <div  key={key} className="radioPad">
+              <div>
+                <label 
+                  className={
+                    isCurrent ? 
+                      'radioPad __wrapper radioPad __wrapper--selected' :
+                      'radioPad __wrapper'
+                    }
+                >
+                  <input
+                    className="radioPad__radio"
+                    type="radio" 
+                    name="divisionTypes" 
+                    id={loan} 
+                    value={loan}
+                    onChange={this.handleRadio.bind(this)}
+                  />
+                  {loan}
+                </label>
+              </div>
+             
+            </div>
+           
+          )
+        })
+
+       
        
         return (
                 <div className="forms">
@@ -81,6 +135,7 @@ class Participants extends Component {
                           <h3 className="panel-title"><strong>Add New Participant</strong></h3>
                         </div>
                       <div className="panel-body">
+
                       <div className= {classnames('form-group',{'has-error': errors.lastName} )} >
                             <label>Last Name </label>
                             <input
@@ -91,9 +146,10 @@ class Participants extends Component {
                                 onChange={this.handleChange}
                                 placeholder="last name"
                                 name='last_name'/>
-                        </div>
+                        </div> 
                         {errors.lastName && <span className="help-block">{errors.lastName}</span>}
-                        <div className={classnames('form-group',{'has-error': errors.lastName} )} >
+
+                        <div className={classnames('form-group',{'has-error': errors.firstName} )} >
                             <label>First Name</label>                
                             <input
                                 type="text"
@@ -106,29 +162,25 @@ class Participants extends Component {
                         </div>
                         {errors.firstName && <span className="help-block">{errors.firstName}</span>}
                     
-                        <div className='form-group' >
-                        <label>Division</label>
-                        <input
-                            type="text"
-                            id='division' 
-                            value={this.state.division}
-                            onChange={this.handleChange}
-                            className="form-control"
-                            placeholder="Division"
-                            name='division'/>
+                        <div className="form-group">
+                          <label>Division</label>
+                            <div className="radioGroup">
+                                {options}
+                            </div>     
                         </div>
 
                         <div className='form-group'>
-                            <label>Role</label>
-                            <input
-                                type="text"
-                                id='role' 
-                                value={this.state.role}
-                                onChange={this.handleChange}
-                                className="form-control"
-                                placeholder="Role"
-                                name='role'/>
-                        </div>
+                        <label>Role</label>
+                        <input
+                            type="text"
+                            id='role' 
+                            value={this.state.role}
+                            onChange={this.handleChange}
+                            className="form-control"
+                            placeholder="Role"
+                            name='role'/>
+                    </div>
+
 
                         <div className={classnames('form-group',{'has-error': errors.bib_number} )}>
                             <label>Bib Number</label>
