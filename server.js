@@ -19,7 +19,7 @@ var contests = require('./controllers/contests');
 var participants = require('./controllers/participants');
 var finals = require('./controllers/finals');
 var results = require('./controllers/results');
-var finalResults = require('./controllers/final-results');
+var finalresults = require('./controllers/final-results');
 
 
 // Init App
@@ -84,7 +84,7 @@ app.use('/contests', contests);
 app.use('/participants', participants);
 app.use('/results', results);
 app.use('/finals', finals);
-app.use('/finalresults', finalResults);
+app.use('/finalresults', finalresults);
 
 
 
