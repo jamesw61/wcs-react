@@ -163,8 +163,11 @@ var Register = React.createClass({
                         name='password2'/>
                 </div>
                 {errors.password2 && <span className="help-block">{errors.password2}</span>}
+<<<<<<< HEAD
                 </div>
                 </div>
+=======
+>>>>>>> development
                 <button 
                     type="submit"
                     className="btn btn-default" onClick={this.handleSubmit}>Submit

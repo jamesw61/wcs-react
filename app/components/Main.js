@@ -13,7 +13,7 @@ class Main extends Component {
         this.onClick = this.onClick.bind(this);
     }
     onClick(bool){
-        console.log(bool);
+        // console.log(bool);
         this.setState({ loggedin: bool })
         browserHistory.push('/')
     }
@@ -24,11 +24,18 @@ class Main extends Component {
     }
     render() {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
         const {isAuthenticated} = this.props.auth;
 
         
 
+<<<<<<< HEAD
         console.log(this.props)
+=======
+>>>>>>> development
         // condition to add props based on what component is coming in 
         const props = {
             onClick: this.onClick

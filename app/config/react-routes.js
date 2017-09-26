@@ -13,6 +13,8 @@ import Dashboard from "../components/Dashboard";
 import Evaluation from "../components/Evaluation";
 import Home from "../components/Home";
 import Finals from "../components/Finals";
+import FinalResults from "../components/FinalResults";
+
 
 
 import Participants from "../components/Participants"
@@ -36,7 +38,8 @@ module.exports = (
                 <Route path="/contests/judge/:round/:division/:role" component={Evaluation} />
                 <Route path="/contests/results/:round/:division/:role" component={Results} />
                 <Route path="/participants" component={Participants} /> 
-                 <Route path="/finals/:round/:division" component={Finals} />          
+                 <Route path="/finals/:round/:division" component={Finals} />
+                 <Route path="/finalresults/:division" component={FinalResults} />          
             </Route>
     </div>
   </Router>
