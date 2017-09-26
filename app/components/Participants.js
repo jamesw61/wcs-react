@@ -12,8 +12,19 @@ class Participants extends Component {
         this.state = {
             lastName: "",
             firstName: "",
-            division: "",
-            role: "",
+            division: [
+                'Novice',
+                'Intermediate',
+                'Advanced',
+                'All-Star',
+                'Champion'
+              ],
+              divPick: "",
+            role: [
+                'follows',
+                'leads'
+            ],
+            rolePick: "",
             bib_number: "",
             errors: {}   
         }
@@ -69,6 +80,10 @@ class Participants extends Component {
 
         // Set the variable for the errors
         const {errors} = this.state;
+        const divPick = this.state.divPick;
+        const options = this.state.coffeeTypes.map((loan, key) => {
+          const isCurrent = this.state.divPick === loan       
+          
        
         return (
                 <div className="forms">
@@ -106,15 +121,27 @@ class Participants extends Component {
                         {errors.firstName && <span className="help-block">{errors.firstName}</span>}
                     
                         <div className='form-group' >
-                            <label>Division</label>
+                        <div key={key} className="radioPad">
+                        <div>
+                          <label className={isCurrent ? 
+                                'radioPad__wrapper radioPad__wrapper--selected' :
+                                'radioPad__wrapper'
+                              }
+                          >
                             <input
-                                type="text"
-                                id='division' 
-                                value={this.state.division}
-                                onChange={this.handleChange}
-                                className="form-control"
-                                placeholder="Division"
-                                name='division'/>
+                              className="radioPad__radio"
+                              type="radio" 
+                              name="division" 
+                              id={loan} 
+                              value={loan}
+                              onChange={this.handleRadio.bind(this)}
+                            />
+                            {loan}
+                          </label>
+                        </div>
+                      </div>
+                        )
+                      })
                         </div>
                         <div className='form-group'>
                             <label>Role</label>
