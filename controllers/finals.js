@@ -7,7 +7,7 @@ var Score = require("../models/Score.js");
 var Final = require("../models/Final.js");
 
 router.get("/:round/:division", function(req, res) {
-    console.log('inside');
+    console.log('inside finals/round/division');
 	Participant.find({
                         role: req.params.role,
                         division: req.params.division,
@@ -33,6 +33,7 @@ router.get("/:round/:division", function(req, res) {
                                                         "leadArray" : leadData,
                                                         "followArray" : followData
                                                     }
+                                                    console.log('couples', couples);
 
                                                     res.json(couples);
                                                     
@@ -45,9 +46,9 @@ router.get("/:round/:division", function(req, res) {
                     });
 });
 
-router.post("/", function(req, res) {
+router.post("/:judge", function(req, res) {
 
-    var judge = res.locals.user;
+    var judge = req.params.judge;
     var data = req.body.finalScores;
     var division = req.body.division;
     console.log('finals judge', judge);
@@ -58,7 +59,7 @@ router.post("/", function(req, res) {
         let scoreObj = {
             place : i + 1,
             division: division,
-            judge : judge[0]._id,
+            judge : judge,
             lead : item.lead,
             follow : item.follow
         }
@@ -82,7 +83,9 @@ router.post("/", function(req, res) {
 
 });
 
+function arrangeCouples (){
 
+}
 
 
 

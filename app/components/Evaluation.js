@@ -26,7 +26,8 @@ export default React.createClass({
     },
     componentDidMount: function() {
       // console.log('mount', this.state.participantScores);
-      let queryURL = "/contests/judge/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      let judge = localStorage.getItem("username");
+      let queryURL = "/contests/" + judge + "/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
       // console.log('query', queryURL);
       axios.get(queryURL).then(function(response) {
         // console.log('evaluation data', response.data[0].bib_number);
@@ -61,7 +62,8 @@ export default React.createClass({
    handleSubmit: function(event) {
     event.preventDefault(); 
     // console.log('state', this.state);
-       let postURL = "/contests/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
+      let judge = localStorage.getItem("username");
+       let postURL = "/contests/" + judge + "/" + this.props.params.round + "/" + this.props.params.division + "/" + this.props.params.role;
 
       axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {
         console.log('posted', response);

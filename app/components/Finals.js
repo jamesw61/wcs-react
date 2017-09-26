@@ -50,8 +50,9 @@ export default class Finals extends React.Component {
 
     // let division = "novice";
     let division = this.props.params.division;
+      let judge = localStorage.getItem("username");
 
-     axios.post("/finals", {finalScores: finalScores, division: division}).then(function(response) {
+     axios.post("/finals/" + judge, {finalScores: finalScores, division: division}).then(function(response) {
         console.log('posted', response);
         browserHistory.push('/dashboard');        
         // axios.get("/contests/judge").then(function(response) {

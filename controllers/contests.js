@@ -6,25 +6,24 @@ var Participant = require("../models/Participant.js");
 var Score = require("../models/Score.js");
 
 
-router.get("/judge", function(req,res){
-    let judge = res.locals.user;
-    // console.log('judge', judge);
-    res.send(judge);
-});
+// router.get("/judge", function(req,res){
+//     let judge = "bruno";
+//     // console.log('judge', judge);
+//     res.send(judge);
+// });
 
 router.post("/api/auth", function(req,res){
     
     const {username, password } = req.body;
     console.log("this is the user");
-    console.log(res.locals.user);
 });
 
 // This route creates prelim and semi-finals judge sheets
 
 // router.get("/judge/:round/:division/:role/evaluation", ensureAuthenticated, function(req, res) {
-router.get("/judge/:round/:division/:role", function(req, res) {
+router.get("/:judge/:round/:division/:role", function(req, res) {
         console.log('---------------------------');
-    var judge = res.locals.user;
+    var judge = req.params.judge;
     console.log('judge', judge);
 
     // var judge = "ff";
@@ -47,7 +46,7 @@ router.get("/judge/:round/:division/:role", function(req, res) {
 
         // Check to see if the judge has judged this competition
         Score.find({
-            judge: judge[0]._id,
+            judge: judge,
             division: division,
             round: round,
             role: role
@@ -85,9 +84,9 @@ router.get("/judge/:round/:division/:role", function(req, res) {
 
 
 // This route posts the scores from the evaluation component.
-router.post("/:round/:division/:role", function(req, res) {
+router.post("/:judge/:round/:division/:role", function(req, res) {
 
-    var judge = res.locals.user;
+    var judge = req.params.judge;
     var data = req.body.scores;
     var division = req.params.division.toLowerCase();
     var round = req.params.round;
@@ -98,7 +97,7 @@ router.post("/:round/:division/:role", function(req, res) {
             bib_number : item.bib_number,
             division: division,
             round : round,
-            judge : judge[0]._id,
+            judge : judge,
             score : parseInt(item.score),
             role : role
         }
