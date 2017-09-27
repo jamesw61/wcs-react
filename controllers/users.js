@@ -6,22 +6,61 @@ var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/User.js");
-// Register
-router.get('/register', function(req, res) {
-    // res.render('register');
+var isEmpty = require('lodash.isempty');
+var Validator = require('validator');
+var jwt = require('jsonwebtoken');
+var config = require('../config.js');
+
+
+router.post("/api/auth", function(req,res){
+    
+    const {username, password } = req.body;
+
+
+    User.find({ "username": username }, function(error, doc) {
+
+            console.log(doc);
+
+            if (doc.length == 0) {
+                res.sendStatus(401);                
+            }
+            else {
+                // console.log('doc pass', doc[0].password);
+                // return res.render("index", { bacon: doc });
+                comparePassword(password, doc[0].password, function(err, isMatch) {
+                if(err) throw err;
+
+                // if the hash matches the password, return the user
+                // Otherwise, return the message: "Invalid Password"
+                    if(isMatch) {
+                        res.json({
+                            jwt: jwt.sign({
+                                id: doc[0]._id,
+                                username: doc[0].username,
+                            }, config.JWT_SECRET, { expiresIn: 60*60 })
+                        });
+                        }
+                    else {
+                        res.sendStatus(401);
+                        }
+                });
+            }
+        });  // End of getting the user from the database
 });
 
-// Login
-router.get('/login', function(req, res) {
-    // res.render('login');
-});
+// THIS IS THE ROUTE FOR THE OLD LOGIN PAGE
 
 // If the user enters the correct password, they will be directed to the dashboard
 // Otherwise, a message will flash saying that the password is incorrect
 router.post('/login',
+
     passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+    
+
     function(req, res) {
+
         console.log('req.body', req.body);
+        console.log("Just printed the body of the request");
         res.send('post successful');
     }
 );
@@ -36,15 +75,15 @@ passport.use(new LocalStrategy(
 
     function(username, password, done) {
         console.log('passport username', username);
-        console.log('passport password', password);
+        // console.log('passport password', password);
     	// Search the database for the given user
         // db.User.findOne({ where: {username: username, password: password }}).then(function(dbUser) {
         User.find({ "username": username }, function(error, doc) {
             if (error) {
-                console.log(error);
+                console.log('Broken');
             }
             else {
-                console.log('doc pass', doc[0].password);
+                // console.log('doc pass', doc[0].password);
                 // return res.render("index", { bacon: doc });
                 comparePassword(password, doc[0].password, function(err, isMatch) {
                 if(err) throw err;
@@ -63,28 +102,7 @@ passport.use(new LocalStrategy(
             }
         });
 
-        // db.User.findOne({ where: {username: username}}).then(function(dbUser) {
-        	
-        // 	// If the user is not in the database, send a message to let the user know
-        // 	if(!dbUser) {
-        // 		return done(null, false, {message: 'Unknown User'});
-        // 	}
 
-        // 	// Check the password against the hashed password in the database
-        // 	// This function is located at the bottom of this file
-        // 	comparePassword(password, dbUser.password, function(err, isMatch) {
-        // 		if(err) throw err;
-
-        // 		// if the hash matches the password, return the user
-        // 		// Otherwise, return the message: "Invalid Password"
-        // 		if(isMatch) {
-        // 			return done(null, dbUser);
-        // 		}
-        // 		else {
-        // 			return done(null, false, {message: 'Invalid Password'});
-        // 		}
-        // 	});
-        // });
     }));
 
 
@@ -97,15 +115,13 @@ passport.deserializeUser(function(id, done) {
     User.find({ "_id": id }, function(error, doc) {
         done(null, doc);
     });
-    // db.User.findOne({ where: {id: id }}).then(function(dbUser) {
-        // done(null, dbUser.dataValues);
-
-    // });
 
 });
 
 router.post('/register', function(req, res){
 
+    
+        // console.log(req.body    );
 	// Take in form input from the registration form
 	var last_name = req.body.last_name;
 	var first_name = req.body.first_name;
@@ -114,29 +130,19 @@ router.post('/register', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
-	// Validation
-	// TODO:  Do not allow a username to be used more than once
-	req.checkBody('last_name', 'Last Name is required').notEmpty();
-	req.checkBody('first_name', 'First Name is required').notEmpty();
-	req.checkBody('email', 'Email is required').isEmail();
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+    // Create validation errors for each input from the form
+    const { errors, isValid } = validate(req.body);
 
-	var errors = req.validationErrors();
-	if(errors) {
-		console.log('val errors in register post', errors);
-	}
+   
+    if (!isValid) {
+        // res.status(400).json(errors);
+        res.send(errors);
+    }
 	else {
 
 		// Add new user to the database with hashed password
 		createUser(last_name, first_name, email, username, password);
-        res.send('created user');
-
-		 // TODO:  Fix this flash message
-		req.flash('success_msg', 'You are registered and can now login');
-
-		// res.redirect('/users/login');
+        res.send(errors);
 	}
 
 });
@@ -144,6 +150,41 @@ router.post('/register', function(req, res){
 
 module.exports = router;
 
+
+
+// This function will validate the data and provide error messages for each input
+validate = function (data) {
+
+    let errors = {};
+ 
+        if (Validator.isEmpty(data.last_name)) {
+            errors.last_name = "Last Name is required"
+        }
+        if (Validator.isEmpty(data.first_name)) {
+            errors.first_name = "First Name is required"
+        }
+        if (Validator.isEmpty(data.email)) {
+            errors.email = "Email is required"
+        }
+        if (!Validator.isEmail(data.email)) {
+            errors.email = "Email is invalid"
+        }
+        if (Validator.isEmpty(data.username)) {
+            errors.username = "Username is required"
+        }
+        if (Validator.isEmpty(data.password)) {
+            errors.password = "Password is required"
+        }
+        if (!Validator.equals(data.password2, data.password)) {
+            errors.password2 = "Passwords must match"
+        }
+
+        return {
+            errors,
+            isValid: isEmpty(errors)
+        }
+
+}
 
 // This function takes in user information and adds the user to the database
 // with a hash for the password
@@ -186,6 +227,7 @@ createUser = function (last, first, email, username, password) {
 
 // This function compares the user's entered password with the hashed password
 // in the database  
+
 // The callback function returns a true or false statement if the the passwords
 // match
 comparePassword = function(candidatePassword, hash, callback) {

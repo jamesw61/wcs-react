@@ -1,17 +1,22 @@
-* {
-
+html, body {
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
  
-.logo {
-  
-	max-height: 200px;
+.logo {  
+  max-width: 45%;
 }
 
 /* Space out content a bit */
-body {
-  background: url("./wood.jpg") no-repeat center center fixed;
+.main {
+  background: url("./wood.jpg");
+  min-height: 960px;
+  
+  width:auto;
+  overflow-y: hidden; 
+  vertical-align: top;
+  background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,6 +26,7 @@ body {
 
 .navbar-default {
   background-image: linear-gradient(to bottom,#1424E4 0,#222 100%);
+  
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -122,8 +128,6 @@ body {
   }
 }
 
-
-
 .page-header {
   margin-top:0;
 }
@@ -135,7 +139,7 @@ footer {
 
 ul  {
     list-style: none;
-    color:  #008080;
+    color:  #1424E4;
 }
 
 side-nav-links li {
@@ -147,26 +151,17 @@ side-nav-links li {
 }
 
 a {
-    color:  #008080;
+    color:  gray;
 }
 
  .panel panel-primary {
-    color:  #008080;
+    color:  darkgray;
 }
 
-.panel-primary .btn-primary{
-    border-color: #008080;
-    
-}
-
-.btn-primary {
-    border-color: #008080;
-    background-color: #008080;
-    
-}
 
 .panel-primary > .panel-heading  {
-  background-color:  #008080;
+  background: url("../images/woodGrain.jpg") no-repeat;
+  
 }
 
 .slider-handle {
@@ -174,5 +169,111 @@ a {
 }
 
 .panel-primary {
-    border-color: #008080;
+    border-color: #e4d414;
 }
+
+.table-body {
+  padding: 0px;
+  
+}
+
+.navbar-nav {
+  display:table;
+  margin: 0;
+ 
+}
+
+.forms {
+  width: 50%;
+  margin: auto;
+}
+
+.well {
+  border-style: solid;
+  border-color: black;
+  width: 75%;
+  margin-left: 8%;
+  color: white;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+.login {
+ max-width: 40%;
+}
+
+td {
+  text-align: left;
+  color: grey
+}
+
+thead {
+  color: black;
+}
+
+
+.home {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+
+
+.swing {
+  margin-left: 50%;
+  margin-top: 25%;
+}
+
+.silhouette {
+  height: 240px;
+}
+
+
+.radioPad {
+display: inline-block;
+vertical-align: top;
+}
+
+.wrapper {
+display: block;
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-size: 14px;
+margin: 5px;
+padding: 5px;
+text-align: left;
+}
+ 
+.radio {
+ 
+height: 2px ;
+width: 2px;
+opacity: 0;
+margin-right: 10px;
+}
+
+.__wrapper {
+display: block;
+cursor: pointer;
+background: white;
+color: rgb(127, 127, 127);
+font-weight: 200;
+font-size: 14px;
+margin: 2px;
+padding: 3px;
+text-align: left;
+}
+
+.radioGroup {
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px;
+  border-radius: 4px;
+  width: 100%;
+  margin-right: 5px;
+}
+

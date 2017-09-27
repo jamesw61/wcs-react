@@ -58,3 +58,5 @@ typings/
 .env
 
 public/bundle.js 
+package-lock.json
+app/components/Participants.js.orig

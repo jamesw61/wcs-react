@@ -22,15 +22,26 @@ var ParticipantSchema = new Schema({
   bib_number: {
     type: String
   },
+  total: {
+    type: Number
+  },
   scores: [{
     type: Schema.Types.ObjectId,
     ref: "Score"
   }]
 });
 
-var Participant = mongoose.model("Participant", ParticipantSchema);
+var Participant = mongoose.model('Participant', ParticipantSchema);
 
 module.exports = Participant;
+
+
+
+
+
+
+
+
 
 
 

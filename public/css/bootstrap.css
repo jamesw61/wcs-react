@@ -1603,8 +1603,8 @@ pre code {
   }
 }
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2518,7 +2518,7 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
+  margin: 4px 4px 0;
   margin-top: 1px \9;
   line-height: normal;
 }
@@ -3058,8 +3058,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  background: url("../images/woodGrain.jpg") no-repeat;
+  border-color: #e4d414;
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -4512,13 +4512,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: white;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
+  color: teal;
   background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
@@ -5819,7 +5819,7 @@ button.list-group-item-danger.active:focus {
 .well {
   min-height: 20px;
   padding: 19px;
-  margin-bottom: 20px;
+  margin-bottom: 20px;background: url("../images/woodGrain.jpg") no-repeat;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   border-radius: 4px;

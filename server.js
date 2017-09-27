@@ -16,14 +16,14 @@ mongoose.Promise = Promise;
 var controllers = require('./controllers');
 var users = require('./controllers/users');
 var contests = require('./controllers/contests');
+var participants = require('./controllers/participants');
+var finals = require('./controllers/finals');
+var results = require('./controllers/results');
+var finalresults = require('./controllers/final-results');
+
 
 // Init App
 var app = express();
-
-// View engine
-// app.set('views', path.join(__dirname, 'views'));
-// app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
-// app.set('view engine', 'handlebars');
 
 // Middle ware
 app.use(bodyParser.json());
@@ -75,14 +75,26 @@ app.use(function (req, res, next) {
 	next();
 })
 
-app.use('/', controllers);
+
+
+
+app.use('/', controllers)
 app.use('/users', users);
 app.use('/contests', contests);
+app.use('/participants', participants);
+app.use('/results', results);
+app.use('/finals', finals);
+app.use('/finalresults', finalresults);
 
-// mongoose.connect("mongodb://heroku_swvg4dbq:ssihqq344kjl59bn46p5itqf0m@ds135594.mlab.com:35594/heroku_swvg4dbq");
-mongoose.connect("mongodb://localhost/wcs", {
+
+
+mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
   useMongoClient: true
 });
+
+// mongoose.connect("mongodb://localhost/wcs", {
+// 	useMongoClient: true
+//   });
 
 var db = mongoose.connection;
 
