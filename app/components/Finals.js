@@ -124,7 +124,7 @@ export default class Finals extends React.Component {
                         </div>
 
                       <button className="btn btn-default" id="score-prelims-btn" type="submit">Submit Final Order</button>
-                      <Link to ="finalresults/advanced"> Final Results</Link>  
+                      
                       </form>
                         
                    

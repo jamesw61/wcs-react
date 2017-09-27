@@ -79,7 +79,7 @@ export default class Results extends React.Component {
 
                             </table> 
 
-                            <Link to ={finalsURL}> Finals</Link>       
+                                
                       </div>
                 </div>
             </div>
