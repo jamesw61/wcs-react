@@ -9,18 +9,31 @@ import Jumbo from './Jumbo';
 export default class Finals extends React.Component {
   constructor() {
     super();
-    this.state = {couplesObj : []}
+    this.state = {couplesObj : [], yetToBeScored: true}
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
+      let judge = localStorage.getItem("username");
+
+      let queryURL = "/finals/check/" + judge + "/" + this.props.params.division;
+      console.log(queryURL);
+      axios.get(queryURL).then(function(scoresByJudge){
+        console.log('this.yet', this.state.yetToBeScored);        
+        console.log('scoresByJudge', scoresByJudge.data);
+        this.setState({yetToBeScored: scoresByJudge.data});
+        console.log('this.yet', this.state.yetToBeScored);
+      }.bind(this));
+
+
+
       let queryURL2 = "/finals/" + this.props.params.round + "/" + this.props.params.division;
       axios.get(queryURL2).then(function(data) {
-        console.log('data', data);
+        // console.log('data', data);
 
         let queryURL3 = "/finals/couples/" + this.props.params.round + "/" + this.props.params.division;
         axios.get(queryURL3).then(function(couplesData){
-            console.log("cd", couplesData.data);
+            // console.log("cd", couplesData.data);
             this.setState({couplesObj : couplesData.data}); 
             console.log('couple array', this.state.couplesObj);
 
@@ -91,10 +104,11 @@ export default class Finals extends React.Component {
   render () {
     let coupleRows;
     let linkURL = "/finalresults/" + this.props.params.division;
-    console.log(linkURL);
+    // console.log(linkURL);
     let couples = this.state.couplesObj;
-          if(couples){ 
-            console.log('couples', couples);
+    let yet2b = this.state.yetToBeScored;
+          if(couples && yet2b){ 
+            // console.log('couples', couples);
             
             coupleRows = couples.map((item, i)=>{
                     let coupleBibs = { "lead": item.lead,

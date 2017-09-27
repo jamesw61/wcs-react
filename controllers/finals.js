@@ -9,7 +9,7 @@ var Couple = require("../models/Couple.js");
 
 router.get("/:round/:division", function(req, res) {
 
-    console.log('inside finals/round/division');
+    // console.log('inside finals/round/division');
     Participant.find({
         role: req.params.role,
         division: req.params.division,
@@ -66,6 +66,20 @@ router.get("/couples/:round/:division", function(req, res) {
         // console.log('CR', coupleResults);
         res.json(coupleResults);
 
+    });
+});
+
+router.get("/check/:judge/:division", function(req, res){
+    console.log('inside finals judge division');
+
+    Final.find({ judge: req.params.judge, division: req.params.division }).exec(function(err, scoresByJudge){
+        console.log('scoresByJudge', scoresByJudge.length);
+        if(scoresByJudge.length > 0){
+            res.send(false);            
+        }
+        else {
+            res.send(true);
+        }
     });
 });
 
