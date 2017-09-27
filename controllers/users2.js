@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcryptjs');
 var Validator = require('validator');
 
-var isEmpty = require('lodash/isEmpty');
+// var isEmpty = require('lodash/isEmpty');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/user.js");
@@ -226,7 +226,8 @@ validateInput = function(data) {
         console.log(errors);
         return {
             errors,
-            isValid: isEmpty(errors)
+            // isValid: isEmpty(errors)
+            isValid: true
         }
         
 

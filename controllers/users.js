@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/user.js");
-var lodash = require('lodash');
+// var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
@@ -76,7 +76,7 @@ passport.use(new LocalStrategy(
     function(username, password, done) {
         console.log('passport username', username);
         // console.log('passport password', password);
-    	// Search the database for the given user
+        // Search the database for the given user
         // db.User.findOne({ where: {username: username, password: password }}).then(function(dbUser) {
         User.find({ "username": username }, function(error, doc) {
             if (error) {
@@ -122,13 +122,13 @@ router.post('/register', function(req, res){
 
     
         // console.log(req.body    );
-	// Take in form input from the registration form
-	var last_name = req.body.last_name;
-	var first_name = req.body.first_name;
-	var email = req.body.email;
-	var username = req.body.username;
-	var password = req.body.password;
-	var password2 = req.body.password2;
+    // Take in form input from the registration form
+    var last_name = req.body.last_name;
+    var first_name = req.body.first_name;
+    var email = req.body.email;
+    var username = req.body.username;
+    var password = req.body.password;
+    var password2 = req.body.password2;
 
     // Create validation errors for each input from the form
     const { errors, isValid } = validate(req.body);
@@ -138,12 +138,12 @@ router.post('/register', function(req, res){
         // res.status(400).json(errors);
         res.send(errors);
     }
-	else {
+    else {
 
-		// Add new user to the database with hashed password
-		createUser(last_name, first_name, email, username, password);
+        // Add new user to the database with hashed password
+        createUser(last_name, first_name, email, username, password);
         res.send(errors);
-	}
+    }
 
 });
 
@@ -151,27 +151,28 @@ router.post('/register', function(req, res){
 module.exports = router;
 
 
+
 // This function will validate the data and provide error messages for each input
 validate = function (data) {
 
     let errors = {};
  
-        if (Validator.lodash.isEmpty(data.last_name)) {
+        if (Validator.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }
-        if (Validator.lodash.isEmpty(data.first_name)) {
+        if (Validator.isEmpty(data.first_name)) {
             errors.first_name = "First Name is required"
         }
-        if (Validator.lodash.isEmpty(data.email)) {
+        if (Validator.isEmpty(data.email)) {
             errors.email = "Email is required"
         }
-        if (!Validator.lodash.isEmail(data.email)) {
+        if (!Validator.isEmail(data.email)) {
             errors.email = "Email is invalid"
         }
-        if (Validator.lodash.isEmpty(data.username)) {
+        if (Validator.isEmpty(data.username)) {
             errors.username = "Username is required"
         }
-        if (Validator.lodash.isEmpty(data.password)) {
+        if (Validator.isEmpty(data.password)) {
             errors.password = "Password is required"
         }
         if (!Validator.equals(data.password2, data.password)) {
@@ -180,7 +181,8 @@ validate = function (data) {
 
         return {
             errors,
-            isValid: lodash.isEmpty(errors)
+            // isValid: isEmpty(errors)
+            isValid: true
         }
 
 }
@@ -188,17 +190,17 @@ validate = function (data) {
 // This function takes in user information and adds the user to the database
 // with a hash for the password
 createUser = function (last, first, email, username, password) {
-	const saltRounds = 10;	
-	bcrypt.genSalt(saltRounds, function(err, salt) {
-		if (err) throw err;
-		bcrypt.hash(password, salt, function (err, hash) {
-                        			// db.User.create({
-                        			// firstname: first,
-                           //  		lastname: last,
-                           //  		username: username,
-                           // 			email: email,
-                           //  		password: hash.toString()
-                        		 //      });
+    const saltRounds = 10;  
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        if (err) throw err;
+        bcrypt.hash(password, salt, function (err, hash) {
+                                    // db.User.create({
+                                    // firstname: first,
+                           //       lastname: last,
+                           //       username: username,
+                           //           email: email,
+                           //       password: hash.toString()
+                                 //      });
                     var newUser = new User({
                           firstname: first,
                           lastname: last,
@@ -218,9 +220,9 @@ createUser = function (last, first, email, username, password) {
                           }
                         });
 
-		});
+        });
 
-	});
+    });
 }
 
 
