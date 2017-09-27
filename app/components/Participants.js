@@ -75,7 +75,6 @@ class Participants extends Component {
                 }
                  else {
                     click(true);
-                    console.log(loan);
                     console.log('posted new dancer'); 
                     browserHistory.push('/dashboard'); 
                 }     
@@ -123,7 +122,33 @@ class Participants extends Component {
           )
         })
 
-       
+        const Roptions = this.state.roleType.map((loan, key) => {
+            const RisCurrent = this.state.role === loan
+              return (
+                
+                <div  key={key} className="radioPad">
+                  <div>
+                    <label 
+                      className={
+                        RisCurrent ? 
+                          'radioPad __wrapper radioPad __wrapper--selected' :
+                          'radioPad __wrapper'
+                        }
+                    >
+                      <input
+                        className="radioPad__radio"
+                        type="radio" 
+                        name="roleTypes" 
+                        id={loan} 
+                        value={loan}
+                        onChange={this.handleRole.bind(this)}
+                      />
+                      {loan}
+                    </label>
+                  </div>
+                </div>
+              )
+            })
        
         return (
                 <div className="forms">
@@ -169,18 +194,13 @@ class Participants extends Component {
                             </div>     
                         </div>
 
-                        <div className='form-group'>
+                        <div className="form-group">
                         <label>Role</label>
-                        <input
-                            type="text"
-                            id='role' 
-                            value={this.state.role}
-                            onChange={this.handleChange}
-                            className="form-control"
-                            placeholder="Role"
-                            name='role'/>
-                    </div>
-
+                          <div className="radioGroup">
+                              {Roptions}
+                          </div>
+                      </div>
+                   
 
                         <div className={classnames('form-group',{'has-error': errors.bib_number} )}>
                             <label>Bib Number</label>
