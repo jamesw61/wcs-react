@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
-var User = require("../models/User.js");
+var User = require("../models/user.js");
 var isEmpty = require('lodash.isempty');
 var Validator = require('validator');
 var jwt = require('jsonwebtoken');
