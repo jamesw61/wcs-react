@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var isEmpty = require('lodash.isempty');
+var lodash = require('lodash');
 var Validator = require('validator');
 var passport = require('passport');
 var Participant = require("../models/participant.js");
@@ -69,21 +69,21 @@ validateInput = function (data) {
     let errors = {};
 
     	
-        if (Validator.isEmpty(data.lastName)) {
+        if (Validator.lodash.isEmpty(data.lastName)) {
             errors.lastName = "Last Name is required"
         }
 
         console.log("Validated the first.");
-        if (Validator.isEmpty(data.firstName)) {
+        if (Validator.lodash.isEmpty(data.firstName)) {
             errors.firstName = "First Name is required"
         }
-        if (Validator.isEmpty(data.bib_number)) {
+        if (Validator.lodash.isEmpty(data.bib_number)) {
             errors.bib_number = "Bib Number is required"
         }
 
         return {
             errors,
-            isValid: isEmpty(errors)
+            isValid: lodash.isEmpty(errors)
         }
 
 }
