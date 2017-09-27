@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Router, { browserHistory } from'react-router';
 import axios from "axios";
-var lodash = require('lodash');
+// var isEmpty = require('lodash.isEmpty');
 import classnames from "classnames";
 
 
@@ -65,19 +65,19 @@ class Participants extends Component {
                 console.log("This is the response data");
                 console.log(response.data);
 
-                console.log(!lodash.isEmpty(response.data));
+                // console.log(!lodash.isEmpty(response.data));
             //     // Display error messages
-                if(!isEmpty(response.data)){
+                // if(!isEmpty(response.data)){
                     
-                    // console.log(response.data);
-                    this.setState({errors: response.data});
-                    console.log(this.state.errors);
-                }
-                 else {
+                //     // console.log(response.data);
+                //     this.setState({errors: response.data});
+                //     console.log(this.state.errors);
+                // }
+                 // else {
                     click(true);
                     console.log('posted new dancer'); 
                     browserHistory.push('/dashboard'); 
-                }     
+                // }     
             // })
             // .catch(function (error) {
             //     console.log(error);
