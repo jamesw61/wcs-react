@@ -234,25 +234,46 @@ thead {
 
 .radioPad {
 display: inline-block;
-width: 100%;
-vertical-align: middle;
+vertical-align: top;
 }
 
 .wrapper {
 display: block;
 cursor: pointer;
-
 color: white;
 text-transform: uppercase;
-font-size: 1.5rem;
-margin: .5rem;
-padding: 3rem;
-text-align: center;
+font-size: 14px;
+margin: 5px;
+padding: 5px;
+text-align: left;
 }
  
 .radio {
-visibility: hidden;
-height: 0px ;
-width: 0;
+ 
+height: 2px ;
+width: 2px;
 opacity: 0;
+margin-right: 10px;
 }
+
+.__wrapper {
+display: block;
+cursor: pointer;
+background: white;
+color: rgb(127, 127, 127);
+font-weight: 200;
+font-size: 14px;
+margin: 2px;
+padding: 3px;
+text-align: left;
+}
+
+.radioGroup {
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px;
+  border-radius: 4px;
+  width: 100%;
+  margin-right: 5px;
+}
+
