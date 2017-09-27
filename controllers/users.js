@@ -7,6 +7,7 @@ var bcrypt = require('bcryptjs');
 // var db = require("../models");
 var User = require("../models/user.js");
 // var isEmpty = require('lodash.isempty');
+var _ = require('lodash');
 var Validator = require('validator');
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
@@ -181,8 +182,8 @@ validate = function (data) {
 
         return {
             errors,
-            // isValid: isEmpty(errors)
-            isValid: true
+            isValid: _.isEmpty(errors)
+            // isValid: true
         }
 
 }

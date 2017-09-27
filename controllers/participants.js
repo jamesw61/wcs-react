@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // var isEmpty = require('lodash.isempty');
+var _ = require('lodash');
 var Validator = require('validator');
 var passport = require('passport');
 var Participant = require("../models/participant.js");
@@ -83,8 +84,8 @@ validateInput = function (data) {
 
         return {
             errors,
-            // isValid: isEmpty(errors)
-            isValid: true
+            isValid: _.isEmpty(errors)
+            // isValid: true
         }
 
 }
