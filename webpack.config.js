@@ -17,6 +17,7 @@ module.exports = {
         // Webpack will only process files in our app folder. This avoids processing
         // node modules and server files unnecessarily
         include: /app/,
+        exclude: /node_modules/,
         loader: "babel",
         query: {
           // These are the specific transformations we'll be using.
@@ -29,3 +30,5 @@ module.exports = {
   // Without this the console says all errors are coming from just coming from bundle.js
   devtool: "eval-source-map"
 };
+
+
