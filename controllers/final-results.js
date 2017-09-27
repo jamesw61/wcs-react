@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var Final = require("../models/Final.js");
+var Final = require("../models/final.js");
 
 
 router.get("/:division", function(req, res) {

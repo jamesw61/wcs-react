@@ -8,7 +8,7 @@ var Validator = require('validator');
 var isEmpty = require('lodash/isEmpty');
 // Requiring our Todo model
 // var db = require("../models");
-var User = require("../models/User.js");
+var User = require("../models/user.js");
 // Register
 router.get('/register', function(req, res) {
     // res.render('register');

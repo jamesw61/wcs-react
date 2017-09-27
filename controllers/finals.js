@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require("../models/user.js");
-var Participant = require("../models/Participant.js");
-var Score = require("../models/Score.js");
-var Final = require("../models/Final.js");
-var Couple = require("../models/Couple.js");
+var Participant = require("../models/participant.js");
+var Score = require("../models/score.js");
+var Final = require("../models/final.js");
+var Couple = require("../models/couple.js");
 
 router.get("/:round/:division", function(req, res) {
 
