@@ -23,8 +23,10 @@ var Dashboard = React.createClass({
                 <thead>
                   <tr>
                     <th>Contest Name</th>
-                    <th>Judge Preliminary Round</th>
+                    <th>Preliminary Round</th>
                     <th>Results</th>
+                    <th>Finals</th>
+                    <th>Final Results</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -37,6 +39,8 @@ var Dashboard = React.createClass({
      
                     <td><Link to="/contests/results/Preliminary/novice/follow"> Follows</Link>
                         <br /><Link to="/contests/results/Preliminary/novice/lead"> Leads</Link></td>
+                        <td><Link to="/finals/Preliminary/novice">Judge Novice</Link></td>
+                        <td><Link to ="/finalresults/novice"> Final Results</Link></td>
                   </tr>
                   <tr>
                     <td>Intermediate</td>
@@ -44,6 +48,8 @@ var Dashboard = React.createClass({
                         <br /><Link to="/contests/judge/Preliminary/intermediate/lead">Judge Leads</Link></td>
                     <td><Link to="/contests/results/Preliminary/intermediate/follow"> Follows</Link>
                         <br /><Link to="/contests/results/Preliminary/intermediate/lead"> Leads</Link></td>
+                        <td><Link to="/finals/Preliminary/intermediate">Judge Intermediate</Link></td>
+                        <td><Link to ="/finalresults/intermediate"> Final Results</Link></td>
                   </tr>
                   <tr>
                     <td>Advanced</td>
@@ -51,6 +57,8 @@ var Dashboard = React.createClass({
                         <br /><Link to="/contests/judge/Preliminary/advanced/lead">Judge Leads</Link></td>
                     <td><Link to="/contests/results/Preliminary/advanced/follow"> Follows</Link>
                         <br /><Link to="/contests/results/Preliminary/advanced/lead"> Leads</Link></td>
+                        <td><Link to="/finals/Preliminary/advanced">Judge Advanced</Link></td>
+                        <td><Link to ="/finalresults/advanced"> Final Results</Link></td>
                   </tr>
                   <tr>
                     <td>All-Star</td>
@@ -58,6 +66,8 @@ var Dashboard = React.createClass({
                         <br /><Link to="/contests/judge/Preliminary/allstar/lead">Judge Leads</Link></td>
                     <td><Link to="/contests/results/Preliminary/allstar/follow"> Follows</Link>
                         <br /><Link to="/contests/results/Preliminary/allstar/lead"> Leads</Link></td>
+                        <td><Link to="/finals/Preliminary/allstar">Judge All-Star</Link></td>
+                        <td><Link to ="/finalresults/allstar"> Final Results</Link></td>
                   </tr>
                   <tr>
                     <td>Champion</td>
@@ -65,6 +75,8 @@ var Dashboard = React.createClass({
                         <br /><Link to="/contests/judge/Preliminary/champion/lead">Judge Leads</Link></td>
                         <td><Link to="/contests/results/Preliminary/champion/follow"> Follows</Link>
                         <br /><Link to="/contests/results/Preliminary/champion/lead"> Leads</Link></td>
+                        <td><Link to="/finals/Preliminary/champion">Judge Champion</Link></td>
+                        <td><Link to ="/finalresults/champion"> Final Results</Link></td>
 
                   </tr>
                 </tbody>
