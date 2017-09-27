@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 // Requiring our Todo model
 // var db = require("../models");
 var User = require("../models/user.js");
-var isEmpty = require('lodash.isempty');
+var lodash = require('lodash');
 var Validator = require('validator');
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
@@ -151,28 +151,27 @@ router.post('/register', function(req, res){
 module.exports = router;
 
 
-
 // This function will validate the data and provide error messages for each input
 validate = function (data) {
 
     let errors = {};
  
-        if (Validator.isEmpty(data.last_name)) {
+        if (Validator.lodash.isEmpty(data.last_name)) {
             errors.last_name = "Last Name is required"
         }
-        if (Validator.isEmpty(data.first_name)) {
+        if (Validator.lodash.isEmpty(data.first_name)) {
             errors.first_name = "First Name is required"
         }
-        if (Validator.isEmpty(data.email)) {
+        if (Validator.lodash.isEmpty(data.email)) {
             errors.email = "Email is required"
         }
-        if (!Validator.isEmail(data.email)) {
+        if (!Validator.lodash.isEmail(data.email)) {
             errors.email = "Email is invalid"
         }
-        if (Validator.isEmpty(data.username)) {
+        if (Validator.lodash.isEmpty(data.username)) {
             errors.username = "Username is required"
         }
-        if (Validator.isEmpty(data.password)) {
+        if (Validator.lodash.isEmpty(data.password)) {
             errors.password = "Password is required"
         }
         if (!Validator.equals(data.password2, data.password)) {
@@ -181,7 +180,7 @@ validate = function (data) {
 
         return {
             errors,
-            isValid: isEmpty(errors)
+            isValid: lodash.isEmpty(errors)
         }
 
 }
