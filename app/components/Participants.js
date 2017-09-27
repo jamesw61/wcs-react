@@ -13,19 +13,19 @@ class Participants extends Component {
             lastName: "",
             firstName: "",
             divisionTypes: [
-                'Novice',
-                'Intermediate',
-                'Advanced',
-                'All-Star',
-                'Championship'
+                'novice',
+                'intermediate',
+                'advanced',
+                'allstar',
+                'championship'
             ],
-              division: 'Novice',
+              division: 'novice',
 
             roleType: [
-                'follows',
-                'leads'
+                'follow',
+                'lead'
             ],   
-            role:  "follows",
+            role:  "follow",
 
             bib_number: "",
             errors: {}   
