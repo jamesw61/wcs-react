@@ -130,26 +130,7 @@ function addCouples(couplesArray) {
 
 }
 
-// async function addCouples(couplesArray) {
-//     function go(i) {
-//         if (i >= couplesArray.length) {
-//             return;
-//         } else {
-//             let newCouple = new Couple(couplesArray[i]);
-//             newCouple.save(function(error, doc) {
-//                 if (error) {
-//                     console.log('new couple err', error)
-//                 } else {
-//                     console.log('newCouple saved');
-//                     console.log('doc', doc);
 
-//                 }
-//             });
-//             return go(i + 1);
-//         }
-//     }
-//     go(0);
-// }
 
 
 module.exports = router;
