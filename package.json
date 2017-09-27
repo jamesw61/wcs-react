@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "prestart": "webpack",
+  "scripts": {   
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "start-dev": "webpack-dev-server --host 0.0.0.0 --port 8000"
+    "build": "webpack -w"    
   },
   "repository": {
     "type": "git",
