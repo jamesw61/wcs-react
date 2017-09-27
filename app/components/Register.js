@@ -2,7 +2,8 @@ var React = require('react');
 var Router = require('react-router')
 var axios = require("axios");
 import { browserHistory } from 'react-router';
-var isEmpty = require('lodash.isEmpty');
+
+var lodash = require('lodash');
 import classnames from "classnames";
 
 
@@ -52,7 +53,7 @@ var Register = React.createClass({
                                     
                                  
                                     // Display error messages
-                                    if(!isEmpty(response.data)){
+                                    if(!lodash.isEmpty(response.data)){
                                         this.setState({errors: response.data});
 
                                     }
