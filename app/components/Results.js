@@ -44,12 +44,12 @@ export default class Results extends React.Component {
     return (
 
       <div className="container">
-
-      <h2>
+      <h2 className="page-header"> Results</h2>
+      <h3>
         Round: {this.props.params.round} /
         Division: {this.props.params.division} /
         Role: {this.props.params.role}
-      </h2>
+      </h3>
 
       <div className="row">
         <div className="col-lg-12">
