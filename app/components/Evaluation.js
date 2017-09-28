@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import axios from 'axios'
+import Slider from 'react-rangeslider'
+import Horizontal from './Slider'
 
 
 export default React.createClass({
@@ -43,17 +45,7 @@ export default React.createClass({
         });
 
         this.setState({ participantScores: initialParticipantScores });
-        // console.log('mount', this.state.participantScores);
 
-        // this.setState({ participantData: x });
-        // this.setState({
-        //   judge: response.data
-        // });
-        // console.log('state judge', this.state.judge);
-    // $.get("/contests/judge", function (req, res){
-    //   console.log(req);
-    //   console.log(res);
-    // });
           }.bind(this)).catch(err => {
                   console.log('err', err);
                   return err.response;
@@ -68,12 +60,6 @@ export default React.createClass({
       axios.post(postURL, {scores: this.state.participantScores}).then(function(response) {
         console.log('posted', response);
         browserHistory.push('/dashboard');        
-        // axios.get("/contests/judge").then(function(response) {
-        //    console.log('res', response.data[0].username);
-        //    if(username === response.data[0].username){ 
-        //    browserHistory.push('/dashboard');
-        //     }            
-      // });
  
     });
     
@@ -81,20 +67,23 @@ export default React.createClass({
 
   },
   render() {
-
+    const { value } = this.state
     let participantRows = this.state.participantData.map((data, i) => {
           return (
               <tr key={i}>
                  <td>{data.bib_number}</td>
                  <td>{data.role}</td>
                  <td>
-                      <div className="well">
+                      <div className="slider">
                                  
-                        <select id={data.bib_number} onChange={this.handleChange} >
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                        </select>
+                        <Slider id={data.bib_number}  min={0}
+                        max={3}
+                        value={value}
+                        onChangeStart={this.handleChangeStart}
+                        onChange={this.handleChange}
+                        onChangeComplete={this.handleChangeComplete}
+                      />
+                      <div className='value'>{value}</div>
                       </div>     
                    </td>
                 </tr>
