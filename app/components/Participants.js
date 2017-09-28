@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Router, { browserHistory } from'react-router';
 import axios from "axios";
-var isEmpty = require('lodash.isEmpty');
+// var isEmpty = require('lodash.isEmpty');
+import _ from 'lodash';
 import classnames from "classnames";
 
 
@@ -13,19 +14,19 @@ class Participants extends Component {
             lastName: "",
             firstName: "",
             divisionTypes: [
-                'Novice',
-                'Intermediate',
-                'Advanced',
-                'All-Star',
-                'Championship'
+                'novice',
+                'intermediate',
+                'advanced',
+                'allstar',
+                'championship'
             ],
-              division: 'Novice',
+              division: 'novice',
 
             roleType: [
-                'follows',
-                'leads'
+                'follow',
+                'lead'
             ],   
-            role:  "follows",
+            role:  "follow",
 
             bib_number: "",
             errors: {}   
@@ -65,9 +66,9 @@ class Participants extends Component {
                 console.log("This is the response data");
                 console.log(response.data);
 
-                console.log(!isEmpty(response.data));
-            //     // Display error messages
-                if(!isEmpty(response.data)){
+                console.log(!_.isEmpty(response.data));
+                // Display error messages
+                if(!_.isEmpty(response.data)){
                     
                     // console.log(response.data);
                     this.setState({errors: response.data});
@@ -78,9 +79,9 @@ class Participants extends Component {
                     console.log('posted new dancer'); 
                     browserHistory.push('/dashboard'); 
                 }     
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
+            })
+            .catch(function (error) {
+                console.log(error);
               });
         
     }
