@@ -72,6 +72,13 @@ router.get('/list', (req, res) => {
     });
   }); 
 
+  router.get('/edit/:id').get(function (req, res) {
+    var id = req.params.id;
+    Participant.findById(id, function (err, item){
+        res.json(item);
+    });
+  });
+
   router.put('/update/:id').post(function (req, res) {
     Participant.findById(req.params.id, function(err, participant) {
       if (!Participant)

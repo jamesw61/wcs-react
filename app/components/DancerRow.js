@@ -22,6 +22,7 @@ class DancerRow extends Component {
          </td>   
           <td>
             <button className="btn btn-default">Edit</button>
+           
           </td>
           <td>
             <button className="btn btn-default">Delete</button>
