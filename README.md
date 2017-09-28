@@ -1,6 +1,6 @@
 # WCS-React 
 
-WCS-React is a mobile-ready West Swing Dance Judging app
+WCS-React is a mobile-ready West Coast Swing Dance Judging app
  - Judge competitions from beginner to champion
  - Add new contestants, Leads or Follows
  - A portable fast and easy way to judge and update contestants scores
