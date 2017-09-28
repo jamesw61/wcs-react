@@ -21,10 +21,10 @@ class DancerRow extends Component {
           {this.props.obj.role}
          </td>   
           <td>
-            <button className="btn btn-default">Edit</button>
+            <button className="btn btn-default" onClick={this.handleSubmit}>Edit</button>
           </td>
           <td>
-            <button className="btn btn-default">Delete</button>
+            <button className="btn btn-default" onClick={this.handleSubmit}>Delete</button>
           </td>
         </tr>
     );
