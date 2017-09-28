@@ -5,7 +5,11 @@ import {Link} from 'react-router'
 const Menu = (props) => (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
-       
+        {!props.loggedin && <div className="navbar-header">
+                      <a className="navbar-brand" >
+                            <img alt="Brand" src="./css/JnJ3.png"  />  
+                            </a>         
+                      </div>} 
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -16,7 +20,7 @@ const Menu = (props) => (
             </ul>}
 
             {!props.loggedin && <ul className="nav navbar-nav navbar-right">
-            <li><Link to ="/login" ><span className="glyphicon glyphicon-log-in"></span>Login</Link></li>
+            <li><Link to ="/login" ><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
             <li><Link to ="/register"><span className="glyphicon glyphicon-user"></span> Register</Link></li>
             </ul>}
 

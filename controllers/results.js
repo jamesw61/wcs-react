@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var User = require("../models/User.js");
-var Participant = require("../models/Participant.js");
-var Score = require("../models/Score.js");
+var User = require("../models/user.js");
+var Participant = require("../models/participant.js");
+var Score = require("../models/score.js");
 
 //Gets judge scores and sends them to the results component
 router.get("/:round/:division/:role", function(req, res) {
