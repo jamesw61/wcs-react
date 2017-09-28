@@ -17,3 +17,7 @@ WCS-React uses a number of open source projects to work properly:
 * Axios - Promise based HTTP client for the browser and node.js
 * Redux - A predictable state container for JavaScript apps
 * Lodash - A modern Javascript utility library
+
+
+## Live App
+See [WCS-React](https://wcs-react.herokuapp.com/)
