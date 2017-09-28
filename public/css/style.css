@@ -277,3 +277,10 @@ text-align: left;
   margin-right: 5px;
 }
 
+.addNew {
+  position: absolute;
+  right: 10%;
+  width: 50px;
+  padding: 5px;
+}
+
