@@ -36,7 +36,7 @@ import TableRow from './DancerRow';
         render() {
             return (
               <div className="container">
-              <button className="btn btn-default addNew">Add new Participants</button>
+              <button className="btn btn-default addNew" onClick={this.handleSubmit}>Add new Participants</button>
               <h2 className="page-header">Participants</h2>
               
               <div className="panel panel-primary">
