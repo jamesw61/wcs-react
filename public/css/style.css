@@ -278,9 +278,10 @@ text-align: left;
 }
 
 .addNew {
-  position: absolute;
+  
   right: 10%;
-  width: 50px;
+  width: 180px;
   padding: 5px;
+  margin-left: 75%;
 }
 
