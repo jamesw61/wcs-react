@@ -88,11 +88,11 @@ app.use('/finalresults', finalresults);
 
 
 
-// mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
-//   useMongoClient: true
-// });
+mongoose.connect("mongodb://dinoman:UACodingB00tcamp@ds139904.mlab.com:39904/wcs", {
+  useMongoClient: true
+});
 
-mongoose.connect("mongodb://heroku_7xv0ms44:jriutdh8133p3346nidtts62m2@ds149844.mlab.com:49844/heroku_7xv0ms44");
+// mongoose.connect("mongodb://heroku_7xv0ms44:jriutdh8133p3346nidtts62m2@ds149844.mlab.com:49844/heroku_7xv0ms44");
 
 // MONGODB_URI: mongodb://heroku_7xv0ms44:jriutdh8133p3346nidtts62m2@ds149844.mlab.com:49844/heroku_7xv0ms44
 

@@ -4,7 +4,7 @@ import { browserHistory, Link } from 'react-router';
 import Dragula from 'react-dragula';
 import axios from 'axios';
 import CoupleRow from './CoupleRow';
-import Jumbo from './Jumbo';
+
 
 export default class Finals extends React.Component {
   constructor() {

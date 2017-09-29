@@ -40,7 +40,7 @@ html, body {
 /* Custom page header */
 .header {
   padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
+  /* border-bottom: 1px solid #e5e5e5; */
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -196,6 +196,10 @@ a {
   color: white;
   margin-bottom: 10px;
   padding: 5px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  text-shadow: 2px 2px black;
 }
 
 
@@ -277,3 +281,14 @@ text-align: left;
   margin-right: 5px;
 }
 
+.addNew {
+  
+  right: 10%;
+  width: 180px;
+  padding: 5px;
+  margin-left: 75%;
+}
+
+select {
+  color: black;
+}

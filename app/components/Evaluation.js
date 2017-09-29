@@ -104,9 +104,6 @@ export default React.createClass({
     return (
     <div className='container'>
      
-          
-        
-     
           <form onSubmit={this.handleSubmit}>
           <h2 className="page-header"> Evaluation</h2>
           <h3>{this.props.params.round} / {this.props.params.division} / {this.props.params.role}</h3>

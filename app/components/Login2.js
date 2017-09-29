@@ -82,7 +82,8 @@ class Login2 extends React.Component {
 	
 		
 		return (
-			<div className="forms">
+			<div className="container login">
+			
 
 			<h2 className='page-header'>Login</h2>
 
@@ -111,7 +112,7 @@ class Login2 extends React.Component {
 			</form>
     
 			</div>
-
+			
 			);
 	}
 }
