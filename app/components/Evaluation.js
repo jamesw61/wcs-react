@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react';
 import { Link, browserHistory } from 'react-router'
 import axios from 'axios'
 import Slider from 'react-rangeslider'
-import Horizontal from './Slider'
 
 
 export default React.createClass({
@@ -12,14 +11,25 @@ export default React.createClass({
         participantScores: []
       };
     },
+
+    handleChangeStart() {
+      console.log('Change event started')
+    },
+  
+   
+  
+    handleChangeComplete() {
+      console.log('Change event completed')
+    },
+
     handleChange: function(event) {    
       let scoresArray = this.state.participantScores;
-      
+      console.info(this.state.participantScores);
       let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
 
       scoresArray[index] = {
-                    "bib_number" : event.target.id,
-                    "score" : event.target.value
+          "bib_number" : event.target.id,
+          "score" : event.target.value
       }
 
       this.setState({participantScores : scoresArray}); 
@@ -38,9 +48,9 @@ export default React.createClass({
 
         let initialParticipantScores = this.state.participantData.map((data, i) => {
             let newState = {
-                            "bib_number":data.bib_number,
-                            "score" : "1"
-                          };
+              "bib_number":data.bib_number,
+              "score" : "1"
+            };
             return newState;
         });
 
@@ -74,16 +84,18 @@ export default React.createClass({
                  <td>{data.bib_number}</td>
                  <td>{data.role}</td>
                  <td>
-                      <div className="slider">
+                      <div className=" well slider">
                                  
-                        <Slider id={data.bib_number}  min={0}
+                        <Slider 
+                        id={data.bib_number}  
+                        min={1}
                         max={3}
                         value={value}
                         onChangeStart={this.handleChangeStart}
                         onChange={this.handleChange}
                         onChangeComplete={this.handleChangeComplete}
                       />
-                      <div className='value'>{value}</div>
+                      
                       </div>     
                    </td>
                 </tr>
@@ -129,4 +141,3 @@ export default React.createClass({
   )
   }
 })
-
