@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link, browserHistory, redirect } from 'react-router';
 import axios from 'axios';
 import TableRow from './DancerRow';
 
@@ -24,6 +24,13 @@ import TableRow from './DancerRow';
               })
             }
 
+            handleClick  () {
+              browserHistory.push('/participants');
+            }
+            handleEditClick  () {
+              browserHistory.push('/editParticipant');
+            }
+
             tabRow(){
                 if(this.state.resultsArray instanceof Array){
                   return this.state.resultsArray.map(function(object, i){
@@ -34,9 +41,11 @@ import TableRow from './DancerRow';
   
              
         render() {
+          
+
             return (
               <div className="container">
-              <button className="btn btn-default addNew" onClick={this.handleSubmit}>Add new Participants</button>
+              <button className="btn btn-default addNew" onClick={this.handleClick}>Add new Participants</button>
               <h2 className="page-header">Participants</h2>
               
               <div className="panel panel-primary">
