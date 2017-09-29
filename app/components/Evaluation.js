@@ -8,7 +8,8 @@ export default React.createClass({
     getInitialState: function() {
       return {
         participantData: [],
-        participantScores: []
+        participantScores: [],
+        volume: 1
       };
     },
 
@@ -22,16 +23,26 @@ export default React.createClass({
       console.log('Change event completed')
     },
 
-    handleChange: function(event) {    
+    handleChange: function(data, score) { 
+
+
+      var bibnumber = data.bib;
+      var score = score.toString();
+      console.log(score);
+      this.setState({
+      volume: score
+      });   
+
       let scoresArray = this.state.participantScores;
       console.info(this.state.participantScores);
-      let index = scoresArray.findIndex(p => p.bib_number === event.target.id);
+      let index = scoresArray.findIndex(p => p.bib_number === bibnumber);
 
       scoresArray[index] = {
-          "bib_number" : event.target.id,
-          "score" : event.target.value
+          "bib_number" : bibnumber,
+          "score" : score
       }
 
+      console.log(scoresArray);
       this.setState({participantScores : scoresArray}); 
 
 
@@ -49,7 +60,7 @@ export default React.createClass({
         let initialParticipantScores = this.state.participantData.map((data, i) => {
             let newState = {
               "bib_number":data.bib_number,
-              "score" : "1"
+              "score" : "1",
             };
             return newState;
         });
@@ -77,7 +88,8 @@ export default React.createClass({
 
   },
   render() {
-    const { value } = this.state
+    const { value } = this.state;
+
     let participantRows = this.state.participantData.map((data, i) => {
           return (
               <tr key={i}>
@@ -92,7 +104,7 @@ export default React.createClass({
                         max={3}
                         value={value}
                         onChangeStart={this.handleChangeStart}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange.bind(this, {bib: data.bib_number})}
                         onChangeComplete={this.handleChangeComplete}
                       />
                       
@@ -100,7 +112,7 @@ export default React.createClass({
                    </td>
                 </tr>
                     );
-                   });
+                   }, this);
 
     return (
     <div className='container'>
