@@ -77,7 +77,7 @@ class Participants extends Component {
                  else {
                     click(true);
                     console.log('posted new dancer'); 
-                    browserHistory.push('/dashboard'); 
+                    browserHistory.push('/dancers'); 
                 }     
             })
             .catch(function (error) {

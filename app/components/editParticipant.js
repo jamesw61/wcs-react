@@ -5,7 +5,7 @@ class EditParticipant extends Component {
 
   constructor(props) {
       super(props);
-      this.addParticipantService = new ItemService();
+     
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.state = {value: '' };
@@ -45,7 +45,7 @@ class EditParticipant extends Component {
             <form onSubmit={this.handleSubmit}>
               <label>
                 Edit Dancer:
-                <input type="text" value={this.state.value.item} onChange={this.handleChange}  className="form-control"/>
+                <input type="text" value={this.state.value.participant} onChange={this.handleChange}  className="form-control"/>
               </label><br/>
               <input type="submit" value="Update" className="btn btn-primary"/>
             </form>

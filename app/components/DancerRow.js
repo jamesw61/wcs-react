@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import Router, { browserHistory } from'react-router';
 
 class DancerRow extends Component {
+
+  handleEditClick  () {
+    browserHistory.push('/editParticipant');
+  }
  
   render() {
     return (
@@ -21,7 +26,7 @@ class DancerRow extends Component {
           {this.props.obj.role}
          </td>   
           <td>
-            <button className="btn btn-default">Edit</button>
+            <button className="btn btn-default" onClick={this.handleEditClick}>Edit</button>
            
           </td>
           <td>
