@@ -60,7 +60,42 @@ router.post('/new', function(req, res){
 
 
 });
-        
+
+router.get('/list', (req, res) => { 
+  Participant.find(function (err, participant){
+      if(err){
+        console.log(err);
+      }
+      else {
+        res.send(participant);
+      }
+    });
+  }); 
+
+  router.get('/edit/:id').get(function (req, res) {
+    var id = req.params.id;
+    Participant.findById(id, function (err, item){
+        res.json(item);
+    });
+  });
+
+  router.put('/update/:id').post(function (req, res) {
+    Participant.findById(req.params.id, function(err, participant) {
+      if (!Participant)
+        return next(new Error('Could not load Document'));
+      else {
+        // do your updates here
+        item.item = req.body.item;
+  
+        Participant.save().then(Participant => {
+            res.json('Update complete');
+        })
+        .catch(err => {
+              res.status(400).send("unable to update the database");
+        });
+      }
+    });
+  });
        
 module.exports = router;
 

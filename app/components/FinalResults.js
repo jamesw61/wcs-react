@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 import axios from 'axios';
 import TableRow from './TableRow';
-import Jumbo from './Jumbo';
 import Finals from './Finals';
 import FinalRow from './FinalRow';
+
 
 export default class Results extends React.Component {
   constructor() {
