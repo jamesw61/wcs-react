@@ -16,7 +16,7 @@ import Finals from "../components/Finals";
 import FinalResults from "../components/FinalResults";
 import Dancers from "../components/Dancers";
 import Participants from "../components/Participants";
-import EditParticipant from "../components/EditParticipant";
+// import EditParticipant from "../components/EditParticipant";
 
 
 
@@ -40,7 +40,6 @@ module.exports = (
                  <Route path="/finals/:round/:division" component={Finals} />
                  <Route path="/finalresults/:division" component={FinalResults} />     
                  <Route path="/dancers" component={Dancers} />
-                 <Route path="/editParticipant"  component={EditParticipant} />
             </Route>
     </div>
   </Router>
