@@ -59,3 +59,179 @@
   "role": "lead",
   "bib_number": "105"
 }]
+
+novice
+
+[{
+  "firstname": "Riane",
+  "lastname": "Degli Antoni",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "3"
+}, {
+  "firstname": "Anton",
+  "lastname": "Blackshaw",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "56"
+}, {
+  "firstname": "Gisella",
+  "lastname": "Olden",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "0841"
+}, {
+  "firstname": "Baudoin",
+  "lastname": "Crighton",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "60"
+}, {
+  "firstname": "Terrijo",
+  "lastname": "Petrashkov",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "90"
+}, {
+  "firstname": "Ketty",
+  "lastname": "Cawthry",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "4508"
+}, {
+  "firstname": "Sigfried",
+  "lastname": "Wodham",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "12"
+}, {
+  "firstname": "Tiffanie",
+  "lastname": "Greet",
+  "division": "novice",
+  "role": "follow",
+  "bib_number": "408"
+}, {
+  "firstname": "Sunny",
+  "lastname": "Glazier",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "54"
+}, {
+  "firstname": "Randie",
+  "lastname": "Blazy",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "8"
+}, {
+  "firstname": "Wendi",
+  "lastname": "Viccary",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "3"
+}, {
+  "firstname": "Inesita",
+  "lastname": "Nockolds",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "26"
+}, {
+  "firstname": "Gill",
+  "lastname": "MacArd",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "091"
+}, {
+  "firstname": "Kaela",
+  "lastname": "Errichelli",
+  "division": "novice",
+  "role": "lead",
+  "bib_number": "76"
+}]
+
+intermediate
+
+[{
+  "firstname": "Pattie",
+  "lastname": "Bianco",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "8410"
+}, {
+  "firstname": "Myer",
+  "lastname": "Abramchik",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "422"
+}, {
+  "firstname": "Cosmo",
+  "lastname": "Buist",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "11373"
+}, {
+  "firstname": "Jennilee",
+  "lastname": "Szantho",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "7141"
+}, {
+  "firstname": "Maye",
+  "lastname": "Branney",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "0"
+}, {
+  "firstname": "Alexis",
+  "lastname": "Hatherall",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "9"
+}, {
+  "firstname": "Lola",
+  "lastname": "Tibbs",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "725"
+}, {
+  "firstname": "Corine",
+  "lastname": "Mattusov",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "8"
+}, {
+  "firstname": "Taddeusz",
+  "lastname": "Peggrem",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "05430"
+}, {
+  "firstname": "Gratia",
+  "lastname": "Mohammed",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "010"
+}, {
+  "firstname": "Rebecka",
+  "lastname": "Ranfield",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "89"
+}, {
+  "firstname": "Meggi",
+  "lastname": "Robinson",
+  "division": "intermediate",
+  "role": "follow",
+  "bib_number": "155"
+}, {
+  "firstname": "Griffith",
+  "lastname": "Cammoile",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "99601"
+}, {
+  "firstname": "Mortimer",
+  "lastname": "Stothart",
+  "division": "intermediate",
+  "role": "lead",
+  "bib_number": "9"
+}]
